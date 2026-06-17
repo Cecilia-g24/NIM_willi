@@ -17,16 +17,19 @@ What this script does:
 8. Saves audit files for removed and unknown-condition dialogs.
 
 Expected input location:
-    dialogs-1771498506071_raw.json
+    data/data_raw/dialogs-1771498506071_raw.json
 
-Output folder:
-    dialogs/
+CSV output folder:
+    data/data_clean/
+
+JSON report folder:
+    01_preprocess/preprocess_report/
 
 Main output files:
-    dialogs/dialogs_en.csv
-    dialogs/dialogs_de.csv
-    dialogs/dialogs_for_annotation_en.csv
-    dialogs/dialogs_for_annotation_de.csv
+    data/data_clean/dialogs_en.csv
+    data/data_clean/dialogs_de.csv
+    data/data_clean/dialogs_for_annotation_en.csv
+    data/data_clean/dialogs_for_annotation_de.csv
 """
 
 from __future__ import annotations
@@ -42,23 +45,23 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple
 # Paths
 # -----------------------------------------------------------------------------
 
-# Keep the input path the same as in your original preprocess.py.
-INPUT_FILE = Path("dialogs-1771498506071_raw.json")
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent
 
-# Put all outputs in one folder.
-OUTPUT_DIR = Path("dialogs")
+INPUT_FILE = REPO_ROOT / "data" / "data_raw" / "dialogs-1771498506071_raw.json"
+CSV_OUTPUT_DIR = REPO_ROOT / "data" / "data_clean"
+REPORT_DIR = SCRIPT_DIR / "preprocess_report"
 
-ORIGINAL_EN_CSV = OUTPUT_DIR / "dialogs_en.csv"
-ORIGINAL_DE_CSV = OUTPUT_DIR / "dialogs_de.csv"
-ANNOTATION_EN_CSV = OUTPUT_DIR / "dialogs_for_annotation_en.csv"
-ANNOTATION_DE_CSV = OUTPUT_DIR / "dialogs_for_annotation_de.csv"
+ORIGINAL_EN_CSV = CSV_OUTPUT_DIR / "dialogs_en.csv"
+ORIGINAL_DE_CSV = CSV_OUTPUT_DIR / "dialogs_de.csv"
+ANNOTATION_EN_CSV = CSV_OUTPUT_DIR / "dialogs_for_annotation_en.csv"
+ANNOTATION_DE_CSV = CSV_OUTPUT_DIR / "dialogs_for_annotation_de.csv"
 
-REMOVED_IDS_FILE = OUTPUT_DIR / "removed_ids.json"
-UNKNOWN_ENTRIES_FILE = OUTPUT_DIR / "unknown_entries.json"
-REPORT_FILE = OUTPUT_DIR / "preprocessing_report.json"
-
-# Optional audit JSON outputs. Useful for debugging, but not needed for annotation.
-CLEANED_JSON_FILE = OUTPUT_DIR / "dialogs_cleaned_with_metadata.json"
+# Optional audit JSON outputs and reports.
+CLEANED_JSON_FILE = REPORT_DIR / "dialogs_cleaned_with_metadata.json"
+REMOVED_IDS_FILE = REPORT_DIR / "removed_ids.json"
+UNKNOWN_ENTRIES_FILE = REPORT_DIR / "unknown_entries.json"
+REPORT_FILE = REPORT_DIR / "preprocessing_report.json"
 
 # -----------------------------------------------------------------------------
 # Constants
@@ -488,13 +491,14 @@ def build_annotation_row(dialog: Dict[str, Any], language: str) -> Dict[str, Any
 # -----------------------------------------------------------------------------
 
 
-def preprocess_dialogs(input_file: Path = INPUT_FILE, output_dir: Path = OUTPUT_DIR) -> None:
+def preprocess_dialogs(input_file: Path = INPUT_FILE, csv_output_dir: Path = CSV_OUTPUT_DIR) -> None:
     data = load_json(input_file)
 
     if not isinstance(data, list):
         raise ValueError("The top-level JSON structure must be a list/array of dialog records.")
 
-    output_dir.mkdir(parents=True, exist_ok=True)
+    csv_output_dir.mkdir(parents=True, exist_ok=True)
+    REPORT_DIR.mkdir(parents=True, exist_ok=True)
 
     total_items = len(data)
     removed_ids: List[Any] = []
@@ -589,7 +593,8 @@ def preprocess_dialogs(input_file: Path = INPUT_FILE, output_dir: Path = OUTPUT_
 
     report = {
         "input_file": str(input_file),
-        "output_dir": str(output_dir),
+        "csv_output_dir": str(csv_output_dir),
+        "report_dir": str(REPORT_DIR),
         "total_interactions_in_input": total_items,
         "retained_interactions": len(cleaned_dialogs),
         "removed_empty_or_malformed_interactions": len(removed_ids),
@@ -625,7 +630,8 @@ def preprocess_dialogs(input_file: Path = INPUT_FILE, output_dir: Path = OUTPUT_
 
     print("\n=== PREPROCESSING REPORT ===")
     print(f"Input file: {input_file}")
-    print(f"Output folder: {output_dir}")
+    print(f"CSV output folder: {csv_output_dir}")
+    print(f"Report folder: {REPORT_DIR}")
     print(f"Total interactions in input: {total_items}")
     print(f"Retained interactions: {len(cleaned_dialogs)}")
     print(f"Removed empty/malformed interactions: {len(removed_ids)}")

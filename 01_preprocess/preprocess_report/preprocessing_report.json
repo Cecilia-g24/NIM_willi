@@ -1,0 +1,37 @@
+{
+  "input_file": "D:\\aaa_Desktop\\NIM\\Project_Robot_Chats\\data\\data_raw\\dialogs-1771498506071_raw.json",
+  "csv_output_dir": "D:\\aaa_Desktop\\NIM\\Project_Robot_Chats\\data\\data_clean",
+  "report_dir": "D:\\aaa_Desktop\\NIM\\Project_Robot_Chats\\01_preprocess\\preprocess_report",
+  "total_interactions_in_input": 1431,
+  "retained_interactions": 1126,
+  "removed_empty_or_malformed_interactions": 305,
+  "english_dialogs": 108,
+  "german_dialogs": 1018,
+  "total_system_turns_removed_from_annotation_text": 1846,
+  "condition_counts": {
+    "Condition A (Willi)": 685,
+    "Condition B (WV-34)": 441,
+    "Condition Unknown": 0
+  },
+  "condition_source_counts": {
+    "assistant": 1126,
+    "system_fallback": 0,
+    "unknown": 0
+  },
+  "language_condition_counts": {
+    "de / Condition A (Willi)": 627,
+    "de / Condition B (WV-34)": 391,
+    "en / Condition A (Willi)": 58,
+    "en / Condition B (WV-34)": 50
+  },
+  "output_files": [
+    "D:\\aaa_Desktop\\NIM\\Project_Robot_Chats\\data\\data_clean\\dialogs_en.csv",
+    "D:\\aaa_Desktop\\NIM\\Project_Robot_Chats\\data\\data_clean\\dialogs_de.csv",
+    "D:\\aaa_Desktop\\NIM\\Project_Robot_Chats\\data\\data_clean\\dialogs_for_annotation_en.csv",
+    "D:\\aaa_Desktop\\NIM\\Project_Robot_Chats\\data\\data_clean\\dialogs_for_annotation_de.csv",
+    "D:\\aaa_Desktop\\NIM\\Project_Robot_Chats\\01_preprocess\\preprocess_report\\dialogs_cleaned_with_metadata.json",
+    "D:\\aaa_Desktop\\NIM\\Project_Robot_Chats\\01_preprocess\\preprocess_report\\removed_ids.json",
+    "D:\\aaa_Desktop\\NIM\\Project_Robot_Chats\\01_preprocess\\preprocess_report\\unknown_entries.json",
+    "D:\\aaa_Desktop\\NIM\\Project_Robot_Chats\\01_preprocess\\preprocess_report\\preprocessing_report.json"
+  ]
+}
