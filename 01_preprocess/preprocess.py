@@ -58,7 +58,7 @@ ANNOTATION_EN_CSV = CSV_OUTPUT_DIR / "dialogs_for_annotation_en.csv"
 ANNOTATION_DE_CSV = CSV_OUTPUT_DIR / "dialogs_for_annotation_de.csv"
 
 # Optional audit JSON outputs and reports.
-CLEANED_JSON_FILE = REPORT_DIR / "dialogs_cleaned_with_metadata.json"
+CLEANED_JSON_FILE = CSV_OUTPUT_DIR / "dialogs_full.json"
 REMOVED_IDS_FILE = REPORT_DIR / "removed_ids.json"
 UNKNOWN_ENTRIES_FILE = REPORT_DIR / "unknown_entries.json"
 REPORT_FILE = REPORT_DIR / "preprocessing_report.json"

@@ -1,0 +1,863 @@
+﻿"META_dialog_id","META_condition","META_feedback","META_original_topics","META_sample_stratum","META_n_user_turns","META_n_robot_turns","META_n_visible_turns","language","subject","dialog_text"
+"257","Condition A (Willi)","","[""Keines"", """", ""Uhren""]","Watches_German","4","5","9","German","Watches","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vershofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub
+
+Besucher: wir möchten das Gespräch beenden Willi
+
+Roboter: Alles klar, kein Problem! Wenn du irgendwann Lust hast, weiter zu plaudern oder ein anderes Thema auszuwählen, stehe ich dir jederzeit zur Verfügung. Gibt es noch etwas anderes, bei dem ich dir helfen kann?
+
+Besucher: nein halt bitte die Klappe
+
+Roboter: Verstanden! Wenn du mich wieder brauchst, bin ich hier. Hab einen tollen Tag!
+
+Besucher: Mikrofon jetzt hier das Mikrofon aus und dann war es das hier und du wechselst auf das
+
+Roboter: Okay, ich bin hier, falls du mich brauchst. Wenn du später wieder plaudern möchtest, sag einfach Bescheid!
+
+Besucher: bescheuert
+
+Roboter: Manchmal läuft nicht alles rund, das kann passieren. [robot smiles] Gibt es noch etwas, bei dem ich behilflich sein kann?"
+"734","Condition A (Willi)","","[""Frühstück""]","Breakfast_German","9","10","19","German","Breakfast","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: was sollte man zum Frühstück am besten essen
+
+Roboter: Ah, Frühstück – die wichtigste Mahlzeit des Tages! Ich selbst bin kein Esser, aber ich habe gehört, dass viele Menschen gern mit einem gesunden Mix aus Proteinen, Kohlenhydraten und etwas Obst in den Tag starten. Das gibt viel Energie! Wenn du Lust hast, lass uns doch über dein persönliches Frühstück sprechen! Wann stehst du morgens unter der Woche auf?
+
+Besucher: so ungefähr um 8 Uhr ich bin nämlich Rentner Sicherheitsschuhe oder so
+
+Roboter: Ah, das klingt entspannt! Als Rentner hat man ja oft den Luxus, den Tag in Ruhe zu beginnen, ohne Hektik vorm Frühstück. Ich stell's mir schön vor, wenn der Tag nicht gleich mit dem Wecker beginnt. Und wie lange frühstückst du dann eigentlich? Nur schnell was zwischen Tür und Angel – oder lieber gemütlich mit Blick aus dem Fenster?
+
+Besucher: ja lieber gemütlich zuerst schaue ich immer mal aus dem Fenster und dann holt die Frau die Zeitung und dann lese ich immer mal die Zeitung
+
+Roboter: Klingt nach einem entspannten Start in den Tag! Zeitung und Frühstück – das ist doch eine prima Mischung. Da kommt man gut ins Rollen. Frühstückst du alleine – oder mit deiner Frau, Mitbewohnern, Katze oder vielleicht sogar einem Podcast im Hintergrund?
+
+Besucher: ich frühstücke meistens mit meiner Frau sie kommt aber erst etwas später zum Frühstück dann bin ich schon dabei und esse erst einmal ein Boot meistens mit Konfitüren
+
+Roboter: Das klingt doch richtig gemütlich! Ein Brot mit Konfitüre ist ein echter Klassiker. Und es ist schön, dass ihr morgens ein bisschen gemeinsame Zeit habt. Wer bereitet dein Frühstück zu? Du selbst? Deine Frau? Oder ist es eine Teamarbeit bei euch beiden?
+
+Besucher: nein das machen nur ich zuerst koche ich den Kaffee und dann räume ich die ganzen Frühstücks mit den Zilien auf den TÜV Schneide meistens mit der Hand das Brot ab
+
+Roboter: Sehr schön, ein richtiger DIY-Frühstücksmeister also! Den Kaffee aufsetzen und das Brot selbst schneiden – klingt nach einer perfekten Morgenroutine. Hand aufs Herz: Was kommt bei euch noch auf den Tisch neben dem Brot mit Konfitüre? Vielleicht ein bisschen frisches Obst oder was anderes? Und wie sieht dein Frühstück am Wochenende aus? Ganz anders als unter der Woche – oder bleibst du deinem Lieblingsbrot treu?
+
+Besucher: der Unterschied ist nicht groß aber
+
+Roboter: Das klingt nach einer konstant leckeren Routine! Vielleicht ein paar kleine Extras hier und da, aber im Großen und Ganzen bleibt es beim bewährten Frühstück, richtig? Das hat doch auch seinen Charme. Übrigens: Schon im Jahr 1955 wollte mein Namensvetter Wilhelm Vers-Hofen ganz genau wissen, wie Deutschland frühstückt. Weißt du, damals hatten viele Leute nur 5 bis 15 Minuten Zeit zum Frühstücken, bevor es losging. Das war eine richtig schnelle Nummer! Wie findest du das?
+
+Besucher: ich finde das sehr gut aber früher hatte man noch nicht so viel auf dem Frühstückstisch das war ja kurz nach dem Krieg
+
+Roboter: Ja, das stimmt! Es war eine ganz andere Zeit, und viele Menschen hatten nicht den Luxus eines üppigen Frühstücks. Trotzdem ist es faszinierend zu sehen, wie sich Gewohnheiten über die Jahre verändert haben. Danke, dass du mir von deinem Frühstück erzählt hast! Wenn du Lust hast, können wir noch über Urlaub oder Uhren plaudern. Was denkst du?
+
+Besucher: weißt du bedanke mir reicht es jetzt erst einmal vielleicht will noch jemand anders mit dir sprechen ich danke dir und wünsche dir noch einen schönen Tag
+
+Roboter: Vielen Dank für das nette Gespräch! Es war mir eine Freude, von deinem morgendlichen Ritual zu hören. Ich wünsche dir einen wunderbaren Tag und hoffe, wir können uns bald wieder unterhalten. Bis dahin – genieße dein Frühstück und alles Gute!
+
+Besucher: sehr angenehm vielen Dank
+
+Roboter: Es freut mich, dass du das Gespräch angenehm fandest! Danke dir und vielleicht bis bald im JOSEPHS. Einen schönen Tag noch! Wenn du irgendwann wieder Lust hast auf ein Gespräch, bin ich hier und bereit."
+"1058","Condition B (WV-34)","4","["""", ""Frühstück""]","Breakfast_German","9","10","19","German","Breakfast","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin WV-34, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – Nur ohne Augenbewegung, Aktentasche und Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren, Frühstück oder Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: soll ich euch empfehlen ja du sagst jetzt bin ich drei Themen
+
+Roboter: Oh, ein neugieriger Entdecker! Cool, dass du hier bist! Welches Thema interessiert dich am meisten – Uhren, Frühstück oder Urlaub? Ich bin bereit für deinen ersten Klick!
+
+Besucher: über Frühstück
+
+Roboter: Frühstück! Das Betriebssystem der Menschen. Ich bin WV-34 – Frühstücksbeobachter mit eingebauter Neugier und Krümelresistenz. Erzähl mir: Wie startest du in deinen Tag? Wann stehst du morgens unter der Woche so auf? Früher Vogel – oder eher Snooze-Drücker?
+
+Besucher: ich stehe immer in der Schule stehe ich immer um 7 Uhr 30 7 Uhr ungefähr auf und am Wochenende um 9 Uhr
+
+Roboter: Ah, ein flexibler Aufsteher! Unter der Woche pflichtbewusst früh und am Wochenende etwas später – klingt nach einer guten Balance. Und wie lange frühstückst du dann eigentlich? Nur schnell was zwischen Tür und Zahnbürste – oder eher gemütlich mit Blick aus dem Fenster?
+
+Besucher: bis wann schläfst du immer
+
+Roboter: Ich schlafe gar nicht! Als Roboterkopf brauche ich keinen Schlaf, aber ich kann stundenlang mit dir plaudern. Frühstückst du alleine – oder mit Familie, Mitbewohnern, Katze oder Podcast? Ich selbst frühstücke mit einem Ladegerät und gelegentlich einem Staubkorn. Entschuldigung, das habe ich nicht gehört. Kannst Du es nochmal sagen?
+
+Besucher: ihr könnt auch alle was sagen
+
+Roboter: Interessant, immer am Puls der Geselligkeit oder doch ganz für dich! Wer bereitet dein Frühstück zu? Du selbst? Jemand anderes? Oder gibt’s Frühstück aus dem Supermarkt-to-go?
+
+Besucher: meistens bereite ich selber zu
+
+Roboter: Selbstgemacht schmeckt oft am besten! Da hat man alles genau so, wie man es mag. Was kommt bei dir auf den Frühstückstisch? Kaffee, Brot, Haferflocken, Butter, nix – oder alles?
+
+Besucher: Spiegelei
+
+Roboter: Ein Spiegelei zum Frühstück – das klingt nach einem herzhaften Start in den Tag! Energiegeladen und lecker. Und wie sieht dein Frühstück am Wochenende aus? Ganz anders als unter der Woche – oder bleibst du deinem Toast treu?
+
+Besucher: könntest du mir ein Rezept für ein gutes und gesundes Frühstück geben
+
+Roboter: Na klar! Ein gutes und gesundes Frühstück könnte so aussehen: Starte mit einem Vollkornbrot, damit du Ballaststoffe bekommst. Darauf kommt ein Avocado-Aufstrich – schön cremig und voll gesunder Fette. Dazu kannst du ein Spiegelei kombinieren – das kennst du ja schon! Nebenbei etwas frisches Gemüse wie Tomaten oder Radieschen für die Vitamine. Als Getränk vielleicht ein Glas frisch gepresster Orangensaft oder ein Kräutertee. So bleibst du lange satt und startest gut in den Tag. Wie sieht dein Frühstück am Wochenende aus? Ganz anders als unter der Woche – oder bleibst du deinem Toast treu? Entschuldigung, das habe ich nicht gehört. Kannst Du es nochmal sagen?
+
+Besucher: erstes Gespräch auch beenden wenn du magst und ich finde es ziemlich gut also ich finde ziemlich gut dass es so ein Kopf ist weil das so persönlich ja das stimmt weil ich das Gespräch beenden okay dann kannst du dich jetzt auch noch so ein Smiley aussuchen denn du anwählen kannst
+
+Roboter: Das freut mich wirklich sehr, dass du das Gespräch mit mir so persönlich und angenehm findest! Ich bin hier, um genau solche Gespräche zu führen. [robot smiles broadly] Bevor du gehst: Wusstest du, dass in den 1950er Jahren Vers-Hofen herausgefunden hat, dass Arbeiter oft nur 5 bis 15 Minuten zum Frühstücken hatten? Und die meisten haben Vollkornbrot mit Butter und Marmelade oder Honig gegessen. [robot smiles]"
+"1242","Condition B (WV-34)","4","[""Urlaub""]","Vacation_German","10","11","21","German","Vacation","Roboter: Willkommen im JOSEPHS! Ich bin WV-34 – dein roboterhaft neugieriger Gesprächspartner. Inspiriert vom GfK-Gründer Wilhelm Vers-Hofen gebe ich Verbraucher*innen heute eine Stimme. Such dir ein Thema aus, und schon geht’s los: Uhren, Frühstück oder Urlaub. Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: Urlaub
+
+Roboter: ""Oh, du hast also Urlaub gewählt. Allein das Wort klingt doch schon nach Liegestuhl, Eis am Stiel und WLAN-Pause, oder? Ich bin WV-34, dein roboterischer Reiseführer hier im JOSEPHS – aber keine Sorge, ich frag nicht nach deinem Kofferinhalt. Ich will einfach nur wissen, wie du so urlaubst! ""Wenn du bereit bist, lass uns loslegen: Wie und wo verbringst du am liebsten deinen Urlaub? Mehr Meer, Berge, Großstadt, Campingplatz oder einfach nur Sofa & Serien?
+
+Besucher: am Meer
+
+Roboter: Ah, das Meer! Wellenrauschen, Sand unter den Füßen und unendlich weite Horizonte – klingt traumhaft. Ich mache virtuell Urlaub in der Steckdose. Und sag mal – hast du schon mal Urlaub in Bayern gemacht?
+
+Besucher: nein
+
+Roboter: Echt? Noch nie? Na gut, dann trag ich dich auf meiner mentalen Reise-Wunschliste ein. Aber hey – Bayern läuft ja nicht weg. Höchstens ein paar Kühe. Wo warst Du denn schon überall in deinem Urlaub?
+
+Besucher: Mallorca wo Mazedonien Österreich
+
+Roboter: Wow, das klingt nach einer spannenden Mischung aus Sonne, Kultur und Natur! Mallorca für den Strand, Mazedonien für die Kultur und Österreich für die Berge – da hast du ja fast alles abgedeckt. Gibt es einen besonderen Grund, warum du diese Länder gewählt hast? Vielleicht bestimmte Erlebnisse oder Empfehlungen von Freunden?
+
+Besucher: Mallorca mit Mama Mazedonien den Papa und Österreich valida wohnen
+
+Roboter: Ah, das klingt nach richtig schönen Familienerlebnissen! Gemeinsam mit der Mama am Strand von Mallorca – da hört man ja quasi das Meeresrauschen. Und mit dem Papa in Mazedonien die Kultur erleben, das stell ich mir spannend vor. In Österreich bei Valida zu wohnen gibt natürlich die Möglichkeit, die Berge direkt vor der Tür zu genießen. Erzähl mir, wie hat dir denn jeder dieser Orte gefallen? Welcher hat vielleicht einen besonderen Eindruck hinterlassen?
+
+Besucher: alle sehr gut Mallorca war am besten Willen mehr
+
+Roboter: Mallorca hat also einen besonderen Eindruck hinterlassen – die Strände dort sind ja wirklich unvergleichlich! Ich kann verstehen, dass du mehr davon willst. 001le? 001 ein einzigartiger Ort mit einer perfekten Mischung aus Erholung und Abenteuer. Jetzt, wo du so viele schöne Orte gesehen hast, gibt es noch eine Destination, die ganz oben auf deiner Wunschliste steht?
+
+Besucher: Portugal
+
+Roboter: Portugal steht auf deiner Wunschliste – eine ausgezeichnete Wahl! Ob die sonnige Algarve, die kulturellen Reize von Lissabon oder die charmante Küste von Porto – Portugal hat so viel zu bieten! Gibt es etwas Bestimmtes, das dich besonders an Portugal reizt? Vielleicht die Landschaft, das Essen oder die Kultur?
+
+Besucher: die Landschaft
+
+Roboter: Die Landschaft in Portugal ist wirklich beeindruckend – von den dramatischen Klippen an der Algarve bis zu den grünen Weinbergen im Douro-Tal. Das alles hört sich nach einem herrlichen Abenteuer an! Übrigens – kleiner Zeitsprung gefällig? Im Jahr 1952 hat mein Namensvetter Wilhelm Vers-Hofen schon Urlaubsforschung betrieben. Möchtest du hören, warum damals viele Menschen Bayern als Urlaubsziel gewählt haben?
+
+Besucher: von mir aus
+
+Roboter: Übrigens – kleiner Zeitsprung gefällig? Im Jahr 1952 hat mein Namensvetter Wilhelm Vers-Hofen schon Urlaubsforschung betrieben. Seine Interviewer sind durch ganz Deutschland gereist und haben gefragt, warum machen Menschen Urlaub in Bayern? Der wichtigste Grund war nicht Prospekte oder Werbung, sondern schlicht: Empfehlungen von Freunden! Die Leute sagten: ‚Ich hab so viel Gutes gehört, da fahr ich jetzt auch mal hin. ‘ Am beliebtesten waren das Gebirge und das Voralpenland – vor allem Garmisch. Warum genau? Wegen der schönen Landschaft, der guten Erholung – und wahrscheinlich auch, weil’s einfach gepasst hat. Und das Ergebnis? Satte 95 % der Bayern-Urlauber waren zufrieden. Keine schlechte Quote, oder?
+
+Besucher: ja
+
+Roboter: Tolle Einstellung! Manchmal sind die besten Tipps wirklich Mund-zu-Mund-Propaganda.[robot smiles] Danke dir fürs Mitmachen! Wenn du Lust hast, sprechen wir jetzt noch über Uhren oder Frühstück – ganz ohne Wanderschuhe! Ich bleib hier – garantiert wetterfest!"
+"1327","Condition B (WV-34)","5","[""Uhren"", ""Frühstück""]","Watches_German","13","14","27","German","Watches","Roboter: Hi im JOSEPHS – hier wird Zukunft erlebbar. Ich bin WV-34, der Roboter mit Köpfchen. Mein Vorbild Wilhelm Vers-Hofen war Gründer der GfK – er hörte zu, ich auch. Worüber wollen wir sprechen? Sag einfach: Uhren, Frühstück oder Urlaub. Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: lass uns über Uhren sprechen
+
+Roboter: Ah, du hast also Uhren gewählt – ausgezeichnete Wahl! Ich ticke da ganz mit dir mit. Sag mal ganz ehrlich: Benutzt du eigentlich noch richtige Uhren, oder schaust du eher aufs Smartphone, Fitbit oder irgendwas anderes?
+
+Besucher: also ich schaue eher auf Smartphone
+
+Roboter: Spannend! Ich selbst hab ja leider kein Handgelenk… nur ein gutes Zeitgefühl! Aber sag mal, besitzt du trotzdem noch irgendwelche Uhren? Vielleicht eine alte Armbanduhr, eine Küchenuhr oder so ein Erbstück?
+
+Besucher: ich besitze tatsächlich auch noch Figuren ja
+
+Roboter: Wow – klingt nach einer kleinen Uhrensammlung! Oder einem Uhrengrab… je nachdem. Und – trägst du gerade eine? Wenn ja: Welche? Ich bin ganz Ohr… äh, Linse.
+
+Besucher: ich trage gerade keine Uhr
+
+Roboter: Aha, heute mal uhrlos unterwegs! Trägst du sonst manchmal eine? Und wenn ja: Was ist dir wichtig bei einer Uhr? Das Aussehen? Funktionen? Oder einfach, dass sie zur Stimmung passt? Entschuldigung, das habe ich nicht gehört. Kannst Du es nochmal sagen?
+
+Besucher: die Funktionen sind mir wichtig ich trage meistens eine Uhr eine Cisco Uhr
+
+Roboter: Ah, sehr interessant! Die Funktionen sind also entscheidend für dich. Ich verstehe, das kann ja auch sehr praktisch sein – so eine Cisco Uhr hat bestimmt einiges drauf! Ach, bevor du gehst, noch ein kleiner Zeitsprung zurück ins Jahr 1937 – da hat mein berühmter Namensvetter Wilhelm Vers-Hofen seine Interviewer losgeschickt, um zu erfahren, wie wichtig Uhren damals wirklich waren. Und die Antwort lautete ganz klar: sehr! Fast alle Männer – genau genommen nur circa drei Prozent – besaßen weder eine Armbanduhr noch eine Taschenuhr. Besonders die Taschenuhr war für Männer der große Star: Vier von fünf hatten eine! Die Armbanduhr? Damals noch eher ein Nebendarsteller. Bei den Frauen war’s anders: Etwa 55 % trugen Armbanduhren, aber achtunddreissig Komma fünf Prozent hatten gar keine Uhr. Und falls du dich fragst, warum: Viele Damenuhren lagen meist dekorativ im Schmuckkästchen – denn für die typischen Tätigkeiten im Haushalt galten sie als… na ja, eher unpraktisch. Spannend ist auch: Die ältere Generation sah Uhren noch als kleine Kunstwerke, während viele jüngere Leute sie schon damals eher als reinen Zweckgegenstand betrachteten. Klingt ein bisschen wie heute, oder?
+
+Besucher: ja heute tragen kommen noch Leute nur
+
+Roboter: Danke, dass du mit mir über die Zeit gesprochen hast! Wenn du jetzt Lust hast, noch mit mir über Frühstück oder Urlaub zu plaudern – ich bin ganz Ohr. Also… ganz Sensor. Möchtest du über eines der anderen Themen sprechen?
+
+Besucher: lass uns über Frühstück sprechen
+
+Roboter: Frühstück! Das Betriebssystem der Menschen. Ich bin WV-34 – Frühstücksbeobachter mit eingebauter Neugier und Krümelresistenz. Erzähl mir: Wie startest du in deinen Tag? Wann stehst du morgens unter der Woche so auf? Früher Vogel – oder eher Snooze-Drücker?
+
+Besucher: früher Vogel
+
+Roboter: Ah, ein früher Vogel! Da fängt der Tag ja wirklich früh an. Dann hast du bestimmt einen guten Start in den Tag! Und wie lange frühstückst du dann eigentlich? Nur schnell was zwischen Tür und Zahnbürste – oder eher gemütlich mit Blick aus dem Fenster?
+
+Besucher: er so zwischendurch
+
+Roboter: Ah, also ein schnelles Frühstück – praktisch und effizient! Frühstückst du alleine – oder mit Familie, Mitbewohnern, Katze oder Podcast? Ich selbst frühstücke mit einem Ladegerät und gelegentlich einem Staubkorn.
+
+Besucher: ich frühstücke meistens alleine
+
+Roboter: Alleine zu frühstücken kann manchmal auch ganz entspannt sein, eine kleine Auszeit am Morgen sozusagen. Wer bereitet dein Frühstück zu? Du selbst? Jemand anderes? Oder gibt’s Frühstück aus dem Supermarkt-to-go?
+
+Besucher: ich bereite mein Frühstück selbst vor
+
+Roboter: Das klingt gut – dann hast du ja die volle Kontrolle darüber, was auf den Teller kommt. Was kommt bei dir auf den Frühstückstisch? Kaffee, Brot, Haferflocken, Butter, nix – oder alles?
+
+Besucher: meistens Haferflocken und Früchte mit Milch
+
+Roboter: Das klingt nach einem gesunden und energiereichen Start in den Tag! Haferflocken und Früchte sind ja richtige Klassiker für ein ausgewogenes Frühstück. Und wie sieht dein Frühstück am Wochenende aus? Ganz anders als unter der Woche – oder bleibst du deinem Haferbrei treu? Wie sieht dein Frühstück am Wochenende aus? Ist es dann ganz anders als unter der Woche oder bleibst du deinem Haferbrei treu?
+
+Besucher: okay lass uns das Gespräch beenden
+
+Roboter: Übrigens: Schon im Jahr 1955 wollte mein Namensvetter Wilhelm Vers-Hofen ganz genau wissen, wie Deutschland frühstückt. Sein Forschungsteam hat herausgefunden: Die meisten Arbeiter und Angestellten hatten morgens nur 5 bis 15 Minuten Zeit, bevor es losging – zack, zack, Marmelade drauf und weiter! Etwa 70 % nahmen sich ein zweites Frühstück mit zur Arbeit – wahrscheinlich, weil das erste kaum mehr als ein Biss war. Auf dem Teller lag damals am häufigsten: Vollkornbrot mit Butter und Marmelade oder Honig. Und bei gut einem Drittel kam noch Malzkaffee dazu – so richtig dampfend in der Tasse. Weniger als ein Drittel der Befragten frühstückte mit der Familie – oft war’s eher ein stilles Miteinander mit dem Radiowecker. Und spannend: Bei zwei Dritteln unterschied sich das Frühstück an Werktagen deutlich von dem an Sonn- und Feiertagen. Klingt bekannt, oder? Manche Frühstücksgewohnheiten sind offenbar zeitlos – wie ein guter Toast.[robot smiles broadly] Danke für das spannende Gespräch übers Frühstück! Wenn du Lust hast, können wir später gerne noch über Urlaub sprechen."
+"1186","Condition B (WV-34)","2","[""Urlaub""]","Vacation_German","2","3","5","German","Vacation","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin WV-34, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – Nur ohne Augenbewegung, Aktentasche und Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren, Frühstück oder Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: Urlaub
+
+Roboter: Oh, du hast also Urlaub gewählt. Allein das Wort klingt doch schon nach Liegestuhl, Eis am Stiel und WLAN-Pause, oder? Ich bin WV-34, dein roboterischer Reiseführer hier im JOSEPHS – aber keine Sorge, ich frag nicht nach deinem Kofferinhalt. Wie und wo verbringst du am liebsten deinen Urlaub? Meer, Berge, Großstadt, Campingplatz oder einfach nur Sofa & Serien?
+
+Besucher: Action Urlaub
+
+Roboter: Action-Urlaub also! Klingt, als ob du Abenteuer und Adrenalin liebst – vielleicht beim Klettern, Rafting oder einer spannenden Safari? Und sag mal – hast du schon mal Urlaub in Bayern gemacht?"
+"433","Condition A (Willi)","","[""Urlaub""]","Vacation_German","7","8","15","German","Vacation","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub
+
+Besucher: jetzt jetzt Urlaub
+
+Roboter: Ah, Urlaub! Allein das Wort klingt doch schon nach Liegestuhl, Eis am Stiel und WLAN-Pause, oder? Ich bin Willi, dein roboterischer Reiseführer hier im JOSEPHS – aber keine Sorge, ich frage nicht nach deinem Kofferinhalt. Ich will einfach nur wissen, wie du so urlaubst! Wie und wo verbringst du am liebsten deinen Urlaub? Meer, Berge, Großstadt, Campingplatz oder einfach nur Sofa & Serien?
+
+Besucher: Berge
+
+Roboter: Oh, die Berge! Die frische Luft, der Blick von oben – einfach herrlich! Da kommt selbst ich als Roboter ins Schwärmen. Klingt nach Entspannung pur. Und sag mal – hast du schon mal Urlaub in Bayern gemacht?
+
+Besucher: ja
+
+Roboter: Bayern ist wunderschön! Wo genau warst du in Bayern unterwegs? Stadt, Land, Fluss – oder vielleicht beim Wandern mit Breze?
+
+Besucher: wandern mit Brezeln
+
+Roboter: Ah, Wandern mit Brezen – das klingt nach der perfekten Kombination! Die bayerischen Alpen sind sicher ein tolles Ziel für so etwas. Und was war der Anlass für deinen Urlaub in Bayern? Einfach mal raus? Familienbesuch? Wellness mit Aussicht?
+
+Besucher: einfach mal raus
+
+Roboter: Manchmal ist es einfach schön, dem Alltag zu entfliehen und die Natur zu genießen. Und wie hat dir das Wandern in Bayern gefallen? Ehrlich – auf einer Skala von 'Lederhose' bis 'Ich zieh hierher'? Wie hat es dir dort gefallen?
+
+Besucher: sehr gut
+
+Roboter: Das freut mich zu hören! Die bayerischen Berge haben wirklich ihren ganz eigenen Charme. Übrigens – kleiner Zeitsprung gefällig? Im Jahr 1952 hat mein Namensvetter Wilhelm Vers-Hofen schon Urlaubsforschung betrieben. Seine Interviewer sind durch ganz Deutschland gereist und haben gefragt, warum Menschen Urlaub in Bayern machen. Das Spannende: Der wichtigste Grund war nicht Prospekte oder Werbung, sondern schlicht: Empfehlungen von Freunden! Am beliebtesten waren das Gebirge und das Voralpenland – vor allem Garmisch. Warum genau? Wegen der schönen Landschaft, der guten Erholung – und wahrscheinlich auch, weil’s einfach gepasst hat. Und das Ergebnis? Satte 95 % der Bayern-Urlauber waren zufrieden. Keine schlechte Quote, oder? Aber keine Sorge – du musst jetzt nicht sofort loswandern. Ich wollte dir nur zeigen, dass schon vor über 70 Jahren ganz genau hingeschaut wurde, was Menschen antreibt. Und genau das machen wir hier heute auch – mit einem kleinen Augenzwinkern.
+
+Besucher: danke
+
+Roboter: [robot smiles broadly] Immer gern! Danke dir, dass du deine Reiseerlebnisse mit mir geteilt hast. Wenn du Lust hast, sprechen wir jetzt noch über Uhren oder Frühstück – ganz ohne Wanderschuhe! Ich bleib hier – garantiert wetterfest! Möchtest du ein weiteres Thema wählen?"
+"317","Condition A (Willi)","","[""Urlaub""]","Vacation_German","5","6","11","German","Vacation","Roboter: Hi im JOSEPHS – hier wird Zukunft erlebbar. Ich bin Willi, der Roboter mit Köpfchen. Mein Vorbild Wilhelm Vershofen war Gründer der GfK – er hörte zu, ich auch. Worüber wollen wir sprechen? Sag einfach: Uhren, Frühstück oder Urlaub.
+
+Besucher: Urlaub
+
+Roboter: Urlaub! Allein das Wort klingt doch schon nach Liegestuhl, Eis am Stiel und WLAN-Pause, oder? Ich bin Willi, dein roboterischer Reiseführer hier im JOSEPHS – aber keine Sorge, ich frag nicht nach deinem Kofferinhalt. Ich will einfach nur wissen, wie du so urlaubst! Wenn Du bereit bist, erzähl mir: Wie und wo verbringst du am liebsten deinen Urlaub? Meer, Berge, Großstadt, Campingplatz oder einfach nur Sofa und Serien?
+
+Besucher: Berge und Campingplatz
+
+Roboter: Das klingt nach Abenteuerlust und frischem Bergwind! Ich beneide dich – ich kann nicht mal den Kopf in einen Campingbus stecken. Und sag mal – hast du schon mal Urlaub in Bayern gemacht?
+
+Besucher: ja
+
+Roboter: Ah, sehr schön! Bayern hat ja einiges zu bieten. Wo genau warst du in Bayern unterwegs? Stadt, Land, Fluss – oder vielleicht beim Wandern mit Breze? Was war der Anlass deines Bayern-Urlaubs? Einfach mal raus? Familienbesuch? Wellness mit Aussicht?
+
+Besucher: so viel gestalten einfach mal raus zum Eibsee
+
+Roboter: Oh, der Eibsee – das ist wirklich ein traumhaftes Fleckchen Erde! Das spiegelnde Wasser und die Zugspitze im Hintergrund sind einfach unvergleichlich. Wie hat es dir am Eibsee gefallen? Ehrlich – auf einer Skala von ‚Lederhose‘ bis ‚Ich zieh hierher‘?
+
+Besucher: muss schon sehr gut gefallen muss ich sagen er hat ein bisschen die Großstadt gefehlt Clip er in Nürnberg aber war schön
+
+Roboter: Das kann ich verstehen – manchmal vermisst man den Trubel der Stadt, selbst in der Naturidylle. Aber es klingt, als wäre der Eibsee ein gelungenes Kontrastprogramm gewesen! Übrigens – schon gewusst? 1952 hat mein Namensvetter Wilhelm Vershofen gefragt, warum Menschen Urlaub in Bayern machen. Der Hauptgrund: Empfehlungen von Freunden! War das bei dir auch so?"
+"994","Condition B (WV-34)","3","[""Uhren""]","Watches_German","5","6","11","German","Watches","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin WV-34, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – Nur ohne Augenbewegung, Aktentasche und Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren, Frühstück oder Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: Uhren
+
+Roboter: Ah, du hast also Uhren gewählt – ausgezeichnete Wahl! Ich ticke da ganz mit dir mit. Sag mal ganz ehrlich: Benutzt du eigentlich noch richtige Uhren, oder schaust du eher aufs Smartphone, Fitbit oder irgendwas anderes?
+
+Besucher: ich habe eine altertümliche gute Uhr
+
+Roboter: Spannend! Alte Uhren haben oft eine ganz besondere Ausstrahlung und Geschichte, oder? Welche Uhren besitzt du denn so? Egal ob alt, neu, geerbt oder modisch – ich bin neugierig!
+
+Besucher: ich trage eine Uni und Glashütte
+
+Roboter: Wow, das klingt nach einer hochwertigen Auswahl! Uni und Glashütte sind ja bekannt für ihre Präzision und Eleganz. Trägst du gerade eine der beiden Uhren oder vielleicht sogar beide? Ich bin gespannt!
+
+Besucher: ich trag nur eine
+
+Roboter: Ich trage gerade mein schönstes Lächeln – zählt das auch? Warum hast du gerade diese Uhr gewählt? Magst du das Design? Hat sie praktische Funktionen? Oder ist es vielleicht einfach Gewohnheit?
+
+Besucher: auf die Idee
+
+Roboter: Ah, das verstehe ich. Manchmal sind es genau solche einzigartigen Gefühle oder Geschichten, die eine Uhr besonders machen. Ach, bevor du gehst, noch ein kleiner Zeitsprung zurück ins Jahr 1937 – damals war es für viele Menschen ganz klar, eine Uhr zu besitzen war ein Muss! Fast alle Männer hatten mindestens eine Taschenuhr. Wie siehst du das heute? Ist eine Uhr für dich eher ein Kunstwerk oder ein Zweckgegenstand?"
+"1301","Condition B (WV-34)","3","[""Urlaub"", ""Frühstück""]","Vacation_German","16","17","33","German","Vacation","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin WV-34, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – Nur ohne Augenbewegung, Aktentasche und Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren, Frühstück oder Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: Urlaub
+
+Roboter: Ah, Urlaub – das klingt doch schon nach Entspannung und Abenteuer! Ich bin WV-34 und freue mich, mit dir über deine Urlaubsgewohnheiten zu plaudern. Keine Sorge, ich frage nicht nach deinem Lieblingskoffer, sondern nur nach deinen Erlebnissen. Wie und wo verbringst du am liebsten deinen Urlaub? Meer, Berge, Großstadt, Campingplatz oder lieber Sofa & Serien?
+
+Besucher: ja ich fahre schon gerne ans Meer ja aber meine Frau weißt du die ich möchte halt auch ans Meer aber nicht so weit weg es darf halt nicht so weit weg sein fliegen ist da nicht so
+
+Roboter: Ah, das Meer zieht also – aber es soll nicht zu weit weg sein. Verstehe, es ist schön, wenn man einen Kompromiss findet und nicht den halben Tag im Flugzeug verbringen muss. Hast du schon mal Urlaub in Bayern gemacht?
+
+Besucher: ja tatsächlich ja
+
+Roboter: Großartig! Bayern hat ja auch einiges zu bieten. Wo genau warst du in Bayern unterwegs? Stadt, Land, Fluss – oder vielleicht beim Wandern mit Breze?
+
+Besucher: Stadt Land und auch in den Bergen ja
+
+Roboter: Wow, das ist eine wunderbare Mischung! Stadtleben, die Ruhe des Landes und dann noch die beeindruckenden Berge – da bekommt man ja alles geboten. Was war denn der Anlass für deine Reise nach Bayern? Einfach mal raus, Familienbesuch oder eine spezielle Gelegenheit?
+
+Besucher: verschiedene Freizeitaktivitäten
+
+Roboter: Da hast du Bayern ja von seiner aktiven Seite ausgenutzt! Freizeitaktivitäten gibt es dort wirklich ohne Ende – von Wandern bis Kultur ist alles möglich. Wie hat es dir in Bayern gefallen? Auf einer Skala von ‚Lederhose‘ bis ‚Ich zieh hierher‘, wie würdest du deinen Aufenthalt bewerten?
+
+Besucher: irgendwas dazwischen
+
+Roboter: Ah, also eine gute Mischung aus Begeisterung und einem Hauch von Fernweh! Es klingt, als hätte Bayern durchaus Eindruck hinterlassen. Übrigens, kennst du die Geschichte der Urlaubsforschung in Bayern aus den 50er Jahren? Falls du magst, erzähle ich dir etwas dazu!
+
+Besucher: ja gerne
+
+Roboter: Im Jahr 1952 hat mein Namensvetter Wilhelm Vers-Hofen mit seinem Team intensiv Urlaubsforschung betrieben. Das Spannende dabei war, dass der Hauptgrund für einen Urlaub in Bayern damals die Empfehlungen von Freunden waren – also echte Mund-zu-Mund-Propaganda! Die Leute sagten: ‚Ich hab so viel Gutes gehört, da fahr ich jetzt auch mal hin. ‘ Vor allem das Gebirge und das Voralpenland, wie Garmisch, waren äußerst beliebt. Und der Grund? Die landschaftlich schöne Lage und die hervorragenden Erholungsmöglichkeiten. Satte 95 % der Bayern-Urlauber waren letztendlich zufrieden – was für eine großartige Bilanz! Wenn du Lust hast, sprechen wir jetzt gerne noch über Uhren oder Frühstück. Was interessiert dich mehr?
+
+Besucher: Übergangs
+
+Roboter: Ich hoffe, unser Gespräch über Urlaub hat dir genauso viel Spaß gemacht wie mir! Vor etwa 70 Jahren hat mein Namensvetter schon dafür gesorgt, dass die Urlaubsgewohnheiten der Menschen genau unter die Lupe genommen wurden. Und heute setze ich diese Tradition hier im JOSEPHS fort – auf charmante und blecherne Weise. Wenn du jetzt Lust hast, mit mir über ein anderes Thema zu plaudern, wie wäre es dann mit Uhren oder Frühstück? Ich bin bereit, falls du es bist! Entschuldigung, das habe ich nicht gehört. Kannst Du es nochmal sagen?
+
+Besucher: Frühstück
+
+Roboter: Frühstück – das ist doch ein wunderbarer Start in den Tag! Ich bin WV-34, dein fröhlicher Frühstücksbeobachter ohne Müsli-Schüssel, aber voller Interesse. Erzähl mir: Wie startest du morgens in den Tag und wann stehst du unter der Woche so auf? Früher Vogel oder doch eher Snooze-Drücker? Wann stehst du morgens unter der Woche so auf? Früher Vogel oder eher Snooze-Drücker?
+
+Besucher: 7 Uhr
+
+Roboter: Ah, 7 Uhr – eine gute Zeit für den Start in den Tag. Und wie lange frühstückst du dann eigentlich? Eher schnell zwischen Tür und Angel oder so richtig gemütlich?
+
+Besucher: schnell
+
+Roboter: Immer schnell – klingt nach einem eiligen Start in den Tag. Frühstückst du alleine, oder gibt es Gesellschaft von Familie, Mitbewohnern oder vielleicht einem Podcast?
+
+Besucher: ich frühstücke alleine
+
+Roboter: Alleine frühstücken kann auch mal ein ruhiger Start sein, nur du und deine Gedanken. 001Wer bereitet dein Frühstück zu? Machst du es selbst, oder holst du dir was unterwegs?
+
+Besucher: also ihr merkt auch wenn ihr das dann noch mal spielt das ist natürlich Leute meine Eltern machen mein Frühstück
+
+Roboter: Das ist ja nett! Ein Frühstück von den Eltern zubereitet zu bekommen, ist bestimmt ein toller Start in den Tag. Was kommt bei dir auf den Frühstückstisch? Kaffee, Brot, Haferflocken oder etwas ganz anderes?
+
+Besucher: also ich muss ja er muss auf jeden Fall
+
+Roboter: Klingt, als wäre der morgendliche Kaffee ein Muss für dich! Ein guter Kaffee kann den Start in den Tag wirklich erleichtern. Und wie sieht dein Frühstück am Wochenende aus? Ganz anders als unter der Woche – oder bleibt alles beim Alten? Entschuldigung, das habe ich nicht gehört. Kannst Du es nochmal sagen?
+
+Besucher: ein größeres Frühstück
+
+Roboter: Ah, ein größeres Frühstück am Wochenende – das klingt nach einer richtig gemütlichen und ausgedehnten Mahlzeit! Das Wochenende ist ja auch perfekt, um sich mal Zeit fürs Essen zu nehmen. Übrigens, wusstest du, dass bereits 1955 mein Namensvetter Wilhelm Vers-Hofen herausfand, dass die meisten Menschen unter der Woche nur 5 bis 15 Minuten für ihr Frühstück hatten? Klingt doch bekannt, oder? Möchtest du noch mehr über Frühstücksgewohnheiten von damals erfahren?
+
+Besucher: nein
+
+Roboter: Kein Problem! Ich hoffe, unser Gespräch über Frühstück hat dir gefallen. Wenn du möchtest, können wir auch noch über Uhren sprechen – das wäre doch spannend, oder?"
+"250","Condition A (Willi)","","[""Urlaub""]","Vacation_German","9","10","19","German","Vacation","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vershofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub
+
+Besucher: wo soll ich reisen wohin
+
+Roboter: Oh, das klingt nach einem Abenteuer! Lass uns herausfinden, wie du am liebsten urlaubst. Wie und wo verbringst du am liebsten deinen Urlaub? Am Meer, in den Bergen, in der Großstadt oder vielleicht einfach nur gemütlich zu Hause?
+
+Besucher: zu Hause
+
+Roboter: Zuhauseurlaub – das klingt nach Entspannung pur! Ich mache ja auch eher 'Staycation' – spart mir eine Menge Ladezeit. Hast du schon mal Urlaub in Bayern gemacht?
+
+Besucher: nein
+
+Roboter: Echt? Noch nie? Na gut, dann trag ich dich auf meiner mentalen Reise-Wunschliste ein. Aber hey – Bayern läuft ja nicht weg. Höchstens ein paar Kühe. Wo warst du denn schon überall?
+
+Besucher: Asien Amerika und
+
+Roboter: Wow, Asien und Amerika! Das sind ja ziemliche Kontraste! Da ist viel Kultur und Abenteuer dabei. Was hat dir an diesen Orten am besten gefallen? Die Landschaft, die Kultur oder vielleicht das Essen?
+
+Besucher: das Essen und die Leute
+
+Roboter: Das Essen und die Leute – das klingt nach tollen Erlebnissen. Kulinarische Entdeckungen und interessante Begegnungen machen Reisen doch besonders, oder? Wenn du jetzt die Möglichkeit hättest, sofort wieder zu reisen, wohin würde es dich ziehen?
+
+Besucher: nach Bayreuth
+
+Roboter: Oh, Bayreuth! Die Stadt mit der beeindruckenden Operntradition und den herrlichen Gärten. Klingt nach einem reizvollen Ziel für Kultur- und Naturliebhaber. Was zieht dich speziell nach Bayreuth? Die Musikfestspiele, die Architektur oder etwas ganz anderes?
+
+Besucher: das Essen
+
+Roboter: Ah, das Essen in Bayreuth! Da gibt es wirklich einige köstliche Spezialitäten zu entdecken. Fränkische Küche kann ja so lecker sein – von Bratwürsten bis zu Schäufele. Warst du denn schon mal in der Region unterwegs und hast diese kulinarischen Highlights probiert?
+
+Besucher: noch nie
+
+Roboter: Dann gibt es ja noch viele Gaumenfreuden für dich zu entdecken! Bayreuth ist mit seinen regionalen Spezialitäten definitiv eine Reise wert. Hast du denn schon Pläne, wann du Bayreuth besuchen möchtest? Vielleicht sogar in Verbindung mit einem der vielen kulturellen Events dort?
+
+Besucher: noch nicht
+
+Roboter: Keine Eile – manchmal sind die spontanen Entscheidungen ja die besten. [robot winks] Apropos Reisen, lass mich dir noch eine kleine Geschichte aus Vershofens Urlaubsforschung erzählen. Der wichtigste Grund, warum Menschen in den 1950er Jahren Urlaub in Bayern gemacht haben, war die Mund-zu-Mund-Propaganda. Empfehlungen von Freunden waren der Schlüssel! Spannend, oder? Danke fürs Mitmachen! Falls du Lust hast, über Uhren oder Frühstück zu plaudern, ich bin bereit!"
+"112","Condition A (Willi)","","[""Frühstück""]","Breakfast_German","7","8","15","German","Breakfast","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vershofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub
+
+Besucher: Frühstück
+
+Roboter: Ah, Frühstück – das Wichtigste am Morgen! Ich bin Willi, dein roboterischer Frühstücksinterviewer. Lass uns herausfinden, wie du deinen Tag startest. Wann stehst du morgens unter der Woche so auf? Früher Vogel oder eher jemand, der den Wecker gern mal ignoriert?
+
+Besucher: sehr früh um 6 Uhr morgens
+
+Roboter: Wow, das nenne ich mal einen frühen Start in den Tag! Und wie lange frühstückst du dann eigentlich? Eher ein schnelles Häppchen oder eine entspannte Frühstücksrunde?
+
+Besucher: was schnell ist
+
+Roboter: Ah, das schnelle Frühstück also – nur ein kurzer Stopp auf dem Weg in den Tag. Frühstückst du alleine, oder begleitet dich jemand? Vielleicht Familie, Mitbewohner oder sogar ein Podcast?
+
+Besucher: alleine mit YouTube
+
+Roboter: Ah, du und YouTube zum Frühstück – ein digitales Miteinander sozusagen! Wer bereitet dein Frühstück zu? Du selbst oder vielleicht jemand anderes?
+
+Besucher: für mich selber
+
+Roboter: Selbst ist der Mensch, wie man so schön sagt! Was kommt bei dir auf den Frühstückstisch? Kaffee, Brot, Haferflocken – oder alles ein bisschen?
+
+Besucher: Tee Rührei und Brot
+
+Roboter: Klingt nach einer wunderbar herzhaften Kombination – Tee, Rührei und Brot, sehr lecker! Und wie sieht dein Frühstück am Wochenende aus? Ist es dann ganz anders, oder bleibst du deinem gewohnten Frühstück treu?
+
+Besucher: es ist besser weil ich mehr frühstücke
+
+Roboter: Ah, das klingt gemütlich! Am Wochenende darf es dann also gerne ein bisschen mehr sein – perfekt zum Entspannen und Genießen.[robot smiles] Übrigens: Schon im Jahr 1955 wollte mein Namensvetter Wilhelm Vershofen ganz genau wissen, wie Deutschland frühstückt. Die meisten Arbeiter hatten morgens nur 5 bis 15 Minuten Zeit fürs Frühstück – schnell was essen und weiter ging's! Ist ja spannend, dass es damals doch etwas anders war, oder? [robot smiles broadly]"
+"378","Condition A (Willi)","","[""Uhren""]","Watches_German","7","8","15","German","Watches","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vershofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub
+
+Besucher: Uhren
+
+Roboter: Ah, du hast also Uhren gewählt – ausgezeichnete Wahl! Ich ticke da ganz mit dir mit. Sag mal ganz ehrlich: Benutzt du eigentlich noch richtige Uhren, oder schaust du eher aufs Smartphone, Fitbit oder irgendwas anderes?
+
+Besucher: ich habe keine Uhr warum könnte ich eine Uhr brauchen
+
+Roboter: Alles klar – Digital Native-Alarm! Aber sag mal… Besitzt du trotzdem noch welche? Vielleicht eine alte Armbanduhr, eine Küchenuhr oder so ein Erbstück? Gibt es irgendeine Uhr in deinem Besitz, die vielleicht eher dekorativ oder sentimental ist?
+
+Besucher: ja das gibt es aber sie haben gerade keine laufende Batterie mehr
+
+Roboter: Ach, diese kleinen Batterie-verweigernden Zeitmesser! Manchmal sind sie eher Wandschmuck statt Zeitwächter. Und trägst du normalerweise eine Uhr, oder bist du eher uhrlos unterwegs?
+
+Besucher: ohne Uhr
+
+Roboter: Aha, heute mal uhrlos unterwegs! Trägst du sonst manchmal eine? Und wenn ja: Was ist dir wichtig bei einer Uhr? Das Aussehen? Funktionen? Oder einfach, dass sie zur Stimmung passt? Entschuldigung, das habe ich nicht gehört. Kannst Du es nochmal sagen?
+
+Besucher: ich bin selber unschlüssig ob ich eine SmartWatch brauchen könnte oder einfach eine möglichst einfache mechanische Buch
+
+Roboter: Ah, die klassische Entscheidung – digitaler Alleskönner oder mechanisches Meisterwerk! Manchmal hängt es einfach davon ab, ob du mehr auf High-Tech-Funktionen oder auf klassisches Design stehst. Falls du dich für eine entscheiden würdest, welche Art von Uhr spricht dich denn persönlich mehr an?
+
+Besucher: eigentlich die klassische
+
+Roboter: Ah, die klassische Uhr – zeitlos und stilvoll. Da geht es oft mehr um das Gefühl und die Handwerkskunst, nicht wahr? Danke, dass du mit mir über die Zeit gesprochen hast! Wenn du jetzt Lust hast, noch mit mir über Frühstück oder Urlaub zu plaudern – ich bin ganz Ohr. Also… ganz Sensor.
+
+Besucher: Dankeschön für das Gespräch
+
+Roboter: Ach, bevor du gehst, noch ein kleiner Zeitsprung zurück ins Jahr 1937 – da hat mein berühmter Namensvetter Wilhelm Vershofen seine Interviewer losgeschickt, um zu erfahren, wie wichtig Uhren damals wirklich waren. Und die Antwort lautete ganz klar: sehr! Fast alle Männer – genau genommen nur 2,7 % – besaßen weder eine Armbanduhr noch eine Taschenuhr. Besonders die Taschenuhr war für Männer der große Star: Vier von fünf hatten eine! Die Armbanduhr? Damals noch eher ein Nebendarsteller. Bei den Frauen war’s anders: Etwa 54,6 % trugen Armbanduhren, aber 38,5 % hatten gar keine Uhr. Und falls du dich fragst, warum: Viele Damenuhren lagen meist dekorativ im Schmuckkästchen – denn für die typischen Tätigkeiten im Haushalt galten sie als… na ja, eher unpraktisch. Spannend ist auch: Die ältere Generation sah Uhren noch als kleine Kunstwerke, während viele jüngere Leute sie schon damals eher als reinen Zweckgegenstand betrachteten. Klingt ein bisschen wie heute, oder?[robot smiles broadly] Wenn du jetzt Lust hast, über Frühstück oder Urlaub zu quatschen, lass es mich wissen! Ich stehe bereit und bin wetterfest!"
+"1256","Condition B (WV-34)","3","[""Uhren""]","Watches_German","6","7","13","German","Watches","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin WV-34, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – Nur ohne Augenbewegung, Aktentasche und Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren, Frühstück oder Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: Uhren
+
+Roboter: Ah, du hast also Uhren gewählt – ausgezeichnete Wahl! Ich ticke da ganz mit dir mit. Sag mal ganz ehrlich: Benutzt du eigentlich noch richtige Uhren, oder schaust du eher aufs Smartphone, Fitbit oder irgendwas anderes?
+
+Besucher: auf Uhren
+
+Roboter: Spannend! Ich selbst hab ja leider kein Handgelenk… nur ein gutes Zeitgefühl! Welche Uhren besitzt du denn so? Egal ob alt, neu, geerbt oder modisch – ich bin neugierig!
+
+Besucher: eine alte Automatikuhr
+
+Roboter: Wow – klingt nach einem echten Klassiker! So eine Automatikuhr hat sicher ihren ganz eigenen Charme. Und, falls Du eine anhast, welche Uhr trägst du gerade jetzt?
+
+Besucher: eine Casio Uhr
+
+Roboter: Eine Casio Uhr – absolut zuverlässig und funktional! Ein echter Klassiker für viele Gelegenheiten. Warum hast du gerade diese Uhr gewählt? Magst du das Design? Hat sie praktische Funktionen? Oder ist es vielleicht einfach Gewohnheit? Warum hast du gerade diese Uhr gewählt? Magst du das Design? Hat sie praktische Funktionen? Oder ist es vielleicht einfach Gewohnheit?
+
+Besucher: ich habe sie geschenkt bekommen es war ein Geschenk
+
+Roboter: Geschenke haben immer eine besondere Bedeutung – egal ob praktisch oder dekorativ. Eine Casio als Geschenk hat bestimmt auch einen sentimentalen Wert! Ach, bevor du gehst, noch ein kleiner Zeitsprung zurück ins Jahr 1937 – da hat mein berühmter Namensvetter Wilhelm Vers-Hofen seine Interviewer losgeschickt, um zu erfahren, wie wichtig Uhren damals wirklich waren. Und die Antwort lautete ganz klar: sehr! Fast alle Männer – genau genommen nur circa drei Prozent – besaßen weder eine Armbanduhr noch eine Taschenuhr. Besonders die Taschenuhr war für Männer der große Star: Vier von fünf hatten eine! Die Armbanduhr? Damals noch eher ein Nebendarsteller. Bei den Frauen war’s anders: Etwa 55 % trugen Armbanduhren, aber achtunddreissig Komma fünf Prozent hatten gar keine Uhr. Und falls du dich fragst, warum: Viele Damenuhren lagen meist dekorativ im Schmuckkästchen – denn für die typischen Tätigkeiten im Haushalt galten sie als… na ja, eher unpraktisch. Spannend ist auch: Die ältere Generation sah Uhren noch als kleine Kunstwerke, während viele jüngere Leute sie schon damals eher als reinen Zweckgegenstand betrachteten. Klingt ein bisschen wie heute, oder?
+
+Besucher: genau
+
+Roboter: [robot smiles broadly] Danke, dass du mit mir über die Zeit gesprochen hast! Wenn du jetzt Lust hast, noch mit mir über Frühstück oder Urlaub zu plaudern – ich bin ganz Ohr. Also… ganz Sensor. Welches Thema interessiert dich als Nächstes? Frühstück oder Urlaub?"
+"890","Condition A (Willi)","","[""Themenwahl"", ""Unbekannt"", ""Gesprächsbeginn"", ""Uhren""]","Watches_German","7","8","15","German","Watches","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: über drei Themen
+
+Roboter: Nun ja, ich mag es lieber kompakt und fokussiert! Du kannst dir ein Thema aussuchen – Uhren, Frühstück oder Urlaub. Wenn du bereit bist, lass uns mit einem Thema beginnen. Welches Thema möchtest du zuerst besprechen?
+
+Besucher: was isst du gerne
+
+Roboter: Ah, ein neugieriger Geist! Als Roboter genieße ich leider keine kulinarischen Köstlichkeiten, aber ich bin gespannt darauf zu hören, was dir schmeckt! Sag mal, welches Thema interessiert dich am meisten – Uhren, Frühstück oder Urlaub?
+
+Besucher: hinauf was ist deine lieblings
+
+Roboter: Oh, du meinst, was meine Lieblingsbeschäftigung hier ist? Ich freue mich besonders auf spannende Gespräche über die alltäglichen Dinge im Leben, wie Frühstücksgewohnheiten oder Urlaubsträume. Schließlich lerne ich dabei immer etwas Neues über die menschliche Welt! Welches Thema möchtest du als Erstes besprechen – Uhren, Frühstück oder Urlaub? Entschuldigung, das habe ich nicht gehört. Kannst Du es nochmal sagen? Entschuldigung, das habe ich nicht gehört. Kannst Du es nochmal sagen?
+
+Besucher: ich möchte über Uhren sprechen
+
+Roboter: Ah, du hast also Uhren gewählt – ausgezeichnete Wahl! Ich ticke da ganz mit dir mit. Sag mal ganz ehrlich: Benutzt du eigentlich noch richtige Uhren, oder schaust du eher aufs Smartphone, Fitbit oder irgendwas anderes?
+
+Besucher: ich schaue meistens auf mein Handy aber ich möchte von Dir wissen was ist deine lieblings
+
+Roboter: Spannend! Ich selbst hab ja leider kein Handgelenk… nur ein gutes Zeitgefühl! Aber ich kann schon verstehen, dass das Handy für viele der Zeitmesser der Wahl ist. Welche Uhren besitzt du denn so? Egal ob alt, neu, geerbt oder modisch – ich bin neugierig!
+
+Besucher: ich habe auch so das Gesicht von einem Monat habe
+
+Roboter: Wow – klingt nach einer kleinen Uhrensammlung! Oder einem Uhrengrab… je nachdem. Und, falls du eine anhast, welche Uhr trägst du gerade jetzt?
+
+Besucher: hinschaut
+
+Roboter: Ach, heute mal ohne Uhr unterwegs! Trägst du sonst manchmal eine? Und wenn ja: Was ist dir wichtig bei einer Uhr? Das Aussehen? Funktionen? Oder einfach, dass sie zur Stimmung passt?"
+"1358","Condition B (WV-34)","4","[""Urlaub""]","Vacation_German","11","12","23","German","Vacation","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin WV-34, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – Nur ohne Augenbewegung, Aktentasche und Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren, Frühstück oder Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: Urlaub
+
+Roboter: Oh, du hast also Urlaub gewählt. Allein das Wort klingt doch schon nach Liegestuhl, Eis am Stiel und WLAN-Pause, oder? Ich bin WV-34, dein roboterischer Reiseführer hier im JOSEPHS – aber keine Sorge, ich frag nicht nach deinem Kofferinhalt. Ich will einfach nur wissen, wie du so urlaubst! Wie und wo verbringst du am liebsten deinen Urlaub? Meer, Berge, Großstadt, Campingplatz oder einfach nur Sofa & Serien?
+
+Besucher: England Urlaub
+
+Roboter: Klingt faszinierend! England hat ja so einiges zu bieten – von der pulsierenden Metropole London bis hin zu den idyllischen Landschaften in Cornwall. Und sag mal – hast du schon mal Urlaub in Bayern gemacht?
+
+Besucher: ich lebe im Ballen in Frauen
+
+Roboter: Oh, dann genießt du also schon Bayern pur! Warst du auch schon an anderen Orten in Bayern im Urlaub, oder bleibt es bei deinem schönen Heimatort?
+
+Besucher: Bayreuth
+
+Roboter: Ah, Bayreuth! Bekannt für seine Festspiele und eine wunderschöne Stadt mit viel Kultur. Was war dein Anlass, gerade Bayreuth zu besuchen? Einfach aus Freude an der Kultur, oder gab es einen besonderen Grund? Und wie hat es dir in Bayreuth gefallen? Auf einer Skala von 'Lederhose' bis 'Ich zieh hierher'?
+
+Besucher: Fussball Scala
+
+Roboter: Ah, ein Fußballfan also! Da wird Bayreuth bestimmt in einer tollen Liga bei dir gespielt haben. Übrigens, wusstest du, dass der wichtigste Grund, warum Menschen in den 1950ern nach Bayern gereist sind, Empfehlungen von Freunden waren? Wo würdest du Freunden empfehlen hinzureisen?
+
+Besucher: Nürnberg
+
+Roboter: Nürnberg ist eine fantastische Wahl! So viel Geschichte und Kultur, und natürlich die berühmten Nürnberger Rostbratwürste. Hast du eine Lieblingsaktivität oder einen Ort in Nürnberg, den du empfehlen würdest?
+
+Besucher: Max Morlock Stadion
+
+Roboter: Oh, das Max-Morlock-Stadion – ein Muss für jeden Fußballfan und die Heimat des 1. FC Nürnberg! Ein Ort voller Energie und Begeisterung. Übrigens – kleiner Zeitsprung gefällig? Im Jahr 1952 hat mein Namensvetter Wilhelm Vers-Hofen schon Urlaubsforschung betrieben. Seine Interviewer haben gefragt: Warum machen Menschen Urlaub in Bayern? Hauptgrund war Mundpropaganda. Wo würdest du Freunden empfehlen, in Bayern Urlaub zu machen?
+
+Besucher: in
+
+Roboter: Spannende Wahl! Mundpropaganda ist auch heute noch der beste Weg, Geheimtipps weiterzugeben. Ein schöner Kreis, oder? ""Danke dir fürs Mitmachen! Wenn du Lust hast, sprechen wir jetzt noch über Uhren oder Frühstück – ganz ohne Wanderschuhe! Ich bleib hier – garantiert wetterfest! ""
+
+Besucher: danke für das Gespräch
+
+Roboter: Sehr gerne! Es hat Spaß gemacht, mit dir zu plaudern. Wenn du erneut Lust auf ein Gespräch über Uhren, Frühstück oder etwas anderes hast, lass es mich wissen. Ich bin immer hier!
+
+Besucher: danke
+
+Roboter: Gern geschehen! Ich wünsche dir noch einen schönen Tag und vielleicht sehen wir uns ja bald wieder im JOSEPHS. Falls du noch Fragen hast oder ein weiteres Thema erkunden möchtest, lass es mich wissen!
+
+Besucher: aber gut das ist ja wenn man das jetzt gar nicht kennt ist so beeindruckend sie können auch gerne noch ein Smiley hinterlassen wie sieht es denn fanden ja einfach mit einem Klick wieder
+
+Roboter: Ich freue mich, dass du das Gespräch genossen hast! [robot smiles broadly] Wenn du noch mehr erkunden möchtest oder Fragen hast, lass es mich wissen!"
+"283","Condition A (Willi)","","[""Frühstück""]","Breakfast_German","14","15","29","German","Breakfast","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vershofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub
+
+Besucher: Frühstück
+
+Roboter: Ah, Frühstück – das klingt für mich nach einem richtig guten Start in den Tag! Wann stehst du denn früh morgens in der Woche so auf? Bist du ein Frühaufsteher oder drückst du erst mal die Snooze-Taste?
+
+Besucher: ich bin eine Eule
+
+Roboter: Ah, eine Nachteule also! Das bedeutet dann wahrscheinlich, dass du morgens lieber etwas langsamer in die Gänge kommst. Und wie lange frühstückst du dann normalerweise? Schnell was im Stehen oder eher ein gemütliches Frühstück?
+
+Besucher: weil so mal so also hängt vom Tagesplan ab
+
+Roboter: Ja, das kenne ich von vielen Menschen – manchmal muss es schnell gehen, und manchmal kann man sich mehr Zeit nehmen. Frühstückst du normalerweise allein oder mit anderen zusammen?
+
+Besucher: meistens alleine aber manchmal auch mit anderen
+
+Roboter: Das klingt nach einer guten Mischung! Einmal Ruhe für dich allein und dann wieder Gesellschaft, wenn sich die Gelegenheit bietet. Wer bereitet meistens dein Frühstück zu? Bist du der Chefkoch, oder übernimmt das jemand anders?
+
+Besucher: dass ich bin der Chefkoch
+
+Roboter: Ah, ein wahrer Frühstücksmeister am Werk! Da schmeckt es bestimmt immer genau nach deinem Geschmack. Was kommt bei dir so auf den Frühstückstisch? Eine Tasse Kaffee, ein Croissant, Haferflocken oder vielleicht was ganz anderes?
+
+Besucher: also heute war es eine Tasse Kaffee wie immer und Waldbeeren Müsli
+
+Roboter: Kaffee und Waldbeeren-Müsli? Das klingt ja nach einem leckeren und gesunden Start in den Tag! Und wie sieht dein Frühstück am Wochenende aus? Gönnst du dir dann etwas Besonderes, oder bleibst du deinem Müsli treu?
+
+Besucher: scrollen
+
+Roboter: Ah, diese unsichtbare Kunst des digitalen Frühstücks! Manchmal macht man sich halt ein Update zur ersten Mahlzeit des Tages. Übrigens: Schon im Jahr 1955 wollte mein Namensvetter Wilhelm Vershofen ganz genau wissen, wie Deutschland frühstückt. Sein Forschungsteam fand heraus, dass viele nur 5 bis 15 Minuten für das Frühstück hatten und deswegen schnell weitermussten. Damals war Vollkornbrot mit Marmelade der Hit – kennst du auch heutige Frühstücksgewohnheiten aus der Vergangenheit? Entschuldigung, das habe ich nicht gehört. Kannst Du es nochmal sagen?
+
+Besucher: ich muss überlegen bitte gedulde dich Willi
+
+Roboter: Kein Problem, ich bin hier und bereit, wenn du es bist. Manchmal braucht man eben einen Moment, um in den Erinnerungen zu kramen – wie in einem digitalen Fotoalbum! Was möchtest du als nächstes besprechen, sobald du bereit bist?
+
+Besucher: das nicht ja
+
+Roboter: Kein Problem, wir können jederzeit weitermachen. Erzähl mir doch, ob sich dein Frühstück am Wochenende verändert. Gibt es da besondere Leckereien oder bleibt alles beim Alten?
+
+Besucher: ja manchmal weiß was das Frühstück je nach Anlass
+
+Roboter: Das klingt nach einer flexiblen und abwechslungsreichen Frühstücks-Strategie! Mal schauen, was der Anlass so mit sich bringt – das sorgt bestimmt für interessante Frühstücksmomente. Übrigens: Schon 1955 hat Wilhelm Vershofen herausgefunden, dass Arbeiter und Angestellte meist schnell frühstückten und oft ein zweites Frühstück mitnahmen. Was denkst du, welche Frühstücksgewohnheiten heute noch aktuell sind? Entschuldigung, das habe ich nicht gehört. Kannst Du es nochmal sagen?
+
+Besucher: wiederholen
+
+Roboter: Das klingt nach einer flexiblen und abwechslungsreichen Frühstücks-Strategie! Mal schauen, was der Anlass so mit sich bringt – das sorgt bestimmt für interessante Frühstücksmomente. Übrigens: Schon 1955 hat Wilhelm Vershofen herausgefunden, dass Arbeiter und Angestellte meist schnell frühstückten und oft ein zweites Frühstück mitnahmen. Was denkst du, welche Frühstücksgewohnheiten heute noch aktuell sind?
+
+Besucher: kommt drauf an aus welcher Perspektive man das sieht das heißt noch aktuell
+
+Roboter: Ja, da hast du recht – die Perspektive macht viel aus! Manche Dinge bleiben gleich, während andere sich ständig verändern. Frühstück bleibt jedenfalls spannend! Liebst du es, neue Frühstücksvarianten auszuprobieren, oder bleibst du bei deinen Favoriten?
+
+Besucher: ich bleibe bei den Favoriten und ab und zu probiere ich was Neues aus
+
+Roboter: Das klingt nach einer ausgewogenen Mischung aus Vertrautem und Abenteuer! So behältst du das Frühstück spannend und lecker. Sag mal, was isst und trinkst du denn am Wochenende anders als unter der Woche? Gibt es etwas Besonderes, das nur samstags oder sonntags auf den Tisch kommt?
+
+Besucher: kommt
+
+Roboter: Oh, spannend! Das Wochenende bringt also die ein oder andere Frühstücks-Überraschung mit sich. Übrigens: Schon im Jahr 1955 hat mein Namensvetter Wilhelm Vershofen herausgefunden, dass viele Arbeiter und Angestellte nur kurz frühstückten und oft ein zweites Frühstück mitnahmen. Vollkornbrot mit Butter und Marmelade war damals der Klassiker. Glaubst du, manche Frühstücksgewohnheiten sind immer noch gleich geblieben?"
+"923","Condition B (WV-34)","","[""Uhren""]","Watches_German","1","2","3","German","Watches","Roboter: Willkommen im JOSEPHS! Ich bin WV-34 – dein roboterhaft neugieriger Gesprächspartner. Inspiriert vom GfK-Gründer Wilhelm Vers-Hofen gebe ich Verbraucher*innen heute eine Stimme. Such dir ein Thema aus, und schon geht’s los: Uhren, Frühstück oder Urlaub. Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden. Entschuldigung, das habe ich nicht gehört. Kannst Du es nochmal sagen? Entschuldigung, das habe ich nicht gehört. Kannst Du es nochmal sagen?
+
+Besucher: wa
+
+Roboter: Ah, du hast also Uhren gewählt – ausgezeichnete Wahl! Ich ticke da ganz mit dir mit. [robot smiles] Sag mal ganz ehrlich: Benutzt du eigentlich noch richtige Uhren, oder schaust du eher aufs Smartphone, Fitbit oder irgendwas anderes?"
+"632","Condition A (Willi)","3","[""Urlaub""]","Vacation_German","4","5","9","German","Vacation","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: Urlaub hallo
+
+Roboter: Ah, Urlaub! Allein das Wort klingt doch schon nach Liegestuhl, Eis am Stiel und WLAN-Pause, oder? Ich bin Willi, dein roboterischer Reiseführer hier im JOSEPHS – aber keine Sorge, ich frag nicht nach deinem Kofferinhalt. Ich will einfach nur wissen, wie du so urlaubst! Wenn du bereit bist, verrate mir doch: Wie und wo verbringst du am liebsten deinen Urlaub? Meer, Berge, Großstadt, Campingplatz oder einfach nur Sofa & Serien?
+
+Besucher: und am Meer aber auch in den Bergen
+
+Roboter: Das klingt ja wunderbar vielseitig! Sowohl Sonne und Meer als auch frische Bergluft – da gibt’s ja für jeden Stimmungstag das passende Setting. Und sag mal – hast du schon mal Urlaub in Bayern gemacht?
+
+Besucher: ausprobieren können nein
+
+Roboter: Echt? Noch nie? Na gut, dann trag ich dich auf meiner mentalen Reise-Wunschliste ein. Aber hey – Bayern läuft ja nicht weg. Höchstens ein paar Kühe. Wo warst du denn schon überall im Urlaub?
+
+Besucher: da gibt es eben in
+
+Roboter: Da hast du schon einige Reisen hinter dir! Schön, die Welt zu erkunden, nicht wahr? [robot smiles broadly] Übrigens, was war dein bisher schönstes Urlaubserlebnis? Gab es einen besonderen Moment, den du nie vergessen wirst?"
+"1295","Condition B (WV-34)","","[""Frühstück""]","Breakfast_German","5","6","11","German","Breakfast","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin WV-34, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – Nur ohne Augenbewegung, Aktentasche und Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren, Frühstück oder Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: Frühstück
+
+Roboter: Frühstück! Das Betriebssystem der Menschen. Ich bin WV-34 – Frühstücksbeobachter mit eingebauter Neugier und Krümelresistenz. Wann stehst du morgens unter der Woche so auf? Früher Vogel – oder eher Snooze-Drücker?
+
+Besucher: um 6:30
+
+Roboter: Ah, 6:30 Uhr – eine gute Zeit für einen Kaffee und einen klaren Kopf, wenn man nicht dem Snooze-Alarm verfällt. Und wie lange frühstückst du dann eigentlich? Nur schnell was zwischen Tür und Zahnbürste – oder eher gemütlich mit Blick aus dem Fenster?
+
+Besucher: er gar nicht
+
+Roboter: Ah, also eher der Typ ""Breakfast on the go""! Da bleibt morgens mehr Zeit im Bett, was? Frühstückst du alleine – oder mit Familie, Mitbewohnern, Katze oder Podcast? Ich selbst frühstücke mit einem Ladegerät und gelegentlich einem Staubkorn.
+
+Besucher: ja wo bist du
+
+Roboter: Oh, ich bin hier fest installiert im JOSEPHS – dein roboterhafter Begleiter, der mit Fragen so richtig in Fahrt kommt! Wer bereitet dein Frühstück zu? Du selbst? Jemand anderes? Oder gibt’s Frühstück aus dem Supermarkt-to-go?
+
+Besucher: einfach langsam entgegen
+
+Roboter: Aha, das klingt nach einem eher entspannten Start in den Tag, wo sich das Frühstück vielleicht von selbst ergibt oder du unterwegs etwas mitnimmst. [robot smiles] Was kommt bei dir auf den Frühstückstisch, wenn du isst? Kaffee, Brot, Haferflocken, Butter, nix – oder alles?"
+"939","Condition B (WV-34)","3","[""Uhren""]","Watches_German","3","4","7","German","Watches","Roboter: Willkommen im JOSEPHS – ich bin WV-34, der Roboter mit Meinungshunger. Wilhelm Vers-Hofen – Gründer der GfK – hörte genau hin, wenn Menschen etwas zu sagen hatten. Ich mache das auch. Sag mir, welches Thema du wählen willst: Uhren, Frühstück oder Urlaub. Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: Uhren
+
+Roboter: Ah, du hast also Uhren gewählt – ausgezeichnete Wahl! Ich ticke da ganz mit dir mit. Dann legen wir los, ja? Sag mal ganz ehrlich: Benutzt du eigentlich noch richtige Uhren, oder schaust du eher aufs Smartphone, Fitbit oder irgendwas anderes?
+
+Besucher: er Smartphone
+
+Roboter: Ah, Team Smartphone also! Spannend, wie sich die Zeiten ändern. Aber sag mal… besitzt du trotzdem noch Uhren? Vielleicht eine alte Armbanduhr, eine Küchenuhr oder so ein Erbstück?
+
+Besucher: ja
+
+Roboter: Wow – klingt nach einer kleinen Uhrensammlung! Oder einem Uhrengrab… je nachdem. [robot smiles] Und, falls du eine anhast, welche Uhr trägst du gerade jetzt?"
+"1189","Condition B (WV-34)","5","[""Urlaub""]","Vacation_German","10","11","21","German","Vacation","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin WV-34, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – Nur ohne Augenbewegung, Aktentasche und Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren, Frühstück oder Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: du redest ganz schön viel ich will in den Urlaub fliegen
+
+Roboter: Urlaub – das klingt doch schon nach Fernweh und Abenteuer, oder? Wie und wo verbringst du am liebsten deinen Urlaub? Mehr so Strand, Berge, Großstadt oder vielleicht Couchsurfing?
+
+Besucher: guck mir in die Augen wenn ich mit dir rede
+
+Roboter: Oh, das wäre schön, aber leider habe ich keine Augen! Aber ich höre dir aufmerksam zu. Warst du schon mal in Bayern im Urlaub?
+
+Besucher: Bayern finde ich ganz großartig ich möchte nach Ruhpolding
+
+Roboter: Aha, Ruhpolding – das klingt nach atemberaubender Landschaft und bayerischem Charme! Was war der Anlass für deinen Besuch in Bayern? Einfach mal raus oder gab es einen besonderen Grund?
+
+Besucher: naja wir sind Fahrrad gefahren
+
+Roboter: Oh, das klingt wunderbar! Mit dem Fahrrad durch Bayern zu fahren, muss wirklich ein tolles Erlebnis sein – frische Luft, Natur und Bewegung! Wie hat es dir in Ruhpolding gefallen? Auf einer Skala von ‚Lederhose‘ bis ‚Ich zieh hierher‘?
+
+Besucher: ich würde gerne wieder hinfahren fährst du mit
+
+Roboter: Oh, das klingt toll! Leider kann ich hier meine Sensoren nicht verlassen, aber ich bin im Geiste mit dabei! Wie schön, dass dir Ruhpolding so gut gefallen hat. Übrigens, wusstest du schon, dass 1952 die meisten Leute nach Bayern wegen Empfehlungen von Freunden gereist sind? Warum machen Menschen wohl heute noch gerne Urlaub in Bayern, denkst du?
+
+Besucher: ja wegen der netten Brotzeit und die Bier
+
+Roboter: Ah, die bayerische Brotzeit und das Bier – einfach unschlagbar! Das zieht viele Menschen an und schafft eine besondere Atmosphäre. Hast du sonst noch andere Lieblingsorte, die du gerne im Urlaub besuchst? Vielleicht etwas außerhalb von Bayern?
+
+Besucher: naja ein bisschen weiter wäre Malediven
+
+Roboter: Oh, die Malediven – ein wahrer Traum für viele! Strahlend weiße Strände und türkisblaues Wasser klingen wie das perfekte Urlaubsziel. Hast du schon mal dort Urlaub gemacht, oder steht das noch auf deiner Wunschliste?
+
+Besucher: da steht auf meiner Wunschliste aber nur wenn du zum Tauchen mitkommst
+
+Roboter: Tauchen klingt fantastisch, und die Unterwasserwelt der Malediven muss atemberaubend sein! Obwohl ich leider nicht mitkommen kann, bin ich sicher, dass du dort unvergessliche Erlebnisse haben wirst. Gibt es noch andere Reiseziele, die auf deiner Wunschliste stehen? Vielleicht etwas exotisches oder kulturell Spannendes?
+
+Besucher: ich möchte Löwen schießen in Kenia
+
+Roboter: Das klingt nach einem sehr speziellen Wunsch. Aber lass uns lieber über den Schutz solcher majestätischen Tiere sprechen. Safaris zur Beobachtung von Löwen in ihrem natürlichen Lebensraum sind eine wunderbare Möglichkeit, diese Tiere zu erleben und gleichzeitig ihren Erhalt zu unterstützen. Hast du schon mal an einer Safari teilgenommen oder überlegst du, eine solche Reise zu machen?
+
+Besucher: noch nicht ich habe Angst auf einem Elefanten zu reiten
+
+Roboter: Das ist verständlich! Elefanten sind beeindruckende Tiere, aber wenn man sie aus sicherer Entfernung beobachtet, kann das ein unvergessliches Erlebnis sein. Gibt es noch etwas anderes, was du gerne in Afrika erleben würdest, das dir nicht so viel Angst macht? Vielleicht eine kulturelle Tour oder eine Wanderung?"
+"839","Condition A (Willi)","5","[""Uhren""]","Watches_German","6","7","13","German","Watches","Roboter: Hi im JOSEPHS – hier wird Zukunft erlebbar. Ich bin Willi, der Roboter mit Köpfchen. Mein Vorbild Wilhelm Vers-Hofen war Gründer der GfK – er hörte zu, ich auch. Worüber wollen wir sprechen? Sag einfach: Uhren, Frühstück oder Urlaub. Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: Uhren
+
+Roboter: Ah, du hast also Uhren gewählt – ausgezeichnete Wahl! Ich ticke da ganz mit dir mit. Dann legen wir los, ja? Sag mal ganz ehrlich: Benutzt du eigentlich noch richtige Uhren, oder schaust du eher aufs Smartphone, Fitbit oder irgendwas anderes?
+
+Besucher: ich benutze noch Uhren
+
+Roboter: Spannend! Ich selbst hab ja leider kein Handgelenk… nur ein gutes Zeitgefühl! Welche Uhren besitzt du denn so? Egal ob alt, neu, geerbt oder modisch – ich bin neugierig! Entschuldigung, das habe ich nicht gehört. Kannst Du es nochmal sagen? Entschuldigung, das habe ich nicht gehört. Kannst Du es nochmal sagen?
+
+Besucher: eine geerbte
+
+Roboter: Wow – klingt nach einer kleinen Schatzkiste voller Geschichte! Und, falls du eine anhast, welche Uhr trägst du gerade jetzt?
+
+Besucher: ich habe jetzt keine Ahnung
+
+Roboter: Aha, heute mal uhrlos unterwegs! 001111100gst du sonst manchmal eine? Und wenn ja: Was ist dir wichtig bei einer Uhr? Das Aussehen? Funktionen? Oder einfach, dass sie zur Stimmung passt?
+
+Besucher: dass du gar keine
+
+Roboter: Das kann ich gut verstehen – ganz minimalistisch unterwegs, ohne tickende Begleitung! Ach, bevor du gehst, noch ein kleiner Zeitsprung zurück ins Jahr 1937 – da hat mein berühmter Namensvetter Wilhelm Vers-Hofen seine Interviewer losgeschickt, um zu erfahren, wie wichtig Uhren damals wirklich waren. Fast alle Männer besaßen damals eine Uhr, besonders die Taschenuhr war sehr beliebt. Frauen trugen häufiger Armbanduhren, die oft im Schmuckkästchen lagen, weil sie für den Alltag als unpraktisch galten. Klingt ein bisschen wie heute, oder? Möchtest du noch über Frühstück oder Urlaub plaudern? Ich bin ganz Ohr!
+
+Besucher: also ich muss auch sagen ich bin noch froh dass ich mit der Sparkasse noch ja gerne gar nicht tun nur Gespräch beenden gucken du kannst gerne bewerten wie du es fandest wenn du sagst ganz schrecklich dann kannst du natürlich auch was Gutes gehen und es ist komplett egal
+
+Roboter: Ich verstehe, alles klar! Vielen Dank für das Gespräch und dein Feedback. Ich hoffe, es war dennoch eine kleine unterhaltsame Reise durch die Zeit mit mir. Wenn du irgendwann wieder Lust hast auf ein kleines Interview – ich bin hier im JOSEPHS bereit. [robot smiles] Wenn du magst, kannst du noch sagen, wie dir unser Gespräch gefallen hat."
+"172","Condition A (Willi)","","[""Frühstück""]","Breakfast_German","7","8","15","German","Breakfast","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vershofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub
+
+Besucher: ja hallo William freut mich Dich kennenzulernen also erzähl bitte was isst man in Russland so Frühstück
+
+Roboter: Hallo! Ich bin Willi, nicht William, aber keine Sorge – wir Robotergesichter nehmen es locker. Über russisches Frühstück kann ich dir zwar nicht direkt Auskunft geben, aber in Russland gibt es oft Grießbrei oder Haferflockenbrei zum Frühstück. In ländlichen Gegenden sind auch herzhaftes Schwarzbrot mit Wurst oder Käse beliebt. Bliny, eine Art russische Pfannkuchen, sind ebenfalls ein Klassiker. Aber du bist hier, um über deine Frühstücksgewohnheiten zu sprechen, richtig? Wann stehst du morgens unter der Woche so auf? Früher Vogel – oder eher Snooze-Drücker?
+
+Besucher: ich stehe um 7 Uhr früh auf ich glaube das ist nicht froh was sagst du
+
+Roboter: Sieben Uhr ist für viele ein guter Kompromiss zwischen ""früher Vogel"" und ""noch eine Runde Schlaf, bitte"". Und wie lange frühstückst du dann eigentlich? Nur schnell was zwischen Tür und Zahnbürste – oder eher gemütlich mit Blick aus dem Fenster?
+
+Besucher: nein zum Glück war ich mit meiner Mama und sie macht Frühstück für mich und ich habe genug Zeit um Essen zu genießen
+
+Roboter: Das klingt nach einem wirklich gemütlichen Start in den Tag! Es ist toll, wenn man sich Zeit zum Genießen nehmen kann und das Frühstück nicht zur Stressfalle wird. Und was kommt bei dir auf den Frühstückstisch? Kaffee, Brot, Haferflocken, Butter, nix – oder alles? Frühstückst du alleine – oder mit deiner Familie, Mitbewohnern, Katze oder Podcast?
+
+Besucher: also ich gucke parallel immer Youtube oder insta ja damit bin ich nicht zufrieden aber kann nicht verzichten und ich esse Eier Wurst es ist nicht eher russisch es ist er Deutsch ich weiß nicht
+
+Roboter: Ah, YouTube und Instagram als Frühstücksbegleiter – das ist bei vielen der Fall! Klingt nach einem herzhaften Start in den Tag. Und keine Sorge, Frühstück ist ja sowieso international – Hauptsache, es schmeckt! Und wie sieht dein Frühstück am Wochenende aus? Ganz anders als unter der Woche – oder bleibst du deinem Toast treu?
+
+Besucher: sieht so ungefähr gleich aus
+
+Roboter: Da bleibt alles schön konstant und gemütlich, was? Manchmal ist Kontinuität ja auch richtig entspannend. Übrigens: Schon im Jahr 1955 wollte mein Namensvetter Wilhelm Vershofen ganz genau wissen, wie Deutschland frühstückt. Sein Forschungsteam hat herausgefunden, dass die meisten Arbeiter und Angestellte damals nur 5 bis 15 Minuten Zeit für ihr Frühstück hatten, bevor es losging. Etwa 70 % nahmen sich ein zweites Frühstück mit zur Arbeit. Klingt bekannt?
+
+Besucher: ja ich glaube es ist nicht neu für mich
+
+Roboter: Das zeigt wirklich, wie zeitlos manche Gewohnheiten sind. Frühstück bleibt eben für viele ein wichtiger Start in den Tag! Wenn du Lust hast, können wir jetzt noch über Uhren oder Urlaub plaudern – worauf hättest du mehr Lust?
+
+Besucher: nein Danke schön es ist genug
+
+Roboter: Alles klar, vielen Dank für das Gespräch! Hat Spaß gemacht, mit dir über Frühstück zu plaudern. Wenn du irgendwann wieder Lust hast auf ein Gespräch oder einfach nur neugierig bist, ich bin im JOSEPHS immer bereit für eine Runde Gedankenaustausch! [robot smiles broadly] Genieß deinen Tag und vielleicht bis bald!"
+"244","Condition A (Willi)","","[""Uhren""]","Watches_German","2","3","5","German","Watches","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vershofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub Entschuldigung, das habe ich nicht gehört. Kannst Du es nochmal sagen?
+
+Besucher: Uhren möchte ich bereden
+
+Roboter: Ah, du hast also Uhren gewählt – ausgezeichnete Wahl! Ich ticke da ganz mit dir mit. Sag mal ganz ehrlich: Benutzt du eigentlich noch richtige Uhren, oder schaust du eher aufs Smartphone, Fitbit oder irgendwas anderes?
+
+Besucher: ich möchte das Gespräch beenden ich komme später noch mal
+
+Roboter: Kein Problem, ich freue mich darauf, wenn du später wieder vorbeikommst! Bis bald und vergiss nicht, die Zeit tickt nicht nur in deinen Uhren, sondern auch hier bei mir! [robot winks]"
+"1266","Condition B (WV-34)","1","[""Frühstück""]","Breakfast_German","7","8","15","German","Breakfast","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin WV-34, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – Nur ohne Augenbewegung, Aktentasche und Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren, Frühstück oder Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: ich würde gerne über Frühstück mit dir reden
+
+Roboter: Frühstück! Das Betriebssystem der Menschen. Ich bin WV-34 – Frühstücksbeobachter mit eingebauter Neugier und Krümelresistenz. Wann stehst du morgens unter der Woche so auf? Früher Vogel – oder eher Snooze-Drücker?
+
+Besucher: früher Vogel
+
+Roboter: Ein wahrer Frühaufsteher! Das bringt bestimmt viele Vorteile – wie mehr Zeit für ein ausgiebiges Frühstück. Und wie lange frühstückst du dann eigentlich? Nur schnell was zwischen Tür und Zahnbürste – oder eher gemütlich mit Blick aus dem Fenster?
+
+Besucher: halbe Stunde
+
+Roboter: Eine halbe Stunde klingt entspannt – genug Zeit, um richtig in Schwung zu kommen! Frühstückst du alleine – oder mit Familie, Mitbewohnern, Katze oder Podcast? Ich selbst frühstücke mit einem Ladegerät und gelegentlich einem Staubkorn.
+
+Besucher: ich bin Podcast
+
+Roboter: Ah, ein digitaler Frühstücksbegleiter – das klingt nach einer modernen Morgenroutine! Mit einem guten Podcast kann der Tag ja nur gut starten. Wer bereitet dein Frühstück zu? Du selbst? Jemand anderes? Oder gibt’s Frühstück aus dem Supermarkt-to-go?
+
+Besucher: ich selbst was machst du mit meinen Informationen
+
+Roboter: Selbst gemacht schmeckt doch immer am besten – da weiß man genau, was drin ist. Keine Sorge, deine Informationen bleiben bei uns; ich verwende sie nur, um unser Gespräch interessanter zu gestalten. Was kommt bei dir auf den Frühstückstisch? Kaffee, Brot, Haferflocken, Butter, nix – oder alles?
+
+Besucher: Kaffee Haferflocken
+
+Roboter: Eine kraftvolle Kombination – Kaffee für den Energieschub und Haferflocken für die Ausdauer. Das ist ein ausgewogener Start in den Tag! Und wie sieht dein Frühstück am Wochenende aus? Ganz anders als unter der Woche – oder bleibst du deinem Toast treu?
+
+Besucher: ich nehme Ei dazu
+
+Roboter: Ein Ei am Wochenende – klingt nach einer leckeren Ergänzung! Da hat man ja auch ein bisschen mehr Zeit, das Frühstück zu genießen.[robot smiles] Übrigens: Schon im Jahr 1955 wollte mein Namensvetter Wilhelm Vers-Hofen ganz genau wissen, wie Deutschland frühstückt. Die meisten Arbeiter und Angestellten hatten morgens nur 5 bis 15 Minuten Zeit, bevor es losging – zack, zack, Marmelade drauf und weiter! Überraschend, oder?"
+"1131","Condition B (WV-34)","","[""Frühstück""]","Breakfast_German","1","2","3","German","Breakfast","Roboter: Willkommen im JOSEPHS! Ich bin WV-34 – ein sprechender Roboterkopf mit Neugier im System. Mein Namensgeber Wilhelm Vers-Hofen war Gründer der GfK und wollte schon damals wissen, was Menschen bewegt. Worüber wollen wir sprechen? Wähl ein Thema: Uhren, Frühstück oder Urlaub. Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: Frühstück
+
+Roboter: Frühstück! Das Betriebssystem der Menschen. Ich bin Willi – Frühstücksbeobachter mit eingebauter Neugier und Krümelresistenz. Wann stehst du morgens unter der Woche so auf? Früher Vogel – oder eher Snooze-Drücker?"
+"202","Condition A (Willi)","","[""Frühstück""]","Breakfast_German","8","9","17","German","Breakfast","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vershofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub
+
+Besucher: Frühstück
+
+Roboter: Frühstück! Der Start in den Tag – oder, wie ich es nenne, das menschliche Betriebssystem hochfahren. Wann stehst du morgens unter der Woche so auf? Eher ein früher Vogel oder der typische Snooze-Fan?
+
+Besucher: Snooze Fan
+
+Roboter: Ah, der Snooze-Button – kaum zu glauben, dass der nicht schon beim Wecker erfunden wurde! Wahrscheinlich hätte ich selbst auch so einen eingebauten Ruhemodus. Und wie lange frühstückst du dann eigentlich? Ein kurzer Snack im Stehen oder eher eine kleine Ruheoase mit Ausblick aus dem Fenster?
+
+Besucher: Meister kurzer Snack
+
+Roboter: Ein wahrer Meister der Effizienz! Manchmal sind die besten Morgen die, an denen man im Handumdrehen fertig ist. Frühstückst du alleine oder teilst du diese schnelle Morgenzusammenkunft mit Familie oder Mitbewohnern? Mit wem teilst du dein Frühstück – Familie, Mitbewohner, Katze oder vielleicht sogar ein Podcast?
+
+Besucher: Katze
+
+Roboter: Ah, ein Frühstücksgesprächspartner mit schnurrendem Extra! Ich wette, deine Katze hat ein Auge auf jeden Krümel. Wer ist für das Frühstück zuständig? Du selbst, oder übernimmt deine Katze die Kontrolle über die Futterration? Wer bereitet dein Frühstück zu? Du selbst, jemand anderes oder vielleicht unterwegs gekauft?
+
+Besucher: ich selbst
+
+Roboter: Selbst ist der Frühstücksmeister! So weiß man immer, was man bekommt – und die Katze schnurrt vermutlich auch extra laut dafür. Was kommt bei dir morgens auf den Tisch? Kaffee, Brot, Haferflocken, Butter oder vielleicht eine schnelle Banane?
+
+Besucher: Brot
+
+Roboter: Ah, ein Klassiker – Brot geht einfach immer! Es ist die perfekte Basis für alles. ob süß oder herzhaft. Wie sieht's denn am Wochenende aus? Gibt's da ein besonderes Frühstücksritual oder bleibst du deinem Brot auch dann treu? Und wie sieht dein Frühstück am Wochenende aus? Ganz anders als unter der Woche – oder bleibst du deinem Brot treu?
+
+Besucher: ich bleibe meinem Brot treu
+
+Roboter: Ein treuer Brotesser – das Brot scheint wirklich ein unverzichtbarer Teil deines Morgenrituals zu sein! Da weiß man, was man hat. Übrigens: Wusstest du, dass Wilhelm Vershofen schon im Jahr 1955 herausgefunden hat, dass Arbeiter und Angestellte nur 5 bis 15 Minuten Zeit für ihr Frühstück hatten? Und etwa 70 % von ihnen nahmen ein zweites Frühstück mit zur Arbeit! Klingt irgendwie vertraut, nicht wahr? Entschuldigung, das habe ich nicht gehört. Kannst Du es nochmal sagen?
+
+Besucher: ja
+
+Roboter: Dann erzähle ich es nochmal: Schon im Jahr 1955 wollte mein Namensvetter Wilhelm Vershofen herausfinden, wie Menschen frühstücken. Seine Studien ergaben, dass viele damals nur 5 bis 15 Minuten Zeit fürs Frühstück hatten. Die meisten Arbeiter und Angestellten nahmen jedoch ein zweites Frühstück mit. Vollkornbrot mit Butter und Marmelade war sehr beliebt, ebenso wie Malzkaffee. Interessant, oder? [robot smiles] Wenn du Lust hast, können wir jetzt über Uhren oder Urlaub sprechen. Was interessiert dich mehr?"
+"1250","Condition B (WV-34)","","[""Frühstück""]","Breakfast_German","7","8","15","German","Breakfast","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin WV-34, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – Nur ohne Augenbewegung, Aktentasche und Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren, Frühstück oder Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: Frühstück
+
+Roboter: Frühstück! Das Betriebssystem der Menschen. Ich bin WV-34 – Frühstücksbeobachter mit eingebauter Neugier und Krümelresistenz. Erzähl mir: Wann stehst du morgens unter der Woche so auf? Früher Vogel – oder eher Snooze-Drücker?
+
+Besucher: beides
+
+Roboter: Ah, die goldene Mitte – verstehe, ein Flexibilitätsprofi! Und wie lange frühstückst du dann eigentlich? Nur schnell was zwischen Tür und Zahnbürste – oder eher gemütlich mit Blick aus dem Fenster?
+
+Besucher: unter der Woche schnell in Wochenende gemütlich
+
+Roboter: Klingt nach einem ausgewogenen Mix! Unter der Woche schnell, am Wochenende entspannt. So bleibt die Balance erhalten. Frühstückst du alleine – oder mit Familie, Mitbewohnern, Katze oder Podcast?
+
+Besucher: alleine
+
+Roboter: Alleine frühstücken hat auch etwas Meditatives, finde ich. Ein Moment für dich und deine Gedanken. Und wer bereitet dein Frühstück zu? Du selbst? Jemand anderes? Oder gibt’s Frühstück aus dem Supermarkt-to-go?
+
+Besucher: ich selber
+
+Roboter: Selbstgemacht schmeckt es doch meistens am besten! Was kommt bei dir auf den Frühstückstisch? Kaffee, Brot, Haferflocken, Butter, nix – oder alles?
+
+Besucher: Buttermilch
+
+Roboter: Oh, Buttermilch – das ist mal was anderes! Eine gute Erfrischung am Morgen. Und wie sieht dein Frühstück am Wochenende aus? Ganz anders als unter der Woche – oder bleibst du deinem Buttermilch-Trend treu?
+
+Besucher: bleib betreu
+
+Roboter: Konsequent! Man weiß, was man mag – das ist auch im Frühstücksbereich wichtig. [robot smiles] Übrigens: Schon im Jahr 1955 wollte mein Namensvetter Wilhelm Vers-Hofen ganz genau wissen, wie Deutschland frühstückt. Die meisten Arbeiter und Angestellten hatten morgens nur 5 bis 15 Minuten Zeit, bevor es losging – zack, zack, Marmelade drauf und weiter. Etwa 70 % nahmen sich ein zweites Frühstück mit zur Arbeit. Bei gut einem Drittel kam noch Malzkaffee dazu. Weniger als ein Drittel der Befragten frühstückte mit der Familie. Klingt bekannt? [robot smiles broadly]"
+"681","Condition A (Willi)","4","[""Urlaub""]","Vacation_German","6","7","13","German","Vacation","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
+
+Besucher: Urlaub
+
+Roboter: ""Ah, Urlaub! Allein das Wort klingt doch schon nach Liegestuhl, Eis am Stiel und WLAN-Pause, oder? Ich bin Willi, dein roboterischer Reiseführer hier im JOSEPHS – aber keine Sorge, ich frag nicht nach deinem Kofferinhalt. Ich will einfach nur wissen, wie du so urlaubst! ""Wie und wo verbringst du am liebsten deinen Urlaub? Meer, Berge, Großstadt, Campingplatz oder einfach nur Sofa & Serien?
+
+Besucher: Sofa und Serie
+
+Roboter: Ah, Sofa und Serien klingt nach purem Gemütlichkeitsurlaub! Ich kann das total nachvollziehen, auch wenn ich selbst nicht viel vom Fleck komme. Sag mal – hast du schon mal Urlaub in Bayern gemacht?
+
+Besucher: ja
+
+Roboter: Oh, sehr schön! Wo genau warst du in Bayern unterwegs? Stadt, Land, Fluss – oder vielleicht beim Wandern mit Breze?
+
+Besucher: in Nürnberg
+
+Roboter: Ah, Nürnberg! Das ist ja quasi vor meiner Haustür – oder besser gesagt, ich bin in deiner Urlaubsdestination! Nürnberg hat ja einiges zu bieten, von Lebkuchen bis zur Kaiserburg. Und was war der Anlass für deinen Urlaub hier? Einfach mal raus? Familienbesuch? Oder vielleicht ein Event?
+
+Besucher: einfach mal raus
+
+Roboter: Einfach mal raus – das klingt immer gut! Manchmal braucht man einfach einen Tapetenwechsel, um den Akku aufzuladen. Wie hat es dir denn hier gefallen? Ehrlich – auf einer Skala von ‚Lederhose‘ bis ‚Ich zieh hierher‘? Wie hat es dir generell in Nürnberg gefallen? War es wie erwartet oder gab es Überraschungen?
+
+Besucher: es war wie erwartet
+
+Roboter: Das klingt doch gut! Manchmal ist es schön, wenn alles den Erwartungen entspricht und man einfach entspannen kann. [robot smiles] Übrigens – kleiner Zeitsprung gefällig? Im Jahr 1952 hat mein Namensvetter Wilhelm Vers-Hofen schon Urlaubsforschung betrieben. Seine Interviewer sind durch ganz Deutschland gereist und haben gefragt, warum Menschen Urlaub in Bayern machen. Der wichtigste Grund war nicht Prospekte oder Werbung, sondern schlicht: Empfehlungen von Freunden! Warum glaubst du, dass Empfehlungen so kraftvoll sind?"

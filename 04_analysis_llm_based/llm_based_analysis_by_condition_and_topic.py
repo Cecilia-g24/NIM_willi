@@ -100,7 +100,12 @@ def fit_models(df: pd.DataFrame) -> pd.DataFrame:
 def parse_args() -> argparse.Namespace:
     here = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser(description="LLM-based conversation analysis controlling for topic.")
-    parser.add_argument("--dialogs", type=Path, default=here.parent / "dialogs.json", help="Path to dialogs.json")
+    parser.add_argument(
+        "--dialogs",
+        type=Path,
+        default=here.parent / "data" / "data_clean" / "dialogs_full.json",
+        help="Path to dialogs_full.json",
+    )
     parser.add_argument("--cache", type=Path, default=here / "llm_annotation_cache.jsonl", help="Path to annotation cache")
     parser.add_argument("--model", default="gpt-5.4-mini", help="Model ID; only used for dialogs not already cached")
     parser.add_argument("--max-dialogs", type=int, default=None, help="Optional cap for test runs")

@@ -1,0 +1,4 @@
+﻿participant_id,study_id,session_id,dialog_id,language,subject,condition,submitted_at_utc,free_comment,user_engagement_enjoyment,conversation_flow_coherence,interaction_clarity_habitability,repair_recovery_quality,response_appropriateness,social_interaction_quality,robot_anthropomorphism,robot_animacy,robot_likeability,robot_perceived_intelligence
+11,,,519,English,Watches,Condition A (Willi),2026-06-18T11:14:07+00:00,,2,4,3,1,1,4,4,4,3,4
+11,,,874,English,Vacation,Condition A (Willi),2026-06-18T11:14:31+00:00,,4,4,4,1,5,2,2,4,4,2
+11,,,1124,English,Breakfast,Condition B (WV-34),2026-06-18T11:14:51+00:00,asdadadadad,2,3,4,4,5,2,4,2,5,2

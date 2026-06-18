@@ -14,7 +14,7 @@ from scipy.stats import mannwhitneyu, ttest_ind
 #
 # Expected structure:
 # PROJECT_ROBOT_CHATS/
-#   dialogs.json
+#   data/data_clean/dialogs_full.json
 #   02_visitor_fraction/
 #       visitor_fraction.py   <-- this script
 #       NIM Besucherzahlen insgesamt_flat.xlsx
@@ -25,7 +25,7 @@ from scipy.stats import mannwhitneyu, ttest_ind
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 
-DIALOG_JSON = PROJECT_ROOT / "dialogs.json"
+DIALOG_JSON = PROJECT_ROOT / "data" / "data_clean" / "dialogs_full.json"
 VISITOR_EXCEL = SCRIPT_DIR / "NIM Besucherzahlen insgesamt_flat.xlsx"
 DAILY_FRACTION_CSV = SCRIPT_DIR / "daily_robot_interaction_fractions.csv"
 BOXPLOT_PNG = SCRIPT_DIR / "daily_robot_interaction_fractions_boxplot.png"

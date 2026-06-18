@@ -98,7 +98,7 @@ def fit_models(df: pd.DataFrame) -> pd.DataFrame:
 
 def main() -> None:
     here = Path(__file__).resolve().parent
-    dialogs_path = here.parent / "dialogs.json"
+    dialogs_path = here.parent / "data" / "data_clean" / "dialogs_full.json"
 
     df = build_metrics_dataframe(dialogs_path)
     df = df[df["chosen_topic"].isin(VALID_CHOSEN_TOPICS)].copy()
