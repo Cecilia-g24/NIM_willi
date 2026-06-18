@@ -443,17 +443,6 @@ st.markdown(
         font-size: 0.95rem;
         margin-bottom: 0.75rem;
     }
-    .attention-box {
-        border: 1px solid #d1d5db;
-        background: #f9fafb;
-        border-radius: 12px;
-        padding: 0.85rem 1rem;
-        margin: 0.75rem 0 1rem 0;
-        color: #111827 !important;
-    }
-    .attention-box b {
-        color: #111827 !important;
-    }
     .continue-button {
         display: inline-block;
         background: #ff4b4b;
@@ -860,8 +849,6 @@ if dialog_row is None:
     st.stop()
 assert dialog_row is not None
 
-current_dialog_id = str(dialog_row["META_dialog_id"])
-
 st.subheader("Dialog to rate")
 st.markdown(
     f"""
@@ -873,26 +860,6 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-
-st.markdown(
-    """
-    <div class="attention-box">
-        <b>Attention check</b><br>
-        Please start from the top of this dialog and read the full exchange before answering the rating questions.
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
-attention_checked = st.checkbox(
-    "I understand that I should read the full dialog before rating it.",
-    key=f"attention_check_{current_dialog_id}",
-)
-
-render_dialog(str(dialog_row["dialog_text"]))
-
-if not attention_checked:
-    st.info("Please tick the attention check above the dialog before submitting your ratings.")
-
 
 GENERIC_LIKERT_LABELS = {
     1: "1 — Very low / very poor",
@@ -936,7 +903,6 @@ def render_question(
         horizontal=False,
         label_visibility="collapsed",
         key=f"radio_{question['key']}_{dialog_row['META_dialog_id']}",
-        disabled=not attention_checked,
     )
     st.write("")
 
@@ -944,41 +910,42 @@ def render_question(
 with st.form("rating_form", clear_on_submit=False):
     answers: dict[str, Optional[int]] = {}
 
-    st.header("Part A: Rate the Human-Robot Dialog")
-    st.caption(f"{len(QUESTIONS_BLOCK_A)} questions")
-    st.markdown(ANNOTATION_INSTRUCTION_BLOCK_A)
+    with st.container(border=True):
+        st.header("Part A: Rate the Human-Robot Dialog")
+        st.caption(f"{len(QUESTIONS_BLOCK_A)} questions")
+        st.markdown(ANNOTATION_INSTRUCTION_BLOCK_A)
 
-    for i, question in enumerate(QUESTIONS_BLOCK_A, start=1):
-        render_question(question, answers, i)
+        render_dialog(str(dialog_row["dialog_text"]))
 
-    st.markdown("---")
-    st.header("Part B: Rate the Robot")
-    st.caption(f"{len(QUESTIONS_BLOCK_B)} questions")
-    dialog_condition = str(dialog_row.get("META_condition", ""))
-    block_b_image_path = BLOCK_B_IMAGE_PATHS_BY_CONDITION.get(dialog_condition)
-    if block_b_image_path is not None and block_b_image_path.exists():
-        st.image(str(block_b_image_path))
-    elif block_b_image_path is not None:
-        st.info(f"DUMMY PLACEHOLDER: image not found at `{block_b_image_path.name}`.")
-    else:
-        st.info(f"DUMMY PLACEHOLDER: no image configured for condition `{dialog_condition}`.")
-    st.markdown(ANNOTATION_INSTRUCTION_BLOCK_B)
+        for i, question in enumerate(QUESTIONS_BLOCK_A, start=1):
+            render_question(question, answers, i)
 
-    for i, question in enumerate(QUESTIONS_BLOCK_B, start=len(QUESTIONS_BLOCK_A) + 1):
-        render_question(question, answers, i)
+    with st.container(border=True):
+        st.header("Part B: Rate the Robot")
+        st.caption(f"{len(QUESTIONS_BLOCK_B)} questions")
+        dialog_condition = str(dialog_row.get("META_condition", ""))
+        block_b_image_path = BLOCK_B_IMAGE_PATHS_BY_CONDITION.get(dialog_condition)
+        if block_b_image_path is not None and block_b_image_path.exists():
+            st.image(str(block_b_image_path))
+        elif block_b_image_path is not None:
+            st.info(f"DUMMY PLACEHOLDER: image not found at `{block_b_image_path.name}`.")
+        else:
+            st.info(f"DUMMY PLACEHOLDER: no image configured for condition `{dialog_condition}`.")
+        st.markdown(ANNOTATION_INSTRUCTION_BLOCK_B)
+
+        for i, question in enumerate(QUESTIONS_BLOCK_B, start=len(QUESTIONS_BLOCK_A) + 1):
+            render_question(question, answers, i)
 
     st.markdown("**Optional free comment**")
     free_comment = st.text_area(
         "If you have any additional comments about this dialog or the rating task, you can write them here.",
         placeholder="Optional: write any additional feedback here...",
         key=f"free_comment_{dialog_row['META_dialog_id']}",
-        disabled=not attention_checked,
     )
 
     submitted = st.form_submit_button(
         "Submit ratings",
         type="primary",
-        disabled=not attention_checked,
     )
 
 if submitted:
@@ -986,9 +953,7 @@ if submitted:
         question["label"] for question in QUESTIONS if answers.get(question["key"]) is None
     ]
 
-    if not attention_checked:
-        st.error("Please tick the attention check before submitting.")
-    elif missing_questions:
+    if missing_questions:
         st.error(f"Please answer all {len(QUESTIONS)} questions before submitting.")
     else:
         inserted = save_response(
