@@ -1,10 +1,40 @@
 # Project Robot Chats
 
-## Data pipeline
+Analysis pipeline for human–robot conversations collected at a museum exhibit (JOSEPHS).
+Visitors talked with a robot guide running under one of two experimental conditions —
+**Condition A ("Willi")**, with facial expressions/gestures, vs. **Condition B ("WV-34")**,
+a flat metallic voice with no expressions — about one of three topics (breakfast, watches,
+vacation). The project cleans the raw chat export, then analyzes it from several angles:
+rule-based metrics, LLM-based annotation, LIWC psycholinguistic features, museum visitor
+engagement rates, and a human annotation study run on Prolific.
+
+## Pipeline overview
+
+```text
+data/data_raw/dialogs-*_raw.json
+        │
+        ▼
+01_preprocess/preprocess.py
+        │
+        ├─► data/data_clean/dialogs_full.json   (cleaned JSON, source of truth)
+        └─► data/data_clean/*.csv               (audit + annotation CSV views)
+        │
+        ├─► 02_visitor_fraction/   (robot interactions vs. museum visitor counts)
+        ├─► 03_analysis_rules-based/   (rule-based conversation metrics)
+        ├─► 04_analysis_llm_based/   (Claude-annotated dialogue acts/topics/disclosure)
+        ├─► 05_prolific/   (human annotation study: sampling, Streamlit app, responses)
+        └─► 06_liwc_features/   (LIWC-22 results, run externally on the annotation CSVs)
+```
+
+Steps 02–06 each read `data/data_clean/dialogs_full.json` (or the annotation CSVs) and are
+independent of one another — none of them depends on another step's output.
+
+## 01_preprocess — cleaning and labeling
 
 `01_preprocess/preprocess.py` reads the raw export `data/data_raw/dialogs-1771498506071_raw.json`,
 removes empty/malformed interactions, classifies each dialog's condition (A/B/Unknown),
-detects its language, and produces the cleaned outputs described below.
+detects its language, and produces the cleaned outputs described below. Reports on what was
+dropped/unrecognized are written to `01_preprocess/preprocess_report/`.
 
 ### Cleaned JSON (machine-readable source of truth)
 
@@ -18,12 +48,9 @@ stay as raw markers and the leading system prompt is preserved as-is. No text cl
 gesture conversion, or role relabeling happens at this stage — that only happens later,
 when building the CSV rows below.
 
-`dialogs.json` (project root) is an older, stale version of this file — it predates the
-`condition_source`/`language`/`topic_main` fields and has the leading system message
-stripped. It is still used as the default input by the downstream analysis scripts in
-`02_visitor_fraction/`, `03_analysis_rules-based/`, `04_analysis_llm_based/`,
-`05_prolific/`, and `06_liwc_features/`, but it can be safely regenerated/replaced by
-`data/data_clean/dialogs_full.json`.
+This file is the default input for every downstream script in `02_visitor_fraction/`,
+`03_analysis_rules-based/`, and `04_analysis_llm_based/` (an earlier, stale
+`dialogs.json` at the project root has since been removed).
 
 ### CSV exports (human/annotation-friendly views)
 
@@ -42,3 +69,79 @@ independent dataset, just a flattened, pre-formatted view of the same dialogs:
   (`condition_hidden`) to keep annotation blind, and the dialogue is split into separate
   `robot_only_text` / `visitor_only_text` columns in addition to the combined
   `dialogue_for_annotation` text.
+
+These annotation CSVs feed both the LIWC analysis (06) and the Prolific sampling step (05).
+
+## 02_visitor_fraction — museum engagement rate
+
+`visitor_fraction_from_json.py` combines `dialogs_full.json` with daily museum visitor
+counts (`NIM Besucherzahlen insgesamt_flat.xlsx`) to compute what fraction of visitors each
+day interacted with the robot, infers which condition was active on each date, and compares
+the two conditions with a Mann-Whitney U test and Welch's t-test.
+
+- Output: `daily_robot_interaction_fractions.csv`,
+  `daily_robot_interaction_fractions_boxplot.png`.
+
+## 03_analysis_rules-based — rule-based conversation metrics
+
+`rule_based_analysis_by_condition.py` extracts 50+ metrics per dialog directly from
+`dialogs_full.json`: turn counts, word counts, lexical diversity, simple rule-based
+dialogue-act classification (greeting, question, clarification request, refusal, etc.),
+politeness/pronoun markers, and conversation-quality proxies (early drop-off, completion).
+`rule_based_analysis_by_condition_and_topic.py` then aggregates these by condition and topic
+and runs Welch t-tests / effect sizes / corrected p-values.
+
+- Outputs: `rule_based_metrics_by_conversation.csv`,
+  `rule_based_metrics_by_conversation_condition_topic.csv`, `rule_based_condition_tests.csv`,
+  `rule_based_condition_topic_descriptives.csv`, `rule_based_condition_topic_models.csv`,
+  `rule_based_topic_distribution_by_condition.csv`.
+
+## 04_analysis_llm_based — Claude-annotated conversation metrics
+
+`llm_based_analysis_by_condition.py` sends each message turn to Claude (API key in
+`.env`) to classify it against a 13-category dialogue-act taxonomy, topic relatedness, and
+self-disclosure depth. Responses are cached in `llm_annotation_cache.jsonl` to avoid
+redundant API calls. `llm_based_analysis_by_condition_and_topic.py` aggregates the
+turn-level annotations into per-dialog metrics and runs condition comparisons.
+
+- Outputs: `llm_turn_annotations.csv`, `llm_metrics_by_conversation.csv`,
+  `llm_condition_tests.csv`, `llm_topic_distribution_by_condition.csv`.
+
+## 05_prolific — human annotation study
+
+`create_test_samples.py` samples a balanced set of dialogs (by topic, language, and
+condition) from `dialogs_for_annotation_en.csv` / `dialogs_for_annotation_de.csv` and writes
+`streamlit_test_sample_en_<N>.csv` / `streamlit_test_sample_de_<N>.csv`.
+
+`streamlit_app_en.py` is the Streamlit survey app used by Prolific participants: it loads
+the most recent `streamlit_test_sample_en_*.csv`, shows each participant 3 dialogs, and
+collects ratings in two blocks — **Block A** (5-point ratings on engagement, flow, clarity,
+robot empathy, robot personality, overall quality) and **Block B** (condition-specific image
+shown between dialogs; currently uses placeholder images
+`block_b_image_condition_a_willi.png` / `_b_wv34.png`). Responses are stored in
+`responses/survey_responses_en.sqlite` and exported to `responses/survey_responses_en.csv`.
+
+## 06_liwc_features — psycholinguistic features
+
+The annotation CSVs (`dialogs_for_annotation_en.csv` / `_de.csv`) are uploaded externally to
+LIWC-22, run separately for robot-only and visitor-only text in each language. Results are
+checked into:
+
+- `LIWC-22 Results - dialogs_for_annotation_en - robot_only.csv`
+- `LIWC-22 Results - dialogs_for_annotation_en - visitor_only.csv`
+- `LIWC-22 Results - dialogs_for_annotation_de - robot_only.csv`
+- `LIWC-22 Results - dialogs_for_annotation_de - visitor_only.csv`
+
+## Running
+
+There is no single orchestration script; run the steps below in order, each from the
+project root:
+
+1. `python 01_preprocess/preprocess.py`
+2. `python 02_visitor_fraction/visitor_fraction_from_json.py`
+3. `python 03_analysis_rules-based/rule_based_analysis_by_condition.py` then
+   `rule_based_analysis_by_condition_and_topic.py`
+4. `python 04_analysis_llm_based/llm_based_analysis_by_condition.py` (requires a `.env` with
+   an Anthropic API key) then `llm_based_analysis_by_condition_and_topic.py`
+5. `python 05_prolific/create_test_samples.py`, then `streamlit run 05_prolific/streamlit_app_en.py`
+6. LIWC step (06) is run manually in the LIWC-22 desktop tool, not from this repo.
