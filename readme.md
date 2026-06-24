@@ -115,11 +115,114 @@ condition) from `dialogs_for_annotation_en.csv` / `dialogs_for_annotation_de.csv
 
 `streamlit_app_en.py` is the Streamlit survey app used by Prolific participants: it loads
 the most recent `streamlit_test_sample_en_*.csv`, shows each participant 3 dialogs, and
-collects ratings in two blocks — **Block A** (5-point ratings on engagement, flow, clarity,
-robot empathy, robot personality, overall quality) and **Block B** (condition-specific image
-shown between dialogs; currently uses placeholder images
-`block_b_image_condition_a_willi.png` / `_b_wv34.png`). Responses are stored in
-`responses/survey_responses_en.sqlite` and exported to `responses/survey_responses_en.csv`.
+collects 5-point Likert ratings in two blocks, **Part A first, then Part B**:
+
+- **Part A — rate the dialogue itself** (6 questions):
+  - **A1.** User engagement / enjoyment — "How engaged and willing to continue did the
+    human participant appear during the conversation?"
+  - **A2.** Conversation flow / coherence — "How smoothly and coherently did the
+    conversation progress across turns?"
+  - **A3.** Interaction clarity / habitability — "How clear was it what the human
+    participant could say or do next?"
+  - **A4.** Repair / recovery quality — "When misunderstandings or interaction problems
+    occurred, how well did the robot recover?"
+  - **A5.** Response appropriateness — "How appropriate were the robot's responses to
+    the human participant's previous turns?"
+  - **A6.** Social interaction quality — "How socially appropriate was the robot as a
+    conversational partner?"
+- **Part B — rate the robot as an embodied agent**, shown via a condition-specific image
+  (currently placeholder images `block_b_image_condition_a_willi.png` / `_b_wv34.png`)
+  (4 questions):
+  - **B1.** Robot anthropomorphism / human-likeness — "How human-like did the robot
+    appear?"
+  - **B2.** Robot animacy / lifelikeness — "How lifelike or animated did the robot
+    appear?"
+  - **B3.** Robot likeability / pleasantness — "How likeable or pleasant did the robot
+    appear?"
+  - **B4.** Robot perceived intelligence / competence — "How intelligent or competent
+    did the robot appear?"
+
+Responses are stored in `responses/survey_responses_en.sqlite` and exported to
+`responses/survey_responses_en.csv`.
+
+### Why these rating dimensions
+
+The annotation scheme is a two-block design. **Part A** measures observer-rated
+conversational HRI quality directly from dialogue transcripts — no single standardized
+instrument exists for rating *transcripts* (rather than self-report) of human-robot
+conversation, so its six dimensions are adapted from recent conversational-HRI and
+dialogue-evaluation literature. **Part B** measures robot perception using
+Godspeed-inspired dimensions, since the robot is shown as an embodied agent via an image
+rather than judged from the transcript.
+
+**Part A — dialogue quality, per dimension:**
+
+- **A1. User engagement/enjoyment** — chosen because participant engagement is the most
+  direct observable signal of whether the conversation "worked" for the human side.
+  Sourced from **HRI CUES** (Irfan, Miniota, Thunberg, Lagerstedt, Kuoppamäki, Skantze &
+  Pereira — *IEEE Trans. Affective Computing*), which introduces a 5-point,
+  externally-annotated enjoyment scale built specifically for third-party transcript
+  rating rather than self-report; supported by Pereira et al. (ICMI 2024) and Janssens,
+  Pereira, Skantze, Irfan & Belpaeme (ACM/IEEE HRI 2025) on annotating/modeling enjoyment
+  from dialogue. *(1 of 6 Part A dimensions cite HRI CUES.)*
+- **A2. Conversation flow/coherence** — chosen because a coherent topic progression
+  across turns is a prerequisite for the conversation being understandable at all.
+  Sourced from Reimann, Kunneman, Oertel & Hindriks's dialogue-management survey
+  (*ACM Trans. HRI*, 2024), which frames flow as central to smooth, informative, engaging
+  spoken HRI. *(This survey is cited for 3 of 6 Part A dimensions: A2, A4, A5.)*
+- **A3. Interaction clarity/habitability** — chosen because the participant needs to know
+  what they can say or do for the dialogue to proceed naturally, independent of how
+  fluent the topic itself is. Sourced from Reimann, Hindriks, Kunneman, Oertel, Skantze &
+  Leite (ACM/IEEE HRI 2025), which shows that proactively communicating what a robot can
+  understand/do leads to more natural conversations — directly matching this question
+  ("how clear was it what the participant could say or do next?"); also supported by
+  Hone & Graham's **SASSI** (*Natural Language Engineering*, 2000), not HRI-specific but
+  relevant since the robot is a stationary speech/chat interface. *(SASSI is cited for
+  3 of 6 Part A dimensions: A3, A4, A5.)*
+- **A4. Repair/recovery quality** — chosen because how a system handles misunderstandings
+  is a known differentiator of conversational quality that flow/clarity alone don't
+  capture. Sourced from the same Reimann et al. 2024 dialogue-management survey and
+  supported by SASSI (see above).
+- **A5. Response appropriateness** — chosen as the most direct turn-level measure of
+  whether the robot is actually responding to what the participant said, rather than
+  scripted or generic. Sourced from the same Reimann et al. 2024 survey and supported by
+  SASSI (see above).
+- **A6. Social interaction quality** — chosen because politeness/tone/social
+  appropriateness is conceptually distinct from task-level flow or appropriateness, and
+  matters separately for a museum-guide robot interacting with the public. Sourced from
+  Heerink, Kröse, Evers & Wielinga's Almere model (*Int. J. Social Robotics*, 2010), whose
+  sociability/social-presence constructs are adapted into observer-rated wording for
+  whether the robot behaves as a socially appropriate conversational partner. *(Almere is
+  cited for 1 of 6 Part A dimensions.)*
+
+**Part B — robot perception, per dimension:**
+
+All four Part B dimensions are drawn from the **Godspeed Questionnaire Series**
+(Bartneck, Kulić, Croft & Zoghbi, 2009, *Int. J. Social Robotics*), the standard,
+widely-cited instrument for measuring how humans perceive robots. *(Godspeed is cited for
+all 4 of 4 Part B dimensions: B1–B4 — the strongest single source in the whole scheme.)*
+Four of its five subscales are used; *perceived safety*, the fifth, is dropped as not
+applicable to a stationary museum-guide robot.
+
+- **B1. Robot anthropomorphism/human-likeness** — chosen to capture whether the robot is
+  perceived as a social agent at all, the most basic dimension of robot perception.
+- **B2. Robot animacy/lifelikeness** — chosen as conceptually distinct from
+  human-likeness: a robot can appear lively/animated without appearing human.
+- **B3. Robot likeability/pleasantness** — chosen because affective response to the robot
+  (rather than its appearance) is a separate driver of acceptance.
+- **B4. Robot perceived intelligence/competence** — chosen because perceived competence
+  drives trust and willingness to engage, independent of likeability or human-likeness.
+
+**Summary — how many dimensions each source supports:**
+
+| Source | Dimensions supported | Count |
+| --- | --- | --- |
+| Godspeed (Bartneck et al., 2009) | B1, B2, B3, B4 | 4 |
+| Reimann et al. dialogue-management survey (2024) | A2, A4, A5 | 3 |
+| SASSI (Hone & Graham, 2000) | A3, A4, A5 | 3 |
+| HRI CUES (Irfan et al.) | A1 | 1 |
+| Reimann et al. habitability paper (HRI 2025) | A3 | 1 |
+| Almere model (Heerink et al., 2010) | A6 | 1 |
 
 ## 06_liwc_features — psycholinguistic features
 
