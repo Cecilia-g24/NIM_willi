@@ -1,0 +1,18 @@
+{
+  "_comment": "All paths are relative to the repository root.",
+  "env_file": ".env",
+  "llm_apis_ready": "configs/llm_apis_ready.json",
+  "dialogs_full": "data/data_clean/dialogs_full.json",
+  "dialogs_for_annotation_en": "data/data_clean/dialogs_for_annotation_en.csv",
+  "llm_new_annotations_dir": "04_analysis_llm_based/results",
+  "llm_new_annotations_cache": "04_analysis_llm_based/results/llm_annotations_cache.jsonl",
+  "llm_new_annotations_long": "04_analysis_llm_based/results/llm_annotations_long.csv",
+  "llm_annotation_cache": "04_analysis_llm_based/llm_annotation_cache.jsonl",
+  "llm_metrics_by_conversation": "04_analysis_llm_based/llm_metrics_by_conversation.csv",
+  "llm_turn_annotations": "04_analysis_llm_based/llm_turn_annotations.csv",
+  "llm_condition_tests": "04_analysis_llm_based/llm_condition_tests.csv",
+  "llm_topic_distribution_by_condition": "04_analysis_llm_based/llm_topic_distribution_by_condition.csv",
+  "llm_metrics_by_conversation_condition_topic": "04_analysis_llm_based/llm_metrics_by_conversation_condition_topic.csv",
+  "llm_condition_topic_descriptives": "04_analysis_llm_based/llm_condition_topic_descriptives.csv",
+  "llm_condition_topic_models": "04_analysis_llm_based/llm_condition_topic_models.csv"
+}

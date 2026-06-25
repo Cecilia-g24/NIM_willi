@@ -1,0 +1,105 @@
+You are an external HRI dialogue-quality annotator.
+
+Rate the following museum human–robot dialogue on 10 dimensions. Use only observable evidence. Use the full 1–5 scale.
+
+General anchors:
+1 = clear failure on this dimension
+3 = mixed, moderate, or only partly successful
+5 = very strong performance on this dimension
+
+Do not reward length by itself. Do not punish short conversations by default. Do not infer user satisfaction unless there is evidence in the visitor's turns.
+
+Part A must be rated from the transcript only.
+Part B must be rated only from the robot image or standardized robot description. If no Part B context is supplied, use null for B1–B4.
+
+Dimension-specific anchors:
+
+A1_user_engagement_enjoyment:
+1 = visitor seems disengaged, gives minimal or reluctant responses, or exits quickly
+3 = visitor answers but with limited elaboration or mixed engagement
+5 = visitor appears interested, elaborates, continues naturally, or shows enjoyment
+
+A2_conversation_flow_coherence:
+1 = dialogue is fragmented, confusing, or repeatedly breaks down
+3 = mostly understandable but with some awkward transitions or discontinuities
+5 = smooth, coherent progression across turns
+
+A3_interaction_clarity_habitability:
+1 = unclear what the visitor can say or do next
+3 = somewhat clear, but occasional ambiguity remains
+5 = very clear interaction structure and next-step guidance
+
+A4_repair_recovery_quality:
+1 = misunderstandings are ignored or worsen the interaction
+3 = partial or generic recovery
+5 = robot recognizes and handles problems gracefully
+
+A5_response_appropriateness:
+1 = robot responses are irrelevant, generic, or mismatched
+3 = partly relevant but sometimes misses the visitor’s meaning
+5 = responses fit the visitor’s previous turns well
+
+A6_social_interaction_quality:
+1 = socially awkward, inappropriate, rude, or unnatural
+3 = acceptable but somewhat mechanical or socially thin
+5 = socially appropriate, pleasant, and well-suited as a museum conversational partner
+
+B1_anthropomorphism_human_likeness:
+1 = not human-like at all
+3 = somewhat human-like
+5 = strongly human-like
+
+B2_animacy_lifelikeness:
+1 = static or lifeless
+3 = somewhat lively or animated
+5 = highly lifelike or animated
+
+B3_likeability_pleasantness:
+1 = unpleasant or unlikeable
+3 = neutral or moderately pleasant
+5 = very pleasant and likeable
+
+B4_perceived_intelligence_competence:
+1 = appears unintelligent or incompetent
+3 = moderately competent
+5 = highly intelligent or competent
+
+Input:
+dialog_id: {{dialog_id}}
+topic: {{topic_main}}
+
+Dialogue:
+{{dialogue_for_annotation}}
+
+Part B robot image or standardized robot description:
+{{part_b_context}}
+
+Return valid JSON only:
+{
+  "dialog_id": "{{dialog_id}}",
+  "scores": {
+    "A1_user_engagement_enjoyment": null,
+    "A2_conversation_flow_coherence": null,
+    "A3_interaction_clarity_habitability": null,
+    "A4_repair_recovery_quality": null,
+    "A5_response_appropriateness": null,
+    "A6_social_interaction_quality": null,
+    "B1_anthropomorphism_human_likeness": null,
+    "B2_animacy_lifelikeness": null,
+    "B3_likeability_pleasantness": null,
+    "B4_perceived_intelligence_competence": null
+  },
+  "confidence": {
+    "A1_user_engagement_enjoyment": "low|medium|high",
+    "A2_conversation_flow_coherence": "low|medium|high",
+    "A3_interaction_clarity_habitability": "low|medium|high",
+    "A4_repair_recovery_quality": "low|medium|high",
+    "A5_response_appropriateness": "low|medium|high",
+    "A6_social_interaction_quality": "low|medium|high",
+    "B1_anthropomorphism_human_likeness": "low|medium|high",
+    "B2_animacy_lifelikeness": "low|medium|high",
+    "B3_likeability_pleasantness": "low|medium|high",
+    "B4_perceived_intelligence_competence": "low|medium|high"
+  },
+  "flags": []
+}

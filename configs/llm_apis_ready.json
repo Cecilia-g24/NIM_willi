@@ -1,0 +1,36 @@
+{
+  "_comment": "Models that passed connectivity testing — last checked 2026-06-24.",
+  "nhr": {
+    "GaleneAI/Magistral-Small-2509-FP8-Dynamic": "GaleneAI/Magistral-Small-2509-FP8-Dynamic",
+    "Microsoft/Phi-4-mini-instruct": "Microsoft/Phi-4-mini-instruct",
+    "RedHatAI/gemma-4-31B-it-FP8-block": "RedHatAI/gemma-4-31B-it-FP8-block",
+    "ibm-granite/granite-4.1-3b": "ibm-granite/granite-4.1-3b",
+    "google/gemma-4-E4B-it": "google/gemma-4-E4B-it",
+    "gpt-oss-120b": "gpt-oss-120b",
+    "deepseek-ai/DeepSeek-V4-Flash": "deepseek-ai/DeepSeek-V4-Flash",
+    "RedHatAI/Mistral-Small-3.2-24B-Instruct-2506-FP8": "RedHatAI/Mistral-Small-3.2-24B-Instruct-2506-FP8",
+    "Qwen/Qwen3.6-35B-A3B-FP8": "Qwen/Qwen3.6-35B-A3B-FP8"
+  },
+  "gwdg": {
+    "qwen3-coder-30b-a3b-instruct": "qwen3-coder-30b-a3b-instruct",
+    "glm-4.7": "glm-4.7",
+    "qwen3.6-35b-a3b": "qwen3.6-35b-a3b",
+    "apertus-70b-instruct-2509": "apertus-70b-instruct-2509",
+    "qwen3-omni-30b-a3b-instruct": "qwen3-omni-30b-a3b-instruct",
+    "devstral-2-123b-instruct-2512": "devstral-2-123b-instruct-2512",
+    "internvl3.5-30b-a3b": "internvl3.5-30b-a3b",
+    "qwen3.5-122b-a10b": "qwen3.5-122b-a10b",
+    "qwen3.5-397b-a17b": "qwen3.5-397b-a17b",
+    "gemma-4-31b-it": "gemma-4-31b-it",
+    "mistral-large-3-675b-instruct-2512": "mistral-large-3-675b-instruct-2512",
+    "meta-llama-3.1-8b-instruct": "meta-llama-3.1-8b-instruct",
+    "openai-gpt-oss-120b": "openai-gpt-oss-120b",
+    "qwen3-30b-a3b-instruct-2507": "qwen3-30b-a3b-instruct-2507",
+    "medgemma-27b-it": "medgemma-27b-it",
+    "deepseek-r1-distill-llama-70b": "deepseek-r1-distill-llama-70b",
+    "teuken-7b-instruct-research": "teuken-7b-instruct-research"
+  },
+  "openai": {
+    "gpt-5.4-mini": "gpt-5.4-mini"
+  }
+}

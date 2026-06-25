@@ -24,8 +24,13 @@ try:
 except ImportError:  # tqdm is optional but recommended for cleaner progress reporting
     tqdm = None
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
+with (REPO_ROOT / "configs" / "paths.json").open("r", encoding="utf-8") as _f:
+    PATHS = {k: REPO_ROOT / v for k, v in json.load(_f).items() if not k.startswith("_")}
+
 if load_dotenv is not None:
-    load_dotenv(dotenv_path=Path(__file__).with_name(".env"), override=True)
+    load_dotenv(dotenv_path=PATHS["env_file"], override=True)
 
 
 CONDITION_A = "Condition A (Willi)"
@@ -596,12 +601,11 @@ def run_condition_tests(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def parse_args() -> argparse.Namespace:
-    here = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser(description="LLM-based conversation annotation by condition.")
     parser.add_argument(
         "--dialogs",
         type=Path,
-        default=here.parent / "data" / "data_clean" / "dialogs_full.json",
+        default=PATHS["dialogs_full"],
         help="Path to dialogs_full.json",
     )
     parser.add_argument(
@@ -612,7 +616,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--cache",
         type=Path,
-        default=here / "llm_annotation_cache.jsonl",
+        default=PATHS["llm_annotation_cache"],
         help="JSONL cache for raw structured LLM annotations.",
     )
     parser.add_argument("--max-dialogs", type=int, default=None, help="Optional cap for test runs.")
@@ -639,7 +643,6 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    here = Path(__file__).resolve().parent
 
     conversation_df = build_metrics_dataframe(
         args.dialogs,
@@ -663,15 +666,15 @@ def main() -> None:
         max_dialogs=args.max_dialogs,
     )
 
-    conversation_df.to_csv(here / "llm_metrics_by_conversation.csv", index=False)
-    turn_df.to_csv(here / "llm_turn_annotations.csv", index=False)
-    run_condition_tests(conversation_df).to_csv(here / "llm_condition_tests.csv", index=False)
+    conversation_df.to_csv(PATHS["llm_metrics_by_conversation"], index=False)
+    turn_df.to_csv(PATHS["llm_turn_annotations"], index=False)
+    run_condition_tests(conversation_df).to_csv(PATHS["llm_condition_tests"], index=False)
 
     (
         conversation_df.groupby(["condition", "chosen_topic"])
         .size()
         .reset_index(name="n_conversations")
-        .to_csv(here / "llm_topic_distribution_by_condition.csv", index=False)
+        .to_csv(PATHS["llm_topic_distribution_by_condition"], index=False)
     )
 
     print("Saved:")

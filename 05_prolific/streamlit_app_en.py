@@ -39,9 +39,10 @@ TARGET_RATINGS_PER_DIALOG: Optional[int] = None
 
 # Picture shown between Block A and Block B questions, chosen by the dialog's condition.
 # TODO (dummy placeholder): replace with the real image files for Block B.
+ASSETS_DIR = BASE_DIR.parent / "data" / "assets" / "robot_images"
 BLOCK_B_IMAGE_PATHS_BY_CONDITION = {
-    "Condition A (Willi)": BASE_DIR / "block_b_image_condition_a_willi.png",
-    "Condition B (WV-34)": BASE_DIR / "block_b_image_condition_b_wv34.png",
+    "Condition A (Willi)": ASSETS_DIR / "block_b_image_condition_a_willi.png",
+    "Condition B (WV-34)": ASSETS_DIR / "block_b_image_condition_b_wv34.png",
 }
 
 REQUIRED_COLUMNS = ["META_dialog_id", "META_condition", "language", "subject", "dialog_text"]

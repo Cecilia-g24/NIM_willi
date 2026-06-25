@@ -2,18 +2,24 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import statsmodels.formula.api as smf
 
-from llm_based_analysis_by_condition_tqdm import (
+from llm_based_analysis_by_condition import (
     CONDITION_A,
     CONDITION_B,
     VALID_CHOSEN_TOPICS,
     build_metrics_dataframe,
 )
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
+with (REPO_ROOT / "configs" / "paths.json").open("r", encoding="utf-8") as _f:
+    PATHS = {k: REPO_ROOT / v for k, v in json.load(_f).items() if not k.startswith("_")}
 
 
 def detect_metric_types(df: pd.DataFrame) -> tuple[list[str], list[str]]:
@@ -98,15 +104,14 @@ def fit_models(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def parse_args() -> argparse.Namespace:
-    here = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser(description="LLM-based conversation analysis controlling for topic.")
     parser.add_argument(
         "--dialogs",
         type=Path,
-        default=here.parent / "data" / "data_clean" / "dialogs_full.json",
+        default=PATHS["dialogs_full"],
         help="Path to dialogs_full.json",
     )
-    parser.add_argument("--cache", type=Path, default=here / "llm_annotation_cache.jsonl", help="Path to annotation cache")
+    parser.add_argument("--cache", type=Path, default=PATHS["llm_annotation_cache"], help="Path to annotation cache")
     parser.add_argument("--model", default="gpt-5.4-mini", help="Model ID; only used for dialogs not already cached")
     parser.add_argument("--max-dialogs", type=int, default=None, help="Optional cap for test runs")
     parser.add_argument("--max-retries", type=int, default=5, help="API retries per dialog")
@@ -118,7 +123,6 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    here = Path(__file__).resolve().parent
 
     df = build_metrics_dataframe(
         args.dialogs,
@@ -143,7 +147,7 @@ def main() -> None:
         ordered=True,
     )
 
-    df.to_csv(here / "llm_metrics_by_conversation_condition_topic.csv", index=False)
+    df.to_csv(PATHS["llm_metrics_by_conversation_condition_topic"], index=False)
 
     (
         df.groupby(["condition", "chosen_topic"])
@@ -157,10 +161,10 @@ def main() -> None:
             mean_naturalness=("llm_naturalness_score", "mean"),
         )
         .reset_index()
-        .to_csv(here / "llm_condition_topic_descriptives.csv", index=False)
+        .to_csv(PATHS["llm_condition_topic_descriptives"], index=False)
     )
 
-    fit_models(df).to_csv(here / "llm_condition_topic_models.csv", index=False)
+    fit_models(df).to_csv(PATHS["llm_condition_topic_models"], index=False)
 
     print("Saved:")
     print(" - llm_metrics_by_conversation_condition_topic.csv")
