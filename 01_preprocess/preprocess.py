@@ -2,7 +2,7 @@
 Refactored preprocessing script for the human-robot interaction dialog data.
 
 What this script does:
-1. Loads the same raw JSON input path as the original preprocess.py.
+1. Loads the raw JSON input file.
 2. Removes empty / malformed interactions.
 3. Classifies each dialog into Condition A (Willi), Condition B (WV-34), or Unknown.
 4. Detects dialog language as English or German.
@@ -57,7 +57,7 @@ ORIGINAL_DE_CSV = CSV_OUTPUT_DIR / "dialogs_de.csv"
 ANNOTATION_EN_CSV = CSV_OUTPUT_DIR / "dialogs_for_annotation_en.csv"
 ANNOTATION_DE_CSV = CSV_OUTPUT_DIR / "dialogs_for_annotation_de.csv"
 
-# Optional audit JSON outputs and reports.
+# Audit and report JSON outputs (always written).
 CLEANED_JSON_FILE = CSV_OUTPUT_DIR / "dialogs_full.json"
 REMOVED_IDS_FILE = REPORT_DIR / "removed_ids.json"
 UNKNOWN_ENTRIES_FILE = REPORT_DIR / "unknown_entries.json"
@@ -73,6 +73,10 @@ CONDITION_UNKNOWN = "Condition Unknown"
 
 LANG_EN = "en"
 LANG_DE = "de"
+
+EMOJI_RE = re.compile(
+    r"[\U0001F300-\U0001FFFF\U00002600-\U000027FF\U0000FE00-\U0000FE0F\U0001F900-\U0001F9FF]"
+)
 
 GESTURE_REPLACEMENTS = {
     "smile": "robot smiles",
@@ -247,9 +251,9 @@ def detect_language(dialog: Dict[str, Any]) -> str:
     """
     Detect German vs. English.
 
-    This mirrors your earlier logic:
-    1. Use explicit system-message hints first.
-    2. Fall back to German/English marker scoring.
+    Detection priority:
+    1. Explicit system-message instruction (highest confidence).
+    2. German/English keyword frequency scoring as fallback.
     """
     all_text = "\n".join(str(msg.get("content", "")) for msg in iter_messages(dialog))
     lower = f" {all_text.lower()} "
@@ -309,10 +313,12 @@ def convert_gesture_markers(text: str, keep_gestures: bool = True) -> str:
     return re.sub(r"<<([^>]+)>>", replace_marker, text).strip()
 
 
-def clean_message_content(content: Any, keep_gestures: bool = True) -> str:
+def clean_message_content(content: Any, keep_gestures: bool = True, strip_emoji: bool = False) -> str:
     """Clean one message content for annotation display."""
     text = normalize_whitespace(content)
     text = convert_gesture_markers(text, keep_gestures=keep_gestures)
+    if strip_emoji:
+        text = EMOJI_RE.sub("", text)
     text = normalize_whitespace(text)
     return text
 
@@ -381,20 +387,25 @@ def format_annotation_dialogue(
         if speaker is None:
             continue
 
-        content = clean_message_content(message.get("content", ""), keep_gestures=keep_gestures)
+        is_robot = role == "assistant"
+        content = clean_message_content(
+            message.get("content", ""),
+            keep_gestures=False if is_robot else keep_gestures,
+            strip_emoji=is_robot,
+        )
         if content:
             turns.append(f"{speaker}: {content}")
 
     return "\n\n".join(turns)
 
 
-def collect_role_text(dialog: Dict[str, Any], role: str, keep_gestures: bool = True) -> str:
+def collect_role_text(dialog: Dict[str, Any], role: str, keep_gestures: bool = True, strip_emoji: bool = False) -> str:
     """Collect all visible text from one role. Useful for later feature extraction."""
     texts: List[str] = []
     for message in iter_messages(dialog):
         if message.get("role") != role:
             continue
-        text = clean_message_content(message.get("content", ""), keep_gestures=keep_gestures)
+        text = clean_message_content(message.get("content", ""), keep_gestures=keep_gestures, strip_emoji=strip_emoji)
         if text:
             texts.append(text)
     return "\n".join(texts)
@@ -409,6 +420,37 @@ def safe_json_dumps(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False)
 
 
+# Analysis of "Unknown" topic labels (28 dialogs in the initial dataset):
+#
+# "Unknown" is returned when no topic in the dialog matches TOPIC_MAP. Three root causes:
+#
+#   1. EMPTY (8 dialogs — IDs: 909, 249, 459, 147, 234, 258, 1002, 1282)
+#      No topic field was recorded at all (topics: ['']).
+#
+#   2. ALL_IGNORED_GENERIC (2 dialogs — IDs: 1139, 1288)
+#      Topic is only "General", which is in IGNORED_TOPIC_VALUES and skipped,
+#      leaving nothing to match.
+#
+#   3. OUT_OF_VOCAB (18 dialogs) — topic text exists but is not in TOPIC_MAP:
+#      - UI/system artifacts: "themaselect", "Thema-Auswahl", "Einleitung"
+#        (IDs: 1105, 613, 264)
+#      - Study meta labels: "GfK Konsumforschung", "GfK"
+#        (IDs: 806, 940)
+#      - Vague/general labels: "Allgemein", "Allgemeines Gespräch"
+#        (IDs: 27, 719, 1312, 1389, 940)
+#      - Real off-study conversations (Technik, Fußball, Kekse, Strategie,
+#        Schiffe, Geschenke, Retail Economy, General Inquiry, etc.)
+#        (IDs: 3, 885, 775, 1203, 1379, 1389, 1014, 821, 517)
+#
+# Annotation recommendation for Unknown-topic dialogs:
+#   Include       (IDs: 821, 885, 1014, 517, 719, 940, 1312, 1379, 1389)
+#     Substantive off-topic or meta-topic conversations with enough interaction
+#     to rate conversation quality.
+#   Include with caution  (IDs: 210, 806, 264, 1139, 147, 775, 1203, 1288)
+#     Valid but short, narrow, or somewhat off-protocol.
+#   Exclude       (IDs: 3, 909, 1105, 249, 459, 234, 613, 1002, 27, 258, 1282)
+#     Setup/test noise, UI-only interactions, incoherent ASR fragments,
+#     or abusive one-turn exchanges.
 def get_topic_main(dialog: Dict[str, Any]) -> str:
     """Return a canonical topic label where possible."""
     raw_topics = dialog.get("topics") or []
@@ -481,8 +523,52 @@ def build_annotation_row(dialog: Dict[str, Any], language: str) -> Dict[str, Any
         "n_visitor_turns": count_role(dialog, "user"),
         "n_system_turns_removed": count_role(dialog, "system"),
         "dialogue_for_annotation": format_annotation_dialogue(dialog, language=language, keep_gestures=True),
-        "robot_only_text": collect_role_text(dialog, "assistant", keep_gestures=True),
+        "robot_only_text": collect_role_text(dialog, "assistant", keep_gestures=False, strip_emoji=True),
         "visitor_only_text": collect_role_text(dialog, "user", keep_gestures=False),
+    }
+
+
+# -----------------------------------------------------------------------------
+# Annotation summary statistics
+# -----------------------------------------------------------------------------
+
+
+def compute_annotation_summary(dialogs: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Compute per-language summary statistics for the annotation data table."""
+    n = len(dialogs)
+    if n == 0:
+        return {}
+
+    has_feedback = sum(
+        1 for d in dialogs if d.get("feedback") not in (None, "", "null")
+    )
+    cond_counts: Counter = Counter(d.get("condition") for d in dialogs)
+    topic_counts: Counter = Counter(get_topic_main(d) for d in dialogs)
+
+    condition_topic_counts: Counter = Counter(
+        f"{d.get('condition')} / {get_topic_main(d)}" for d in dialogs
+    )
+
+    mean_turns = sum(count_visible_turns(d) for d in dialogs) / n
+    dialog_texts = [
+        format_annotation_dialogue(d, language=str(d.get("language", LANG_DE)))
+        for d in dialogs
+    ]
+    mean_len = sum(len(t) for t in dialog_texts) / n
+    mean_words = sum(len(t.split()) for t in dialog_texts) / n
+
+    return {
+        "n_dialogs": n,
+        "quality_balance": {
+            "with_feedback": has_feedback,
+            "without_feedback": n - has_feedback,
+        },
+        "condition_balance": dict(cond_counts),
+        "topic_balance": dict(topic_counts),
+        "condition_topic_breakdown": dict(sorted(condition_topic_counts.items())),
+        "mean_turn_count": round(mean_turns, 2),
+        "mean_dialog_length_chars": round(mean_len, 1),
+        "mean_dialog_length_words": round(mean_words, 1),
     }
 
 
@@ -549,6 +635,13 @@ def preprocess_dialogs(input_file: Path = INPUT_FILE, csv_output_dir: Path = CSV
     en_dialogs = [dialog for dialog in cleaned_dialogs if dialog.get("language") == LANG_EN]
     de_dialogs = [dialog for dialog in cleaned_dialogs if dialog.get("language") == LANG_DE]
 
+    # Annotation CSVs exclude dialogs with no recognisable study topic.
+    en_annotation_dialogs = [d for d in en_dialogs if d.get("topic_main") != "Unknown"]
+    de_annotation_dialogs = [d for d in de_dialogs if d.get("topic_main") != "Unknown"]
+
+    en_summary = compute_annotation_summary(en_annotation_dialogs)
+    de_summary = compute_annotation_summary(de_annotation_dialogs)
+
     original_fieldnames = [
         "dialog_id",
         "timestamp",
@@ -584,8 +677,8 @@ def preprocess_dialogs(input_file: Path = INPUT_FILE, csv_output_dir: Path = CSV
 
     write_csv(ORIGINAL_EN_CSV, [build_original_row(d, LANG_EN) for d in en_dialogs], original_fieldnames)
     write_csv(ORIGINAL_DE_CSV, [build_original_row(d, LANG_DE) for d in de_dialogs], original_fieldnames)
-    write_csv(ANNOTATION_EN_CSV, [build_annotation_row(d, LANG_EN) for d in en_dialogs], annotation_fieldnames)
-    write_csv(ANNOTATION_DE_CSV, [build_annotation_row(d, LANG_DE) for d in de_dialogs], annotation_fieldnames)
+    write_csv(ANNOTATION_EN_CSV, [build_annotation_row(d, LANG_EN) for d in en_annotation_dialogs], annotation_fieldnames)
+    write_csv(ANNOTATION_DE_CSV, [build_annotation_row(d, LANG_DE) for d in de_annotation_dialogs], annotation_fieldnames)
 
     save_json(CLEANED_JSON_FILE, cleaned_dialogs)
     save_json(REMOVED_IDS_FILE, removed_ids)
@@ -600,6 +693,9 @@ def preprocess_dialogs(input_file: Path = INPUT_FILE, csv_output_dir: Path = CSV
         "removed_empty_or_malformed_interactions": len(removed_ids),
         "english_dialogs": len(en_dialogs),
         "german_dialogs": len(de_dialogs),
+        "english_annotation_dialogs": len(en_annotation_dialogs),
+        "german_annotation_dialogs": len(de_annotation_dialogs),
+        "unknown_topic_excluded_from_annotation": len(en_dialogs) - len(en_annotation_dialogs) + len(de_dialogs) - len(de_annotation_dialogs),
         "total_system_turns_removed_from_annotation_text": stats["system_turns_total"],
         "condition_counts": {
             CONDITION_A: stats[f"condition::{CONDITION_A}"],
@@ -614,6 +710,10 @@ def preprocess_dialogs(input_file: Path = INPUT_FILE, csv_output_dir: Path = CSV
         "language_condition_counts": {
             f"{language} / {condition}": count
             for (language, condition), count in sorted(language_condition_counts.items())
+        },
+        "annotation_summary": {
+            "en": en_summary,
+            "de": de_summary,
         },
         "output_files": [
             str(ORIGINAL_EN_CSV),
@@ -635,8 +735,8 @@ def preprocess_dialogs(input_file: Path = INPUT_FILE, csv_output_dir: Path = CSV
     print(f"Total interactions in input: {total_items}")
     print(f"Retained interactions: {len(cleaned_dialogs)}")
     print(f"Removed empty/malformed interactions: {len(removed_ids)}")
-    print(f"English dialogs: {len(en_dialogs)}")
-    print(f"German dialogs: {len(de_dialogs)}")
+    print(f"English dialogs: {len(en_dialogs)} (annotation: {len(en_annotation_dialogs)}, excluded unknown topic: {len(en_dialogs) - len(en_annotation_dialogs)})")
+    print(f"German dialogs: {len(de_dialogs)} (annotation: {len(de_annotation_dialogs)}, excluded unknown topic: {len(de_dialogs) - len(de_annotation_dialogs)})")
     print(f"System turns removed from annotation text: {stats['system_turns_total']}")
 
     print("\nCondition counts:")
@@ -646,6 +746,22 @@ def preprocess_dialogs(input_file: Path = INPUT_FILE, csv_output_dir: Path = CSV
     print("\nCondition source counts:")
     for source in ["assistant", "system_fallback", "unknown"]:
         print(f"  {source}: {stats[f'condition_source::{source}']}")
+
+    print("\nAnnotation summary:")
+    for lang, summary in [("English", en_summary), ("German", de_summary)]:
+        print(f"  {lang}:")
+        print(f"    # of dialogs: {summary['n_dialogs']}")
+        print(f"    Quality balance (with/without feedback): "
+              f"{summary['quality_balance']['with_feedback']} / "
+              f"{summary['quality_balance']['without_feedback']}")
+        print(f"    Condition balance: {summary['condition_balance']}")
+        print(f"    Topic balance: {summary['topic_balance']}")
+        print(f"    Condition × topic breakdown:")
+        for key, count in summary['condition_topic_breakdown'].items():
+            print(f"      {key}: {count}")
+        print(f"    Mean turn count: {summary['mean_turn_count']}")
+        print(f"    Mean dialog length (chars): {summary['mean_dialog_length_chars']}")
+        print(f"    Mean dialog length (words): {summary['mean_dialog_length_words']}")
 
     print("\nSaved files:")
     for path in report["output_files"]:

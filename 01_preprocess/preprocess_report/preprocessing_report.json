@@ -7,6 +7,9 @@
   "removed_empty_or_malformed_interactions": 305,
   "english_dialogs": 108,
   "german_dialogs": 1018,
+  "english_annotation_dialogs": 102,
+  "german_annotation_dialogs": 996,
+  "unknown_topic_excluded_from_annotation": 28,
   "total_system_turns_removed_from_annotation_text": 1846,
   "condition_counts": {
     "Condition A (Willi)": 685,
@@ -23,6 +26,62 @@
     "de / Condition B (WV-34)": 391,
     "en / Condition A (Willi)": 58,
     "en / Condition B (WV-34)": 50
+  },
+  "annotation_summary": {
+    "en": {
+      "n_dialogs": 102,
+      "quality_balance": {
+        "with_feedback": 73,
+        "without_feedback": 29
+      },
+      "condition_balance": {
+        "Condition A (Willi)": 56,
+        "Condition B (WV-34)": 46
+      },
+      "topic_balance": {
+        "Breakfast": 26,
+        "Watches": 36,
+        "Vacation": 40
+      },
+      "condition_topic_breakdown": {
+        "Condition A (Willi) / Breakfast": 19,
+        "Condition A (Willi) / Vacation": 19,
+        "Condition A (Willi) / Watches": 18,
+        "Condition B (WV-34) / Breakfast": 7,
+        "Condition B (WV-34) / Vacation": 21,
+        "Condition B (WV-34) / Watches": 18
+      },
+      "mean_turn_count": 12.33,
+      "mean_dialog_length_chars": 2101.8,
+      "mean_dialog_length_words": 366.3
+    },
+    "de": {
+      "n_dialogs": 996,
+      "quality_balance": {
+        "with_feedback": 497,
+        "without_feedback": 499
+      },
+      "condition_balance": {
+        "Condition A (Willi)": 613,
+        "Condition B (WV-34)": 383
+      },
+      "topic_balance": {
+        "Breakfast": 294,
+        "Watches": 243,
+        "Vacation": 459
+      },
+      "condition_topic_breakdown": {
+        "Condition A (Willi) / Breakfast": 168,
+        "Condition A (Willi) / Vacation": 294,
+        "Condition A (Willi) / Watches": 151,
+        "Condition B (WV-34) / Breakfast": 126,
+        "Condition B (WV-34) / Vacation": 165,
+        "Condition B (WV-34) / Watches": 92
+      },
+      "mean_turn_count": 16.4,
+      "mean_dialog_length_chars": 3253.6,
+      "mean_dialog_length_words": 505.0
+    }
   },
   "output_files": [
     "D:\\aaa_Desktop\\NIM\\Project_Robot_Chats\\data\\data_clean\\dialogs_en.csv",
