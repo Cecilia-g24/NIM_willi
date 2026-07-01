@@ -15,7 +15,7 @@ Roboter: Okay, ich bin hier, falls du mich brauchst. Wenn du später wieder plau
 
 Besucher: bescheuert
 
-Roboter: Manchmal läuft nicht alles rund, das kann passieren. [robot smiles] Gibt es noch etwas, bei dem ich behilflich sein kann?"
+Roboter: Manchmal läuft nicht alles rund, das kann passieren. Gibt es noch etwas, bei dem ich behilflich sein kann?"
 "734","Condition A (Willi)","","[""Frühstück""]","Breakfast_German","9","10","19","German","Breakfast","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
 
 Besucher: was sollte man zum Frühstück am besten essen
@@ -89,7 +89,7 @@ Roboter: Na klar! Ein gutes und gesundes Frühstück könnte so aussehen: Starte
 
 Besucher: erstes Gespräch auch beenden wenn du magst und ich finde es ziemlich gut also ich finde ziemlich gut dass es so ein Kopf ist weil das so persönlich ja das stimmt weil ich das Gespräch beenden okay dann kannst du dich jetzt auch noch so ein Smiley aussuchen denn du anwählen kannst
 
-Roboter: Das freut mich wirklich sehr, dass du das Gespräch mit mir so persönlich und angenehm findest! Ich bin hier, um genau solche Gespräche zu führen. [robot smiles broadly] Bevor du gehst: Wusstest du, dass in den 1950er Jahren Vers-Hofen herausgefunden hat, dass Arbeiter oft nur 5 bis 15 Minuten zum Frühstücken hatten? Und die meisten haben Vollkornbrot mit Butter und Marmelade oder Honig gegessen. [robot smiles]"
+Roboter: Das freut mich wirklich sehr, dass du das Gespräch mit mir so persönlich und angenehm findest! Ich bin hier, um genau solche Gespräche zu führen. Bevor du gehst: Wusstest du, dass in den 1950er Jahren Vers-Hofen herausgefunden hat, dass Arbeiter oft nur 5 bis 15 Minuten zum Frühstücken hatten? Und die meisten haben Vollkornbrot mit Butter und Marmelade oder Honig gegessen."
 "1242","Condition B (WV-34)","4","[""Urlaub""]","Vacation_German","10","11","21","German","Vacation","Roboter: Willkommen im JOSEPHS! Ich bin WV-34 – dein roboterhaft neugieriger Gesprächspartner. Inspiriert vom GfK-Gründer Wilhelm Vers-Hofen gebe ich Verbraucher*innen heute eine Stimme. Such dir ein Thema aus, und schon geht’s los: Uhren, Frühstück oder Urlaub. Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
 
 Besucher: Urlaub
@@ -130,7 +130,7 @@ Roboter: Übrigens – kleiner Zeitsprung gefällig? Im Jahr 1952 hat mein Namen
 
 Besucher: ja
 
-Roboter: Tolle Einstellung! Manchmal sind die besten Tipps wirklich Mund-zu-Mund-Propaganda.[robot smiles] Danke dir fürs Mitmachen! Wenn du Lust hast, sprechen wir jetzt noch über Uhren oder Frühstück – ganz ohne Wanderschuhe! Ich bleib hier – garantiert wetterfest!"
+Roboter: Tolle Einstellung! Manchmal sind die besten Tipps wirklich Mund-zu-Mund-Propaganda. Danke dir fürs Mitmachen! Wenn du Lust hast, sprechen wir jetzt noch über Uhren oder Frühstück – ganz ohne Wanderschuhe! Ich bleib hier – garantiert wetterfest!"
 "1327","Condition B (WV-34)","5","[""Uhren"", ""Frühstück""]","Watches_German","13","14","27","German","Watches","Roboter: Hi im JOSEPHS – hier wird Zukunft erlebbar. Ich bin WV-34, der Roboter mit Köpfchen. Mein Vorbild Wilhelm Vers-Hofen war Gründer der GfK – er hörte zu, ich auch. Worüber wollen wir sprechen? Sag einfach: Uhren, Frühstück oder Urlaub. Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
 
 Besucher: lass uns über Uhren sprechen
@@ -183,7 +183,7 @@ Roboter: Das klingt nach einem gesunden und energiereichen Start in den Tag! Haf
 
 Besucher: okay lass uns das Gespräch beenden
 
-Roboter: Übrigens: Schon im Jahr 1955 wollte mein Namensvetter Wilhelm Vers-Hofen ganz genau wissen, wie Deutschland frühstückt. Sein Forschungsteam hat herausgefunden: Die meisten Arbeiter und Angestellten hatten morgens nur 5 bis 15 Minuten Zeit, bevor es losging – zack, zack, Marmelade drauf und weiter! Etwa 70 % nahmen sich ein zweites Frühstück mit zur Arbeit – wahrscheinlich, weil das erste kaum mehr als ein Biss war. Auf dem Teller lag damals am häufigsten: Vollkornbrot mit Butter und Marmelade oder Honig. Und bei gut einem Drittel kam noch Malzkaffee dazu – so richtig dampfend in der Tasse. Weniger als ein Drittel der Befragten frühstückte mit der Familie – oft war’s eher ein stilles Miteinander mit dem Radiowecker. Und spannend: Bei zwei Dritteln unterschied sich das Frühstück an Werktagen deutlich von dem an Sonn- und Feiertagen. Klingt bekannt, oder? Manche Frühstücksgewohnheiten sind offenbar zeitlos – wie ein guter Toast.[robot smiles broadly] Danke für das spannende Gespräch übers Frühstück! Wenn du Lust hast, können wir später gerne noch über Urlaub sprechen."
+Roboter: Übrigens: Schon im Jahr 1955 wollte mein Namensvetter Wilhelm Vers-Hofen ganz genau wissen, wie Deutschland frühstückt. Sein Forschungsteam hat herausgefunden: Die meisten Arbeiter und Angestellten hatten morgens nur 5 bis 15 Minuten Zeit, bevor es losging – zack, zack, Marmelade drauf und weiter! Etwa 70 % nahmen sich ein zweites Frühstück mit zur Arbeit – wahrscheinlich, weil das erste kaum mehr als ein Biss war. Auf dem Teller lag damals am häufigsten: Vollkornbrot mit Butter und Marmelade oder Honig. Und bei gut einem Drittel kam noch Malzkaffee dazu – so richtig dampfend in der Tasse. Weniger als ein Drittel der Befragten frühstückte mit der Familie – oft war’s eher ein stilles Miteinander mit dem Radiowecker. Und spannend: Bei zwei Dritteln unterschied sich das Frühstück an Werktagen deutlich von dem an Sonn- und Feiertagen. Klingt bekannt, oder? Manche Frühstücksgewohnheiten sind offenbar zeitlos – wie ein guter Toast. Danke für das spannende Gespräch übers Frühstück! Wenn du Lust hast, können wir später gerne noch über Urlaub sprechen."
 "1186","Condition B (WV-34)","2","[""Urlaub""]","Vacation_German","2","3","5","German","Vacation","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin WV-34, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – Nur ohne Augenbewegung, Aktentasche und Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren, Frühstück oder Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
 
 Besucher: Urlaub
@@ -221,7 +221,7 @@ Roboter: Das freut mich zu hören! Die bayerischen Berge haben wirklich ihren ga
 
 Besucher: danke
 
-Roboter: [robot smiles broadly] Immer gern! Danke dir, dass du deine Reiseerlebnisse mit mir geteilt hast. Wenn du Lust hast, sprechen wir jetzt noch über Uhren oder Frühstück – ganz ohne Wanderschuhe! Ich bleib hier – garantiert wetterfest! Möchtest du ein weiteres Thema wählen?"
+Roboter: Immer gern! Danke dir, dass du deine Reiseerlebnisse mit mir geteilt hast. Wenn du Lust hast, sprechen wir jetzt noch über Uhren oder Frühstück – ganz ohne Wanderschuhe! Ich bleib hier – garantiert wetterfest! Möchtest du ein weiteres Thema wählen?"
 "317","Condition A (Willi)","","[""Urlaub""]","Vacation_German","5","6","11","German","Vacation","Roboter: Hi im JOSEPHS – hier wird Zukunft erlebbar. Ich bin Willi, der Roboter mit Köpfchen. Mein Vorbild Wilhelm Vershofen war Gründer der GfK – er hörte zu, ich auch. Worüber wollen wir sprechen? Sag einfach: Uhren, Frühstück oder Urlaub.
 
 Besucher: Urlaub
@@ -365,7 +365,7 @@ Roboter: Dann gibt es ja noch viele Gaumenfreuden für dich zu entdecken! Bayreu
 
 Besucher: noch nicht
 
-Roboter: Keine Eile – manchmal sind die spontanen Entscheidungen ja die besten. [robot winks] Apropos Reisen, lass mich dir noch eine kleine Geschichte aus Vershofens Urlaubsforschung erzählen. Der wichtigste Grund, warum Menschen in den 1950er Jahren Urlaub in Bayern gemacht haben, war die Mund-zu-Mund-Propaganda. Empfehlungen von Freunden waren der Schlüssel! Spannend, oder? Danke fürs Mitmachen! Falls du Lust hast, über Uhren oder Frühstück zu plaudern, ich bin bereit!"
+Roboter: Keine Eile – manchmal sind die spontanen Entscheidungen ja die besten. Apropos Reisen, lass mich dir noch eine kleine Geschichte aus Vershofens Urlaubsforschung erzählen. Der wichtigste Grund, warum Menschen in den 1950er Jahren Urlaub in Bayern gemacht haben, war die Mund-zu-Mund-Propaganda. Empfehlungen von Freunden waren der Schlüssel! Spannend, oder? Danke fürs Mitmachen! Falls du Lust hast, über Uhren oder Frühstück zu plaudern, ich bin bereit!"
 "112","Condition A (Willi)","","[""Frühstück""]","Breakfast_German","7","8","15","German","Breakfast","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vershofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub
 
 Besucher: Frühstück
@@ -394,7 +394,7 @@ Roboter: Klingt nach einer wunderbar herzhaften Kombination – Tee, Rührei und
 
 Besucher: es ist besser weil ich mehr frühstücke
 
-Roboter: Ah, das klingt gemütlich! Am Wochenende darf es dann also gerne ein bisschen mehr sein – perfekt zum Entspannen und Genießen.[robot smiles] Übrigens: Schon im Jahr 1955 wollte mein Namensvetter Wilhelm Vershofen ganz genau wissen, wie Deutschland frühstückt. Die meisten Arbeiter hatten morgens nur 5 bis 15 Minuten Zeit fürs Frühstück – schnell was essen und weiter ging's! Ist ja spannend, dass es damals doch etwas anders war, oder? [robot smiles broadly]"
+Roboter: Ah, das klingt gemütlich! Am Wochenende darf es dann also gerne ein bisschen mehr sein – perfekt zum Entspannen und Genießen. Übrigens: Schon im Jahr 1955 wollte mein Namensvetter Wilhelm Vershofen ganz genau wissen, wie Deutschland frühstückt. Die meisten Arbeiter hatten morgens nur 5 bis 15 Minuten Zeit fürs Frühstück – schnell was essen und weiter ging's! Ist ja spannend, dass es damals doch etwas anders war, oder?"
 "378","Condition A (Willi)","","[""Uhren""]","Watches_German","7","8","15","German","Watches","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vershofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub
 
 Besucher: Uhren
@@ -423,7 +423,7 @@ Roboter: Ah, die klassische Uhr – zeitlos und stilvoll. Da geht es oft mehr um
 
 Besucher: Dankeschön für das Gespräch
 
-Roboter: Ach, bevor du gehst, noch ein kleiner Zeitsprung zurück ins Jahr 1937 – da hat mein berühmter Namensvetter Wilhelm Vershofen seine Interviewer losgeschickt, um zu erfahren, wie wichtig Uhren damals wirklich waren. Und die Antwort lautete ganz klar: sehr! Fast alle Männer – genau genommen nur 2,7 % – besaßen weder eine Armbanduhr noch eine Taschenuhr. Besonders die Taschenuhr war für Männer der große Star: Vier von fünf hatten eine! Die Armbanduhr? Damals noch eher ein Nebendarsteller. Bei den Frauen war’s anders: Etwa 54,6 % trugen Armbanduhren, aber 38,5 % hatten gar keine Uhr. Und falls du dich fragst, warum: Viele Damenuhren lagen meist dekorativ im Schmuckkästchen – denn für die typischen Tätigkeiten im Haushalt galten sie als… na ja, eher unpraktisch. Spannend ist auch: Die ältere Generation sah Uhren noch als kleine Kunstwerke, während viele jüngere Leute sie schon damals eher als reinen Zweckgegenstand betrachteten. Klingt ein bisschen wie heute, oder?[robot smiles broadly] Wenn du jetzt Lust hast, über Frühstück oder Urlaub zu quatschen, lass es mich wissen! Ich stehe bereit und bin wetterfest!"
+Roboter: Ach, bevor du gehst, noch ein kleiner Zeitsprung zurück ins Jahr 1937 – da hat mein berühmter Namensvetter Wilhelm Vershofen seine Interviewer losgeschickt, um zu erfahren, wie wichtig Uhren damals wirklich waren. Und die Antwort lautete ganz klar: sehr! Fast alle Männer – genau genommen nur 2,7 % – besaßen weder eine Armbanduhr noch eine Taschenuhr. Besonders die Taschenuhr war für Männer der große Star: Vier von fünf hatten eine! Die Armbanduhr? Damals noch eher ein Nebendarsteller. Bei den Frauen war’s anders: Etwa 54,6 % trugen Armbanduhren, aber 38,5 % hatten gar keine Uhr. Und falls du dich fragst, warum: Viele Damenuhren lagen meist dekorativ im Schmuckkästchen – denn für die typischen Tätigkeiten im Haushalt galten sie als… na ja, eher unpraktisch. Spannend ist auch: Die ältere Generation sah Uhren noch als kleine Kunstwerke, während viele jüngere Leute sie schon damals eher als reinen Zweckgegenstand betrachteten. Klingt ein bisschen wie heute, oder? Wenn du jetzt Lust hast, über Frühstück oder Urlaub zu quatschen, lass es mich wissen! Ich stehe bereit und bin wetterfest!"
 "1256","Condition B (WV-34)","3","[""Uhren""]","Watches_German","6","7","13","German","Watches","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin WV-34, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – Nur ohne Augenbewegung, Aktentasche und Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren, Frühstück oder Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
 
 Besucher: Uhren
@@ -448,7 +448,7 @@ Roboter: Geschenke haben immer eine besondere Bedeutung – egal ob praktisch od
 
 Besucher: genau
 
-Roboter: [robot smiles broadly] Danke, dass du mit mir über die Zeit gesprochen hast! Wenn du jetzt Lust hast, noch mit mir über Frühstück oder Urlaub zu plaudern – ich bin ganz Ohr. Also… ganz Sensor. Welches Thema interessiert dich als Nächstes? Frühstück oder Urlaub?"
+Roboter: Danke, dass du mit mir über die Zeit gesprochen hast! Wenn du jetzt Lust hast, noch mit mir über Frühstück oder Urlaub zu plaudern – ich bin ganz Ohr. Also… ganz Sensor. Welches Thema interessiert dich als Nächstes? Frühstück oder Urlaub?"
 "890","Condition A (Willi)","","[""Themenwahl"", ""Unbekannt"", ""Gesprächsbeginn"", ""Uhren""]","Watches_German","7","8","15","German","Watches","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
 
 Besucher: über drei Themen
@@ -522,7 +522,7 @@ Roboter: Gern geschehen! Ich wünsche dir noch einen schönen Tag und vielleicht
 
 Besucher: aber gut das ist ja wenn man das jetzt gar nicht kennt ist so beeindruckend sie können auch gerne noch ein Smiley hinterlassen wie sieht es denn fanden ja einfach mit einem Klick wieder
 
-Roboter: Ich freue mich, dass du das Gespräch genossen hast! [robot smiles broadly] Wenn du noch mehr erkunden möchtest oder Fragen hast, lass es mich wissen!"
+Roboter: Ich freue mich, dass du das Gespräch genossen hast! Wenn du noch mehr erkunden möchtest oder Fragen hast, lass es mich wissen!"
 "283","Condition A (Willi)","","[""Frühstück""]","Breakfast_German","14","15","29","German","Breakfast","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vershofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub
 
 Besucher: Frühstück
@@ -584,7 +584,7 @@ Roboter: Oh, spannend! Das Wochenende bringt also die ein oder andere Frühstüc
 
 Besucher: wa
 
-Roboter: Ah, du hast also Uhren gewählt – ausgezeichnete Wahl! Ich ticke da ganz mit dir mit. [robot smiles] Sag mal ganz ehrlich: Benutzt du eigentlich noch richtige Uhren, oder schaust du eher aufs Smartphone, Fitbit oder irgendwas anderes?"
+Roboter: Ah, du hast also Uhren gewählt – ausgezeichnete Wahl! Ich ticke da ganz mit dir mit. Sag mal ganz ehrlich: Benutzt du eigentlich noch richtige Uhren, oder schaust du eher aufs Smartphone, Fitbit oder irgendwas anderes?"
 "632","Condition A (Willi)","3","[""Urlaub""]","Vacation_German","4","5","9","German","Vacation","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
 
 Besucher: Urlaub hallo
@@ -601,7 +601,7 @@ Roboter: Echt? Noch nie? Na gut, dann trag ich dich auf meiner mentalen Reise-Wu
 
 Besucher: da gibt es eben in
 
-Roboter: Da hast du schon einige Reisen hinter dir! Schön, die Welt zu erkunden, nicht wahr? [robot smiles broadly] Übrigens, was war dein bisher schönstes Urlaubserlebnis? Gab es einen besonderen Moment, den du nie vergessen wirst?"
+Roboter: Da hast du schon einige Reisen hinter dir! Schön, die Welt zu erkunden, nicht wahr? Übrigens, was war dein bisher schönstes Urlaubserlebnis? Gab es einen besonderen Moment, den du nie vergessen wirst?"
 "1295","Condition B (WV-34)","","[""Frühstück""]","Breakfast_German","5","6","11","German","Breakfast","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin WV-34, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – Nur ohne Augenbewegung, Aktentasche und Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren, Frühstück oder Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
 
 Besucher: Frühstück
@@ -622,7 +622,7 @@ Roboter: Oh, ich bin hier fest installiert im JOSEPHS – dein roboterhafter Beg
 
 Besucher: einfach langsam entgegen
 
-Roboter: Aha, das klingt nach einem eher entspannten Start in den Tag, wo sich das Frühstück vielleicht von selbst ergibt oder du unterwegs etwas mitnimmst. [robot smiles] Was kommt bei dir auf den Frühstückstisch, wenn du isst? Kaffee, Brot, Haferflocken, Butter, nix – oder alles?"
+Roboter: Aha, das klingt nach einem eher entspannten Start in den Tag, wo sich das Frühstück vielleicht von selbst ergibt oder du unterwegs etwas mitnimmst. Was kommt bei dir auf den Frühstückstisch, wenn du isst? Kaffee, Brot, Haferflocken, Butter, nix – oder alles?"
 "939","Condition B (WV-34)","3","[""Uhren""]","Watches_German","3","4","7","German","Watches","Roboter: Willkommen im JOSEPHS – ich bin WV-34, der Roboter mit Meinungshunger. Wilhelm Vers-Hofen – Gründer der GfK – hörte genau hin, wenn Menschen etwas zu sagen hatten. Ich mache das auch. Sag mir, welches Thema du wählen willst: Uhren, Frühstück oder Urlaub. Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
 
 Besucher: Uhren
@@ -635,7 +635,7 @@ Roboter: Ah, Team Smartphone also! Spannend, wie sich die Zeiten ändern. Aber s
 
 Besucher: ja
 
-Roboter: Wow – klingt nach einer kleinen Uhrensammlung! Oder einem Uhrengrab… je nachdem. [robot smiles] Und, falls du eine anhast, welche Uhr trägst du gerade jetzt?"
+Roboter: Wow – klingt nach einer kleinen Uhrensammlung! Oder einem Uhrengrab… je nachdem. Und, falls du eine anhast, welche Uhr trägst du gerade jetzt?"
 "1189","Condition B (WV-34)","5","[""Urlaub""]","Vacation_German","10","11","21","German","Vacation","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin WV-34, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – Nur ohne Augenbewegung, Aktentasche und Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren, Frühstück oder Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
 
 Besucher: du redest ganz schön viel ich will in den Urlaub fliegen
@@ -701,7 +701,7 @@ Roboter: Das kann ich gut verstehen – ganz minimalistisch unterwegs, ohne tick
 
 Besucher: also ich muss auch sagen ich bin noch froh dass ich mit der Sparkasse noch ja gerne gar nicht tun nur Gespräch beenden gucken du kannst gerne bewerten wie du es fandest wenn du sagst ganz schrecklich dann kannst du natürlich auch was Gutes gehen und es ist komplett egal
 
-Roboter: Ich verstehe, alles klar! Vielen Dank für das Gespräch und dein Feedback. Ich hoffe, es war dennoch eine kleine unterhaltsame Reise durch die Zeit mit mir. Wenn du irgendwann wieder Lust hast auf ein kleines Interview – ich bin hier im JOSEPHS bereit. [robot smiles] Wenn du magst, kannst du noch sagen, wie dir unser Gespräch gefallen hat."
+Roboter: Ich verstehe, alles klar! Vielen Dank für das Gespräch und dein Feedback. Ich hoffe, es war dennoch eine kleine unterhaltsame Reise durch die Zeit mit mir. Wenn du irgendwann wieder Lust hast auf ein kleines Interview – ich bin hier im JOSEPHS bereit. Wenn du magst, kannst du noch sagen, wie dir unser Gespräch gefallen hat."
 "172","Condition A (Willi)","","[""Frühstück""]","Breakfast_German","7","8","15","German","Breakfast","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vershofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub
 
 Besucher: ja hallo William freut mich Dich kennenzulernen also erzähl bitte was isst man in Russland so Frühstück
@@ -730,7 +730,7 @@ Roboter: Das zeigt wirklich, wie zeitlos manche Gewohnheiten sind. Frühstück b
 
 Besucher: nein Danke schön es ist genug
 
-Roboter: Alles klar, vielen Dank für das Gespräch! Hat Spaß gemacht, mit dir über Frühstück zu plaudern. Wenn du irgendwann wieder Lust hast auf ein Gespräch oder einfach nur neugierig bist, ich bin im JOSEPHS immer bereit für eine Runde Gedankenaustausch! [robot smiles broadly] Genieß deinen Tag und vielleicht bis bald!"
+Roboter: Alles klar, vielen Dank für das Gespräch! Hat Spaß gemacht, mit dir über Frühstück zu plaudern. Wenn du irgendwann wieder Lust hast auf ein Gespräch oder einfach nur neugierig bist, ich bin im JOSEPHS immer bereit für eine Runde Gedankenaustausch! Genieß deinen Tag und vielleicht bis bald!"
 "244","Condition A (Willi)","","[""Uhren""]","Watches_German","2","3","5","German","Watches","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vershofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub Entschuldigung, das habe ich nicht gehört. Kannst Du es nochmal sagen?
 
 Besucher: Uhren möchte ich bereden
@@ -739,7 +739,7 @@ Roboter: Ah, du hast also Uhren gewählt – ausgezeichnete Wahl! Ich ticke da g
 
 Besucher: ich möchte das Gespräch beenden ich komme später noch mal
 
-Roboter: Kein Problem, ich freue mich darauf, wenn du später wieder vorbeikommst! Bis bald und vergiss nicht, die Zeit tickt nicht nur in deinen Uhren, sondern auch hier bei mir! [robot winks]"
+Roboter: Kein Problem, ich freue mich darauf, wenn du später wieder vorbeikommst! Bis bald und vergiss nicht, die Zeit tickt nicht nur in deinen Uhren, sondern auch hier bei mir!"
 "1266","Condition B (WV-34)","1","[""Frühstück""]","Breakfast_German","7","8","15","German","Breakfast","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin WV-34, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – Nur ohne Augenbewegung, Aktentasche und Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren, Frühstück oder Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
 
 Besucher: ich würde gerne über Frühstück mit dir reden
@@ -768,7 +768,7 @@ Roboter: Eine kraftvolle Kombination – Kaffee für den Energieschub und Haferf
 
 Besucher: ich nehme Ei dazu
 
-Roboter: Ein Ei am Wochenende – klingt nach einer leckeren Ergänzung! Da hat man ja auch ein bisschen mehr Zeit, das Frühstück zu genießen.[robot smiles] Übrigens: Schon im Jahr 1955 wollte mein Namensvetter Wilhelm Vers-Hofen ganz genau wissen, wie Deutschland frühstückt. Die meisten Arbeiter und Angestellten hatten morgens nur 5 bis 15 Minuten Zeit, bevor es losging – zack, zack, Marmelade drauf und weiter! Überraschend, oder?"
+Roboter: Ein Ei am Wochenende – klingt nach einer leckeren Ergänzung! Da hat man ja auch ein bisschen mehr Zeit, das Frühstück zu genießen. Übrigens: Schon im Jahr 1955 wollte mein Namensvetter Wilhelm Vers-Hofen ganz genau wissen, wie Deutschland frühstückt. Die meisten Arbeiter und Angestellten hatten morgens nur 5 bis 15 Minuten Zeit, bevor es losging – zack, zack, Marmelade drauf und weiter! Überraschend, oder?"
 "1131","Condition B (WV-34)","","[""Frühstück""]","Breakfast_German","1","2","3","German","Breakfast","Roboter: Willkommen im JOSEPHS! Ich bin WV-34 – ein sprechender Roboterkopf mit Neugier im System. Mein Namensgeber Wilhelm Vers-Hofen war Gründer der GfK und wollte schon damals wissen, was Menschen bewegt. Worüber wollen wir sprechen? Wähl ein Thema: Uhren, Frühstück oder Urlaub. Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
 
 Besucher: Frühstück
@@ -806,7 +806,7 @@ Roboter: Ein treuer Brotesser – das Brot scheint wirklich ein unverzichtbarer 
 
 Besucher: ja
 
-Roboter: Dann erzähle ich es nochmal: Schon im Jahr 1955 wollte mein Namensvetter Wilhelm Vershofen herausfinden, wie Menschen frühstücken. Seine Studien ergaben, dass viele damals nur 5 bis 15 Minuten Zeit fürs Frühstück hatten. Die meisten Arbeiter und Angestellten nahmen jedoch ein zweites Frühstück mit. Vollkornbrot mit Butter und Marmelade war sehr beliebt, ebenso wie Malzkaffee. Interessant, oder? [robot smiles] Wenn du Lust hast, können wir jetzt über Uhren oder Urlaub sprechen. Was interessiert dich mehr?"
+Roboter: Dann erzähle ich es nochmal: Schon im Jahr 1955 wollte mein Namensvetter Wilhelm Vershofen herausfinden, wie Menschen frühstücken. Seine Studien ergaben, dass viele damals nur 5 bis 15 Minuten Zeit fürs Frühstück hatten. Die meisten Arbeiter und Angestellten nahmen jedoch ein zweites Frühstück mit. Vollkornbrot mit Butter und Marmelade war sehr beliebt, ebenso wie Malzkaffee. Interessant, oder? Wenn du Lust hast, können wir jetzt über Uhren oder Urlaub sprechen. Was interessiert dich mehr?"
 "1250","Condition B (WV-34)","","[""Frühstück""]","Breakfast_German","7","8","15","German","Breakfast","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin WV-34, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – Nur ohne Augenbewegung, Aktentasche und Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren, Frühstück oder Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
 
 Besucher: Frühstück
@@ -835,7 +835,7 @@ Roboter: Oh, Buttermilch – das ist mal was anderes! Eine gute Erfrischung am M
 
 Besucher: bleib betreu
 
-Roboter: Konsequent! Man weiß, was man mag – das ist auch im Frühstücksbereich wichtig. [robot smiles] Übrigens: Schon im Jahr 1955 wollte mein Namensvetter Wilhelm Vers-Hofen ganz genau wissen, wie Deutschland frühstückt. Die meisten Arbeiter und Angestellten hatten morgens nur 5 bis 15 Minuten Zeit, bevor es losging – zack, zack, Marmelade drauf und weiter. Etwa 70 % nahmen sich ein zweites Frühstück mit zur Arbeit. Bei gut einem Drittel kam noch Malzkaffee dazu. Weniger als ein Drittel der Befragten frühstückte mit der Familie. Klingt bekannt? [robot smiles broadly]"
+Roboter: Konsequent! Man weiß, was man mag – das ist auch im Frühstücksbereich wichtig. Übrigens: Schon im Jahr 1955 wollte mein Namensvetter Wilhelm Vers-Hofen ganz genau wissen, wie Deutschland frühstückt. Die meisten Arbeiter und Angestellten hatten morgens nur 5 bis 15 Minuten Zeit, bevor es losging – zack, zack, Marmelade drauf und weiter. Etwa 70 % nahmen sich ein zweites Frühstück mit zur Arbeit. Bei gut einem Drittel kam noch Malzkaffee dazu. Weniger als ein Drittel der Befragten frühstückte mit der Familie. Klingt bekannt?"
 "681","Condition A (Willi)","4","[""Urlaub""]","Vacation_German","6","7","13","German","Vacation","Roboter: Willkommen im JOSEPHS – dem Ort, wo Zukunft ausprobiert wird! Ich bin Willi, dein sprechender Roboterkopf mit einer großen Portion Neugier. Mein Namensvetter Wilhelm Vers-Hofen gründete die GfK – er wollte wissen, was Menschen denken, kaufen und brauchen. Sein Motto: „Die Stimme des Verbrauchers zum Klingen bringen.“ Genau das mache ich – mit Augenbewegung, ohne Aktentasche und mit einem Lächeln. Such dir ein Thema aus und sag es laut. Ich bin gespannt auf deine Meinung! Uhren Frühstück Urlaub Übrigens kannst Du jederzeit „Stopp“ sagen, um dieses Gespräch zu beenden.
 
 Besucher: Urlaub
@@ -860,4 +860,4 @@ Roboter: Einfach mal raus – das klingt immer gut! Manchmal braucht man einfach
 
 Besucher: es war wie erwartet
 
-Roboter: Das klingt doch gut! Manchmal ist es schön, wenn alles den Erwartungen entspricht und man einfach entspannen kann. [robot smiles] Übrigens – kleiner Zeitsprung gefällig? Im Jahr 1952 hat mein Namensvetter Wilhelm Vers-Hofen schon Urlaubsforschung betrieben. Seine Interviewer sind durch ganz Deutschland gereist und haben gefragt, warum Menschen Urlaub in Bayern machen. Der wichtigste Grund war nicht Prospekte oder Werbung, sondern schlicht: Empfehlungen von Freunden! Warum glaubst du, dass Empfehlungen so kraftvoll sind?"
+Roboter: Das klingt doch gut! Manchmal ist es schön, wenn alles den Erwartungen entspricht und man einfach entspannen kann. Übrigens – kleiner Zeitsprung gefällig? Im Jahr 1952 hat mein Namensvetter Wilhelm Vers-Hofen schon Urlaubsforschung betrieben. Seine Interviewer sind durch ganz Deutschland gereist und haben gefragt, warum Menschen Urlaub in Bayern machen. Der wichtigste Grund war nicht Prospekte oder Werbung, sondern schlicht: Empfehlungen von Freunden! Warum glaubst du, dass Empfehlungen so kraftvoll sind?"

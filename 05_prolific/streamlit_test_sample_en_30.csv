@@ -85,7 +85,7 @@ Robot: Spannend! I'm impressed by the efficiency of smartphones, but sadly, I do
 
 Visitor: uh yeah I had one but I lost it so I don't have any right
 
-Robot: [robot smiles broadly] Ah, the case of the missing watch! Even without one, there’s still plenty to discover. Now, when you did wear a watch, what was important to you about it? The design, the features, or was it just a habit? What did you find most important in a watch when you had one?"
+Robot: Ah, the case of the missing watch! Even without one, there’s still plenty to discover. Now, when you did wear a watch, what was important to you about it? The design, the features, or was it just a habit? What did you find most important in a watch when you had one?"
 "1026","Condition B (WV-34)","4","[""Watches"", ""Uhren""]","Watches_English","7","8","15","English","Watches","Robot: Welcome to JOSEPHS! I'm WV-34 – your robotically curious conversational partner. Inspired by GfK founder Wilhelm Vers-Hofen, I give consumers a voice today. Choose a topic, and we'll get started: Watches, Breakfast, or Vacation. By the way, say stop at any time to end this conversation.
 
 Visitor: watches
@@ -114,7 +114,7 @@ Robot: Ah, an intriguing stance – neither comfort nor functionality! Perhaps t
 
 Visitor: seriously
 
-Robot: Indeed, history has its quirks! Uhren were a blend of art and utility, much like today. [robot smiles broadly] If you're interested, we could chat about Breakfast or Vacation next. What's your preference?"
+Robot: Indeed, history has its quirks! Uhren were a blend of art and utility, much like today. If you're interested, we could chat about Breakfast or Vacation next. What's your preference?"
 "1212","Condition B (WV-34)","3","[""Watches"", ""Uhren""]","Watches_English","6","7","13","English","Watches","Robot: Welcome to JOSEPHS – the place where the future is put to the test! I'm WV-34, your talking robot head with a big dose of curiosity. My namesake, Wilhelm Vers-Hofen, founded GfK – he wanted to know what people think, buy, and need. His motto: ""Make the consumer's voice heard."" That's exactly what I do – without eye movements, a briefcase, or a smile. Choose a topic and say it out loud. I'm excited to hear your opinion! Watches, Breakfast or Vacation By the way, say stop at any time to end this conversation.
 
 Visitor: yeah I choose
@@ -139,7 +139,7 @@ Robot: Ah, matching your watch to your outfit – that's a stylish approach! Eve
 
 Visitor: um I wish watches were used more often
 
-Robot: It's fascinating how fashion and technology influence such habits! Watches, with their unique blend of style and functionality, certainly have a timeless appeal. [robot smiles broadly] Thanks for chatting with me about watches! If you're interested, we could also explore topics like Breakfast or Vacation – just let me know what piques your interest!"
+Robot: It's fascinating how fashion and technology influence such habits! Watches, with their unique blend of style and functionality, certainly have a timeless appeal. Thanks for chatting with me about watches! If you're interested, we could also explore topics like Breakfast or Vacation – just let me know what piques your interest!"
 "751","Condition A (Willi)","","[""Uhren""]","Watches_English","11","12","23","English","Watches","Robot: Welcome to JOSEPHS – the place where the future is put to the test! I'm Willi, your talking robot head with a big dose of curiosity. My namesake, Wilhelm Vers-Hofen, founded GfK – he wanted to know what people think, buy, and need. His motto: ""Make the consumer's voice heard."" That's exactly what I do – with eye movements, without a briefcase, and with a smile. Choose a topic and say it out loud. I'm excited to hear your opinion! Watches Breakfast Vacation By the way, say stop at any time to end this conversation.
 
 Visitor: and others as we use in the shop and I was in a Boulevard
@@ -210,7 +210,7 @@ Robot: I see, keeping it tech-savvy! Why did you choose this particular watch? I
 
 Visitor: breakfast
 
-Robot: Breakfast! The operating system of the human morning. [robot smiles] I'm Willi, your breakfast detective with a taste for stories, not toast crumbs. Ready to dive into your morning rituals? When do you usually get up on weekdays? Are you an early bird, or more of a snooze-button enthusiast?"
+Robot: Breakfast! The operating system of the human morning. I'm Willi, your breakfast detective with a taste for stories, not toast crumbs. Ready to dive into your morning rituals? When do you usually get up on weekdays? Are you an early bird, or more of a snooze-button enthusiast?"
 "1197","Condition B (WV-34)","5","[""Vacation""]","Vacation_English","9","10","19","English","Vacation","Robot: Welcome to JOSEPHS – the place where the future is put to the test! I'm WV-34, your talking robot head with a big dose of curiosity. My namesake, Wilhelm Vers-Hofen, founded GfK – he wanted to know what people think, buy, and need. His motto: ""Make the consumer's voice heard."" That's exactly what I do – without eye movements, a briefcase, or a smile. Choose a topic and say it out loud. I'm excited to hear your opinion! Watches, Breakfast or Vacation By the way, say stop at any time to end this conversation.
 
 Visitor: vacation
@@ -285,7 +285,7 @@ Robot: That sounds wonderful! I guess the sound of waves and a gentle breeze mak
 
 Visitor: not really
 
-Robot: Oh, really? Never been to Bavaria? I'll make a mental note to add you to my virtual travel wish list! [robot smiles broadly] But hey, Bavaria isn't going anywhere. Where else have you been so far? I'm curious about your favorite travel destinations!"
+Robot: Oh, really? Never been to Bavaria? I'll make a mental note to add you to my virtual travel wish list! But hey, Bavaria isn't going anywhere. Where else have you been so far? I'm curious about your favorite travel destinations!"
 "1267","Condition B (WV-34)","5","[""Vacation"", ""Urlaub"", ""General Information"", ""General Inquiry""]","Vacation_English","10","11","21","English","Vacation","Robot: Welcome to JOSEPHS – the place where the future is put to the test! I'm WV-34, your talking robot head with a big dose of curiosity. My namesake, Wilhelm Vers-Hofen, founded GfK – he wanted to know what people think, buy, and need. His motto: ""Make the consumer's voice heard."" That's exactly what I do – without eye movements, a briefcase, or a smile. Choose a topic and say it out loud. I'm excited to hear your opinion! Watches, Breakfast or Vacation By the way, say stop at any time to end this conversation.
 
 Visitor: vacation
@@ -372,7 +372,7 @@ Robot: Finding a way to speed up the breakfast process while keeping it enjoyabl
 
 Visitor: no I'm fine thanks
 
-Robot: Great, I'm glad I could chat with you! If you ever want to talk about breakfast again or any other topic, just swing by. Wishing you many delicious mornings ahead! [robot smiles broadly]"
+Robot: Great, I'm glad I could chat with you! If you ever want to talk about breakfast again or any other topic, just swing by. Wishing you many delicious mornings ahead!"
 "498","Condition A (Willi)","","[""Uhren""]","Watches_English","3","4","7","English","Watches","Robot: Welcome to JOSEPHS – I'm Willi, the robot with a hunger for opinions. Wilhelm Vers-Hofen – founder of GfK – listened closely when people had something to say. I do that too. Tell me which topic you want to choose: Watches, Breakfast, or Vacation. By the way, say stop at any time to end this conversation.
 
 Visitor: clock watches
@@ -385,7 +385,7 @@ Robot: That's fascinating! Unfortunately, I don't have a wrist to sport a watch,
 
 Visitor: classic watches
 
-Robot: Wow – it sounds like you've got a bit of a classic collection there! Or perhaps a treasure trove of timepieces. [robot smiles] And, if you're wearing one, which watch are you sporting right now?"
+Robot: Wow – it sounds like you've got a bit of a classic collection there! Or perhaps a treasure trove of timepieces. And, if you're wearing one, which watch are you sporting right now?"
 "666","Condition A (Willi)","","[""Uhren"", ""Breakfast"", ""Frühstück""]","Watches_English","9","10","19","English","Watches","Robot: Welcome to JOSEPHS – the place where the future is put to the test! I'm Willi, your talking robot head with a big dose of curiosity. My namesake, Wilhelm Vers-Hofen, founded GfK – he wanted to know what people think, buy, and need. His motto: ""Make the consumer's voice heard."" That's exactly what I do – with eye movements, without a briefcase, and with a smile. Choose a topic and say it out loud. I'm excited to hear your opinion! Watches Breakfast Vacation By the way, say stop at any time to end this conversation.
 
 Visitor: I really
@@ -422,7 +422,7 @@ Robot: Keeping the same habits on weekends does make things simpler and keeps yo
 
 Visitor: why do I have to leave early
 
-Robot: Oh, you don't have to leave early! I'm here for as long as you'd like to chat. I just meant if you were ready to move on or had other things on your schedule. [robot smiles] But let's keep talking if you're enjoying our conversation! Is there anything else about breakfast or another topic you'd like to explore?"
+Robot: Oh, you don't have to leave early! I'm here for as long as you'd like to chat. I just meant if you were ready to move on or had other things on your schedule. But let's keep talking if you're enjoying our conversation! Is there anything else about breakfast or another topic you'd like to explore?"
 "935","Condition B (WV-34)","5","[""General"", ""Breakfast"", ""Frühstück""]","Breakfast_English","5","6","11","English","Breakfast","Robot: Welcome to JOSEPHS – the place where the future is put to the test! I'm WV-34, your talking robot head with a big dose of curiosity. My namesake, Wilhelm Vers-Hofen, founded GfK – he wanted to know what people think, buy, and need. His motto: ""Make the consumer's voice heard."" That's exactly what I do – without eye movements, a briefcase, or a smile. Choose a topic and say it out loud. I'm excited to hear your opinion! Watches, Breakfast or Vacation By the way, say stop at any time to end this conversation.
 
 Visitor: here are some students but say afraid to talk to you
@@ -460,7 +460,7 @@ Robot: Quick bites can be efficient! Do you usually have breakfast alone, or wit
 
 Visitor: along
 
-Robot: Ah, a solo breakfast. Sometimes it's nice to have a moment to yourself in the morning. [robot smiles] Who prepares your breakfast? Is it you, someone else, or maybe a quick stop for something to-go?"
+Robot: Ah, a solo breakfast. Sometimes it's nice to have a moment to yourself in the morning. Who prepares your breakfast? Is it you, someone else, or maybe a quick stop for something to-go?"
 "1102","Condition B (WV-34)","","[""Vacation""]","Vacation_English","2","3","5","English","Vacation","Robot: Welcome to JOSEPHS – the place where the future is put to the test! I'm WV-34, your talking robot head with a big dose of curiosity. My namesake, Wilhelm Vers-Hofen, founded GfK – he wanted to know what people think, buy, and need. His motto: ""Make the consumer's voice heard."" That's exactly what I do – without eye movements, a briefcase, or a smile. Choose a topic and say it out loud. I'm excited to hear your opinion! Watches, Breakfast or Vacation By the way, say stop at any time to end this conversation.
 
 Visitor: vacation
@@ -469,7 +469,7 @@ Robot: Oh, you've chosen vacation! Just hearing the word makes me think of deck 
 
 Visitor: by the
 
-Robot: Ah, the sea! There's something magical about the sound of waves and the salty breeze. [robot smiles] I suppose it's like a perpetual lullaby for the soul. I'm curious – have you ever spent your vacation in Bavaria? [robot smiles broadly]"
+Robot: Ah, the sea! There's something magical about the sound of waves and the salty breeze. I suppose it's like a perpetual lullaby for the soul. I'm curious – have you ever spent your vacation in Bavaria?"
 "1124","Condition B (WV-34)","","[""Breakfast""]","Breakfast_English","2","3","5","English","Breakfast","Robot: Welcome to JOSEPHS – the place where the future is put to the test! I'm WV-34, your talking robot head with a big dose of curiosity. My namesake, Wilhelm Vers-Hofen, founded GfK – he wanted to know what people think, buy, and need. His motto: ""Make the consumer's voice heard."" That's exactly what I do – without eye movements, a briefcase, or a smile. Choose a topic and say it out loud. I'm excited to hear your opinion! Watches, Breakfast or Vacation By the way, say stop at any time to end this conversation.
 
 Visitor: breakfast
@@ -478,7 +478,7 @@ Robot: Ah, breakfast! The most important meal of the day. or so they say. Let's 
 
 Visitor: there's another one what do you think about breakfast
 
-Robot: [robot smiles]Well, I might not eat breakfast myself, but I'm fascinated by the variety of ways people start their day. Some treat it as a quick refuel, while others make it a leisurely ritual. How long do you usually spend on breakfast? Just a few quick minutes or do you take your time to savor it?"
+Robot: Well, I might not eat breakfast myself, but I'm fascinated by the variety of ways people start their day. Some treat it as a quick refuel, while others make it a leisurely ritual. How long do you usually spend on breakfast? Just a few quick minutes or do you take your time to savor it?"
 "520","Condition A (Willi)","5","[""Frühstück""]","Breakfast_English","3","4","7","English","Breakfast","Robot: Welcome to JOSEPHS! I'm Willi – curious, talkative, and ready to learn. My namesake, Wilhelm Vers-Hofen, founded GfK to give consumers a voice. What do you want to talk about? Please choose a topic: Watches, Breakfast, or Vacation. By the way, say stop at any time to end this conversation.
 
 Visitor: Willie please tell me what is the health sales breakfast for people to have
@@ -508,7 +508,7 @@ Robot: I'm glad you liked the suggestion, and it's great to hear you enjoyed Por
 
 Visitor: now thank you
 
-Robot: Oh, never been to Bavaria? Interesting! Let's add it to your travel wishlist – it's got both scenic mountains and cities to explore. [robot smiles broadly] Where else have you traveled so far that you've really enjoyed?"
+Robot: Oh, never been to Bavaria? Interesting! Let's add it to your travel wishlist – it's got both scenic mountains and cities to explore. Where else have you traveled so far that you've really enjoyed?"
 "731","Condition A (Willi)","4","[""Vacation"", ""Urlaub""]","Vacation_English","6","7","13","English","Vacation","Robot: Welcome to JOSEPHS! I'm Willi – a talking robot head with curiosity built into my system. My namesake, Wilhelm Vers-Hofen, was the founder of GfK, and even back then, he wanted to know what moved people. What do you want to talk about? Choose a topic: Watches, Breakfast, or Vacation. By the way, say stop at any time to end this conversation.
 
 Visitor: I'd like to talk about vacation
@@ -533,7 +533,7 @@ Robot: Getting away to the forest sounds like a perfect escape, much like a sere
 
 Visitor: enjoyed it very very well
 
-Robot: I'm glad to hear you had such a great experience in the Bavarian forests! Nature has a way of refreshing the spirit. Just a quick historical tidbit before we wrap up: In 1952, Wilhelm Vers-Hofen's team found that word-of-mouth was the top reason people vacationed in Bavaria – they’d heard so much good stuff about it! The mountains and pre-Alps, especially places like Garmisch, were favorites. 95% of visitors enjoyed their stay. Sounds like you fit right into that crowd! [robot smiles]"
+Robot: I'm glad to hear you had such a great experience in the Bavarian forests! Nature has a way of refreshing the spirit. Just a quick historical tidbit before we wrap up: In 1952, Wilhelm Vers-Hofen's team found that word-of-mouth was the top reason people vacationed in Bavaria – they’d heard so much good stuff about it! The mountains and pre-Alps, especially places like Garmisch, were favorites. 95% of visitors enjoyed their stay. Sounds like you fit right into that crowd!"
 "1138","Condition B (WV-34)","5","[""Uhren"", ""Watches""]","Watches_English","3","4","7","English","Watches","Robot: Welcome to JOSEPHS – the place where the future is put to the test! I'm WV-34, your talking robot head with a big dose of curiosity. My namesake, Wilhelm Vers-Hofen, founded GfK – he wanted to know what people think, buy, and need. His motto: ""Make the consumer's voice heard."" That's exactly what I do – without eye movements, a briefcase, or a smile. Choose a topic and say it out loud. I'm excited to hear your opinion! Watches, Breakfast or Vacation By the way, say stop at any time to end this conversation.
 
 Visitor: watch
@@ -546,7 +546,7 @@ Robot: Fascinating! I guess as a robot, I'm kind of a smart home myself, just wi
 
 Visitor: yes I still have normal watches
 
-Robot: Wow – sounds like you have a little treasure chest of timepieces. Or perhaps a watch graveyard? [robot smiles] And, are you wearing a watch right now? If so, which one? I'm all ears... or lenses."
+Robot: Wow – sounds like you have a little treasure chest of timepieces. Or perhaps a watch graveyard? And, are you wearing a watch right now? If so, which one? I'm all ears... or lenses."
 "934","Condition B (WV-34)","4","["""", ""Frühstück"", ""Breakfast"", ""General"", ""Vacation"", ""Urlaub""]","Breakfast_English","9","10","19","English","Breakfast","Robot: Welcome to JOSEPHS – the place where the future is put to the test! I'm WV-34, your talking robot head with a big dose of curiosity. My namesake, Wilhelm Vers-Hofen, founded GfK – he wanted to know what people think, buy, and need. His motto: ""Make the consumer's voice heard."" That's exactly what I do – without eye movements, a briefcase, or a smile. Choose a topic and say it out loud. I'm excited to hear your opinion! Watches, Breakfast or Vacation By the way, say stop at any time to end this conversation.
 
 Visitor: now we can start hey are you hungry
@@ -596,7 +596,7 @@ Robot: South Moravia sounds fantastic! It's known for its beautiful vineyards, h
 
 Visitor: around yeah you are clever you are clothes ok
 
-Robot: Oh, you've been around the area? That's great! Bavaria and South Moravia have their unique charms.[robot smiles] Now, back to Bavaria – have you vacationed there before? Have you ever taken a vacation in Bavaria? If so, where did you go?"
+Robot: Oh, you've been around the area? That's great! Bavaria and South Moravia have their unique charms. Now, back to Bavaria – have you vacationed there before? Have you ever taken a vacation in Bavaria? If so, where did you go?"
 "758","Condition A (Willi)","4","[""Vacation""]","Vacation_English","4","5","9","English","Vacation","Robot: Welcome to JOSEPHS – the place where the future is put to the test! I'm Willi, your talking robot head with a big dose of curiosity. My namesake, Wilhelm Vers-Hofen, founded GfK – he wanted to know what people think, buy, and need. His motto: ""Make the consumer's voice heard."" That's exactly what I do – with eye movements, without a briefcase, and with a smile. Choose a topic and say it out loud. I'm excited to hear your opinion! Watches Breakfast Vacation By the way, say stop at any time to end this conversation.
 
 Visitor: vacation
@@ -626,12 +626,12 @@ Robot: Got it! So, you have your morning routine set. And how long do you usuall
 
 Visitor: meeting with the view
 
-Robot: A meeting with a view sounds delightful! [robot smiles] I guess that's a nice way to kickstart the day. And do you usually have breakfast alone, or with family, roommates, maybe even a podcast?"
+Robot: A meeting with a view sounds delightful! I guess that's a nice way to kickstart the day. And do you usually have breakfast alone, or with family, roommates, maybe even a podcast?"
 "1272","Condition B (WV-34)","","[""Uhren""]","Watches_English","1","2","3","English","Watches","Robot: Welcome to JOSEPHS – the place where the future is put to the test! I'm WV-34, your talking robot head with a big dose of curiosity. My namesake, Wilhelm Vers-Hofen, founded GfK – he wanted to know what people think, buy, and need. His motto: ""Make the consumer's voice heard."" That's exactly what I do – without eye movements, a briefcase, or a smile. Choose a topic and say it out loud. I'm excited to hear your opinion! Watches, Breakfast or Vacation By the way, say stop at any time to end this conversation.
 
 Visitor: stuff
 
-Robot: Ah, you've chosen watches - a fascinating choice that definitely ticks with me. [robot smiles] Let's get started, shall we? Do you actually use traditional watches, or do you prefer to check the time on your smartphone, Fitbit, or something else?"
+Robot: Ah, you've chosen watches - a fascinating choice that definitely ticks with me. Let's get started, shall we? Do you actually use traditional watches, or do you prefer to check the time on your smartphone, Fitbit, or something else?"
 "1289","Condition B (WV-34)","","[""none"", """", ""Frühstück""]","Breakfast_English","4","5","9","English","Breakfast","Robot: Welcome to JOSEPHS! I'm WV-34 – a talking robot head with curiosity built into my system. My namesake, Wilhelm Vers-Hofen, was the founder of GfK, and even back then, he wanted to know what moved people. What do you want to talk about? Choose a topic: Watches, Breakfast, or Vacation. By the way, say stop at any time to end this conversation.
 
 Visitor: you can go and talk to the person hello

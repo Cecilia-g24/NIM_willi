@@ -17,18 +17,17 @@ import streamlit as st
 
 # This file should be located inside: 05_prolific/
 # Dialog input CSV is produced by create_test_samples.py into this same
-# folder, named "streamlit_test_sample_en_<N>.csv" (N = however many
-# conversations were requested). The most recently generated file is used
-# automatically. Only English dialogs are loaded by this app.
+# folder, named "streamlit_test_sample_de_<N>.csv". The most recently
+# generated file is used automatically. Only German dialogs are loaded.
 BASE_DIR = Path(__file__).resolve().parent
 
-DIALOG_INPUT_FILENAME_PATTERN = "streamlit_test_sample_en_*.csv"
+DIALOG_INPUT_FILENAME_PATTERN = "streamlit_test_sample_de_*.csv"
 
 RESPONSES_DIR = BASE_DIR / "responses"
-DB_PATH = RESPONSES_DIR / "survey_responses_en.sqlite"
-CSV_EXPORT_PATH = RESPONSES_DIR / "survey_responses_en.csv"
+DB_PATH = RESPONSES_DIR / "survey_responses_de.sqlite"
+CSV_EXPORT_PATH = RESPONSES_DIR / "survey_responses_de.csv"
 
-# Prolific completion URL.
+# Prolific completion URL for the German study.
 PROLIFIC_COMPLETION_URL = "https://app.prolific.com/submissions/complete?cc=C6JV4KGN"
 
 # Number of dialogs one participant should annotate.
@@ -40,172 +39,177 @@ TARGET_RATINGS_PER_DIALOG: Optional[int] = None
 REQUIRED_COLUMNS = ["META_dialog_id", "META_condition", "language", "subject", "dialog_text"]
 
 ANNOTATION_INSTRUCTION_BLOCK_A = (
-    "Please read the whole dialog and rate only the human participant's behavior as visible in the transcript. "
-    "Do not judge the robot's quality directly, and do not base your rating on whether you personally like the robot. "
-    "Focus only on what the human participant says, asks, reveals, and appears to express during the conversation."
+    "Bitte lesen Sie den gesamten Dialog und bewerten Sie ausschließlich das Verhalten der "
+    "menschlichen Gesprächsperson, wie es im Transkript sichtbar ist. Beurteilen Sie nicht die "
+    "Qualität des Roboters direkt und lassen Sie Ihre persönliche Meinung über den Roboter außer "
+    "Acht. Konzentrieren Sie sich allein auf das, was die menschliche Gesprächsperson sagt, fragt, "
+    "preisgibt und im Verlauf des Gesprächs zum Ausdruck zu bringen scheint."
 )
 
 QUESTIONS_BLOCK_A = [
     {
         "key": "user_engagement_enjoyment",
-        "label": "1. User engagement / enjoyment",
-        "help": "To what extent does the user appear engaged, interested, and willing to continue the conversation?",
+        "label": "1. Nutzerbeteiligung / Gesprächsfreude",
+        "help": "Inwieweit wirkt die Person engagiert, interessiert und bereit, das Gespräch fortzusetzen?",
         "definition": (
-            "User engagement / enjoyment refers to how involved, interested, and willing to continue "
-            "the human participant appears to be. Judge this only from visible cues in the transcript, "
-            "such as active participation, reactions, questions, cooperation, enthusiasm, reluctance, "
-            "or attempts to end the exchange."
+            "Nutzerbeteiligung / Gesprächsfreude bezieht sich darauf, wie stark beteiligt, interessiert "
+            "und bereit die menschliche Gesprächsperson erscheint, das Gespräch fortzusetzen. Beurteilen "
+            "Sie dies nur anhand sichtbarer Hinweise im Transkript, wie aktive Beteiligung, Reaktionen, "
+            "Fragen, Kooperation, Begeisterung, Zögern oder Versuche, den Austausch zu beenden."
         ),
         "rate_higher": (
-            "The user participates actively, gives meaningful answers, reacts to the robot, asks questions, "
-            "shows interest in the topic, or appears willing to keep the exchange going."
+            "Die Person beteiligt sich aktiv, gibt bedeutsame Antworten, reagiert auf den Roboter, "
+            "stellt Fragen, zeigt Interesse am Thema oder scheint bereit, das Gespräch weiterzuführen."
         ),
         "rate_lower": (
-            "The user gives minimal answers, appears passive or bored, ignores the robot's questions, resists "
-            "the topic, shows little interest, or tries to end the conversation."
+            "Die Person gibt minimale Antworten, wirkt passiv oder gelangweilt, ignoriert die Fragen des "
+            "Roboters, weicht dem Thema aus, zeigt wenig Interesse oder versucht, das Gespräch zu beenden."
         ),
         "anchors": {
-            1: "Very low/absent: the user barely participates, gives minimal or resistant answers, or clearly wants to stop.",
-            3: "Moderate: the user answers the robot, but with limited detail, mixed interest, or occasional disengagement.",
-            5: "Very high: the user actively participates, reacts to the robot, and appears willing to continue.",
+            1: "Sehr gering/nicht vorhanden: Die Person beteiligt sich kaum, gibt minimale oder ablehnende Antworten oder möchte das Gespräch erkennbar beenden.",
+            3: "Mittel: Die Person antwortet dem Roboter, jedoch mit wenig Details, gemischtem Interesse oder gelegentlichem Desengagement.",
+            5: "Sehr hoch: Die Person beteiligt sich aktiv, reagiert auf den Roboter und scheint bereit, das Gespräch fortzusetzen.",
         },
     },
     {
         "key": "user_self_disclosure",
-        "label": "2. User self-disclosure",
-        "help": "To what extent does the user reveal personal information, experiences, preferences, opinions, or emotions?",
+        "label": "2. Selbstoffenbarung",
+        "help": "Inwieweit gibt die Person persönliche Informationen, Erlebnisse, Vorlieben, Meinungen oder Gefühle preis?",
         "definition": (
-            "User self-disclosure refers to how much the user reveals about themselves, including personal "
-            "experiences, preferences, feelings, evaluations, memories, opinions, or everyday habits. "
-            "This is about personal openness, not simply the number of words."
+            "Selbstoffenbarung bezieht sich darauf, wie viel die Person über sich selbst preisgibt, "
+            "einschließlich persönlicher Erlebnisse, Vorlieben, Gefühle, Bewertungen, Erinnerungen, "
+            "Meinungen oder alltäglicher Gewohnheiten. Es geht um persönliche Offenheit, nicht um die "
+            "bloße Anzahl der Wörter."
         ),
         "rate_higher": (
-            "The user shares personal experiences, preferences, feelings, opinions, memories, or details about "
-            "their own life, rather than only giving generic or factual answers."
+            "Die Person teilt persönliche Erlebnisse, Vorlieben, Gefühle, Meinungen, Erinnerungen oder "
+            "Details aus dem eigenen Leben mit, anstatt nur allgemeine oder sachliche Antworten zu geben."
         ),
         "rate_lower": (
-            "The user gives impersonal, generic, factual, or very short answers and reveals little or nothing "
-            "about themselves."
+            "Die Person gibt unpersönliche, allgemeine, sachliche oder sehr kurze Antworten und offenbart "
+            "wenig oder nichts über sich selbst."
         ),
         "anchors": {
-            1: "Very low/absent: the user reveals almost nothing personal.",
-            3: "Moderate: the user reveals some personal preferences, opinions, or experiences, but only briefly or occasionally.",
-            5: "Very high: the user openly shares personal experiences, preferences, emotions, or opinions in meaningful detail.",
+            1: "Sehr gering/nicht vorhanden: Die Person gibt fast nichts Persönliches preis.",
+            3: "Mittel: Die Person offenbart einige persönliche Vorlieben, Meinungen oder Erlebnisse, jedoch nur kurz oder gelegentlich.",
+            5: "Sehr hoch: Die Person teilt offen persönliche Erlebnisse, Vorlieben, Gefühle oder Meinungen in bedeutsamer Tiefe mit.",
         },
     },
     {
         "key": "user_topical_alignment",
-        "label": "3. User topical alignment",
-        "help": "To what extent does the user stay aligned with the topic introduced or developed by the robot?",
+        "label": "3. Thematische Ausrichtung",
+        "help": "Inwieweit bleibt die Person beim Thema, das der Roboter einführt oder entwickelt?",
         "definition": (
-            "User topical alignment refers to whether the user stays connected to the robot-proposed topic "
-            "or develops it in a relevant way. It captures cooperation with the ongoing topic, rather than "
-            "whether the topic itself is interesting."
+            "Thematische Ausrichtung bezieht sich darauf, ob die Person mit dem vom Roboter vorgeschlagenen "
+            "Thema verbunden bleibt oder es auf relevante Weise weiterentwickelt. Es erfasst die Kooperation "
+            "beim laufenden Thema, nicht ob das Thema selbst interessant ist."
         ),
         "rate_higher": (
-            "The user answers in a way that is relevant to the robot's question or topic, follows the current "
-            "topic, and develops the same conversational thread."
+            "Die Person antwortet in einer Weise, die relevant für die Frage oder das Thema des Roboters "
+            "ist, folgt dem aktuellen Thema und entwickelt denselben Gesprächsfaden."
         ),
         "rate_lower": (
-            "The user gives off-topic, unrelated, evasive, or mismatched answers, redirects the conversation "
-            "without clear connection, or does not cooperate with the current topic."
+            "Die Person gibt themenfremde, unzusammenhängende, ausweichende oder nicht passende Antworten, "
+            "lenkt das Gespräch ohne klaren Bezug um oder kooperiert nicht beim aktuellen Thema."
         ),
         "anchors": {
-            1: "Very low/absent: the user is mostly off-topic, evasive, or disconnected from the robot's topic.",
-            3: "Moderate: the user is partly aligned, but sometimes gives weakly related, unclear, or redirected answers.",
-            5: "Very high: the user consistently stays relevant to the robot's topic and develops the same thread.",
+            1: "Sehr gering/nicht vorhanden: Die Person ist überwiegend am falschen Thema, weicht aus oder ist vom Thema des Roboters losgelöst.",
+            3: "Mittel: Die Person ist teilweise thematisch ausgerichtet, gibt aber manchmal schwach zusammenhängende, unklare oder umgeleitete Antworten.",
+            5: "Sehr hoch: Die Person bleibt durchgehend relevant beim Thema des Roboters und entwickelt denselben Gesprächsfaden.",
         },
     },
     {
         "key": "user_elaboration_informativeness",
-        "label": "4. User elaboration / informativeness",
-        "help": "To what extent does the user provide meaningful detail beyond short or minimal answers?",
+        "label": "4. Ausführlichkeit / Informationsgehalt",
+        "help": "Inwieweit liefert die Person bedeutsame Details über kurze oder minimale Antworten hinaus?",
         "definition": (
-            "User elaboration / informativeness refers to how much meaningful content the user provides. "
-            "It captures whether the user's answers add useful detail, explanation, examples, or context, "
-            "rather than only minimal responses."
+            "Ausführlichkeit / Informationsgehalt bezieht sich darauf, wie viel bedeutsamen Inhalt die "
+            "Person liefert. Es erfasst, ob die Antworten der Person nützliche Details, Erklärungen, "
+            "Beispiele oder Kontext hinzufügen, anstatt nur minimale Antworten zu geben."
         ),
         "rate_higher": (
-            "The user gives informative answers with details, reasons, examples, explanations, or context that "
-            "make their contribution meaningful."
+            "Die Person gibt informative Antworten mit Details, Begründungen, Beispielen, Erklärungen "
+            "oder Kontext, die ihren Beitrag bedeutsam machen."
         ),
         "rate_lower": (
-            "The user gives short, vague, repetitive, or minimal answers, such as yes/no responses or brief fragments, "
-            "with little meaningful detail."
+            "Die Person gibt kurze, vage, repetitive oder minimale Antworten, wie Ja/Nein-Antworten oder "
+            "kurze Fragmente, mit wenig bedeutsamen Details."
         ),
         "anchors": {
-            1: "Very low/absent: the user provides almost no meaningful detail beyond minimal answers.",
-            3: "Moderate: the user provides some useful detail, but many answers remain brief or only partly informative.",
-            5: "Very high: the user provides rich, meaningful, and informative detail across the conversation.",
+            1: "Sehr gering/nicht vorhanden: Die Person liefert kaum bedeutsame Details über minimale Antworten hinaus.",
+            3: "Mittel: Die Person liefert einige nützliche Details, viele Antworten bleiben jedoch kurz oder nur teilweise informativ.",
+            5: "Sehr hoch: Die Person liefert reiche, bedeutsame und informative Details im gesamten Gespräch.",
         },
     },
     {
         "key": "user_initiative_active_contribution",
-        "label": "5. User initiative / active contribution",
-        "help": "To what extent does the user actively contribute to developing the conversation, for example by asking questions, adding topics, giving opinions, or steering the exchange?",
+        "label": "5. Initiative / Aktiver Beitrag",
+        "help": "Inwieweit trägt die Person aktiv zur Entwicklung des Gesprächs bei, zum Beispiel durch Fragen, neue Themen, Meinungsäußerungen oder die Steuerung des Austauschs?",
         "definition": (
-            "User initiative / active contribution refers to whether the user does more than simply answer "
-            "the robot's prompts. It captures active participation in shaping the exchange, such as asking "
-            "questions, introducing related ideas, giving opinions, or steering the direction of the conversation."
+            "Initiative / Aktiver Beitrag bezieht sich darauf, ob die Person mehr tut, als nur auf die "
+            "Aufforderungen des Roboters zu reagieren. Es erfasst die aktive Beteiligung an der Gestaltung "
+            "des Austauschs, wie das Stellen von Fragen, das Einführen verwandter Ideen, das Äußern von "
+            "Meinungen oder das Lenken des Gesprächs."
         ),
         "rate_higher": (
-            "The user asks questions, introduces or develops topics, gives opinions, reacts proactively, "
-            "pushes the conversation forward, or otherwise helps shape the exchange."
+            "Die Person stellt Fragen, führt Themen ein oder entwickelt sie, äußert Meinungen, reagiert "
+            "proaktiv, treibt das Gespräch voran oder hilft anderweitig, den Austausch zu gestalten."
         ),
         "rate_lower": (
-            "The user only responds when prompted, gives passive or minimal answers, rarely adds anything new, "
-            "and does not help develop the conversation."
+            "Die Person reagiert nur auf direkte Aufforderungen, gibt passive oder minimale Antworten, "
+            "fügt selten etwas Neues hinzu und hilft nicht, das Gespräch zu entwickeln."
         ),
         "anchors": {
-            1: "Very low/absent: the user is almost entirely passive and only gives minimal prompted answers.",
-            3: "Moderate: the user occasionally adds something new or gives an opinion, but mostly follows the robot's lead.",
-            5: "Very high: the user actively shapes the exchange by asking questions, adding topics, or steering the conversation.",
+            1: "Sehr gering/nicht vorhanden: Die Person ist fast vollständig passiv und gibt nur minimale Antworten auf Aufforderungen.",
+            3: "Mittel: Die Person fügt gelegentlich etwas Neues hinzu oder äußert eine Meinung, folgt aber überwiegend der Führung des Roboters.",
+            5: "Sehr hoch: Die Person gestaltet den Austausch aktiv, indem sie Fragen stellt, Themen einbringt oder das Gespräch lenkt.",
         },
     },
     {
         "key": "user_politeness",
-        "label": "6. User politeness",
-        "help": "To what extent does the user address the robot in a polite, respectful, or socially affiliative way?",
+        "label": "6. Höflichkeit",
+        "help": "Inwieweit spricht die Person den Roboter auf höfliche, respektvolle oder sozial zugewandte Weise an?",
         "definition": (
-            "User politeness refers to whether the user treats the robot as a socially addressable interaction "
-            "partner. This can include polite wording, respectful responses, greetings, thanks, friendly comments, "
-            "or other affiliative language."
+            "Höflichkeit bezieht sich darauf, ob die Person den Roboter als sozial ansprechbaren "
+            "Interaktionspartner behandelt. Dazu können höfliche Formulierungen, respektvolle Antworten, "
+            "Begrüßungen, Dankesworte, freundliche Kommentare oder andere zugewandte Sprache gehören."
         ),
         "rate_higher": (
-            "The user uses polite, respectful, friendly, appreciative, or socially affiliative language toward the robot, "
-            "such as greetings, thanks, softening phrases, or cooperative wording."
+            "Die Person verwendet höfliche, respektvolle, freundliche, wertschätzende oder sozial "
+            "zugewandte Sprache gegenüber dem Roboter, wie Begrüßungen, Dankesworte, abschwächende "
+            "Formulierungen oder kooperative Ausdrücke."
         ),
         "rate_lower": (
-            "The user is blunt, dismissive, rude, disrespectful, socially cold, or gives no signs of treating the robot "
-            "as a social interaction partner."
+            "Die Person ist direkt, abweisend, unhöflich, respektlos, sozial distanziert oder zeigt "
+            "keine Anzeichen dafür, den Roboter als sozialen Interaktionspartner zu behandeln."
         ),
         "anchors": {
-            1: "Very low/absent: the user is rude, dismissive, or shows no polite or affiliative behavior.",
-            3: "Moderate: the user is generally neutral or minimally polite, with limited social warmth.",
-            5: "Very high: the user is clearly polite, respectful, friendly, or socially affiliative toward the robot.",
+            1: "Sehr gering/nicht vorhanden: Die Person ist unhöflich, abweisend oder zeigt kein höfliches oder sozial zugewandtes Verhalten.",
+            3: "Mittel: Die Person ist im Allgemeinen neutral oder minimal höflich, mit begrenzter sozialer Wärme.",
+            5: "Sehr hoch: Die Person ist klar höflich, respektvoll, freundlich oder sozial zugewandt gegenüber dem Roboter.",
         },
     },
     {
         "key": "user_frustration_dissatisfaction",
-        "label": "7. User frustration / dissatisfaction",
-        "help": "To what extent does the user appear frustrated, annoyed, impatient, confused, disappointed, or unwilling to continue the conversation?",
+        "label": "7. Frustration / Unzufriedenheit",
+        "help": "Inwieweit wirkt die Person frustriert, gereizt, ungeduldig, verwirrt, enttäuscht oder unwillig, das Gespräch fortzusetzen?",
         "definition": (
-            "User frustration / dissatisfaction refers to visible negative reactions from the user during the dialog. "
-            "This includes annoyance, impatience, confusion, disappointment, irritation, resistance, or signals that "
-            "the user does not want to continue."
+            "Frustration / Unzufriedenheit bezieht sich auf sichtbare negative Reaktionen der Person "
+            "während des Dialogs. Dazu gehören Ärger, Ungeduld, Verwirrung, Enttäuschung, Gereiztheit, "
+            "Widerstand oder Signale, dass die Person das Gespräch nicht fortsetzen möchte."
         ),
         "rate_higher": (
-            "The user appears annoyed, impatient, confused, disappointed, irritated, resistant, dissatisfied, or unwilling "
-            "to continue the conversation."
+            "Die Person wirkt gereizt, ungeduldig, verwirrt, enttäuscht, irritiert, widerstrebend, "
+            "unzufrieden oder unwillig, das Gespräch fortzusetzen."
         ),
         "rate_lower": (
-            "The user shows little or no visible frustration, impatience, confusion, dissatisfaction, resistance, or desire "
-            "to stop the conversation."
+            "Die Person zeigt wenig oder keine sichtbare Frustration, Ungeduld, Verwirrung, "
+            "Unzufriedenheit, Widerstand oder den Wunsch, das Gespräch zu beenden."
         ),
         "anchors": {
-            1: "Very low/absent: the user shows little or no frustration, dissatisfaction, or unwillingness to continue.",
-            3: "Moderate: the user shows some confusion, impatience, dissatisfaction, or reluctance, but not consistently.",
-            5: "Very high: the user clearly appears frustrated, annoyed, dissatisfied, or unwilling to continue.",
+            1: "Sehr gering/nicht vorhanden: Die Person zeigt wenig oder keine Frustration, Unzufriedenheit oder Unwilligkeit fortzufahren.",
+            3: "Mittel: Die Person zeigt etwas Verwirrung, Ungeduld, Unzufriedenheit oder Zögern, aber nicht durchgehend.",
+            5: "Sehr hoch: Die Person wirkt klar frustriert, gereizt, unzufrieden oder unwillig fortzufahren.",
         },
     },
 ]
@@ -219,7 +223,7 @@ QUESTIONS = QUESTIONS_BLOCK_A
 # ============================================================
 
 st.set_page_config(
-    page_title="Observer-rated user behavior in HRI survey",
+    page_title="Beobachterrating des Nutzerverhaltens in der MRI-Studie",
     page_icon="📝",
     layout="wide",
 )
@@ -317,7 +321,7 @@ def get_query_param(key: str, default: str = "") -> str:
 
 
 def find_latest_dialog_csv() -> Optional[Path]:
-    """Find the most recently generated create_test_samples.py output for English."""
+    """Find the most recently generated create_test_samples.py output for German."""
     matches = sorted(BASE_DIR.glob(DIALOG_INPUT_FILENAME_PATTERN), key=lambda p: p.stat().st_mtime, reverse=True)
     return matches[0] if matches else None
 
@@ -327,7 +331,7 @@ def load_dialogs(csv_path: str) -> pd.DataFrame:
     df = pd.read_csv(csv_path)
     missing = [col for col in REQUIRED_COLUMNS if col not in df.columns]
     if missing:
-        raise ValueError(f"Input CSV is missing required columns: {missing}")
+        raise ValueError(f"Eingabe-CSV fehlen erforderliche Spalten: {missing}")
 
     df = df.copy()
     df["META_dialog_id"] = df["META_dialog_id"].astype(str)
@@ -372,8 +376,6 @@ def init_db() -> None:
             existing_columns.add("condition")
 
         # Add columns for any newly added or renamed questions.
-        # Existing response databases from earlier survey versions may not contain
-        # the current question keys.
         for question in QUESTIONS:
             question_key = question["key"]
             if question_key not in existing_columns:
@@ -553,11 +555,6 @@ def save_response(
 
 
 def make_continue_url(participant_id: str, prolific_pid: str, study_id: str, session_id: str) -> str:
-    """Create a browser navigation URL and jump to the top anchor on the next page.
-
-    This avoids the deprecated st.components.v1.html scroll hack and works
-    by changing the URL query string plus adding #page-top.
-    """
     params: dict[str, str] = {}
 
     if prolific_pid:
@@ -567,18 +564,15 @@ def make_continue_url(participant_id: str, prolific_pid: str, study_id: str, ses
         if session_id:
             params["SESSION_ID"] = session_id
     else:
-        # Preserve manually entered test IDs when using the app outside Prolific.
         params["TEST_PID"] = participant_id
 
-    # Cache-buster: makes the browser perform an actual navigation.
-    # The #page-top fragment asks the browser to open the next page at the top.
     params["reload"] = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S%f")
     return "?" + urlencode(params) + "#page-top"
 
 
 def parse_dialog_to_blocks(dialog_text: str) -> list[tuple[str, str]]:
     blocks: list[tuple[str, str]] = []
-    current_role = "Context"
+    current_role = "Kontext"
     buffer: list[str] = []
 
     def flush() -> None:
@@ -598,13 +592,13 @@ def parse_dialog_to_blocks(dialog_text: str) -> list[tuple[str, str]]:
             continue
 
         lower = stripped.lower()
-        if lower.startswith("robot:"):
+        if lower.startswith("robot:") or lower.startswith("roboter:"):
             flush()
-            current_role = "Robot"
+            current_role = "Roboter"
             buffer = [stripped.split(":", 1)[1].strip()]
-        elif lower.startswith("user:") or lower.startswith("visitor:"):
+        elif lower.startswith("user:") or lower.startswith("visitor:") or lower.startswith("besucher:"):
             flush()
-            current_role = "Visitor"
+            current_role = "Besucher"
             buffer = [stripped.split(":", 1)[1].strip()]
         else:
             buffer.append(stripped)
@@ -614,18 +608,14 @@ def parse_dialog_to_blocks(dialog_text: str) -> list[tuple[str, str]]:
 
 
 def render_dialog(dialog_text: str) -> None:
-    """Render the dialog as clean Robot/User cards.
-
-    Important: build compact HTML strings without leading indentation.
-    Otherwise Streamlit's Markdown parser may display the HTML as a code block.
-    """
+    """Render the dialog as clean Roboter/Besucher cards."""
     blocks = parse_dialog_to_blocks(dialog_text)
     html_blocks: list[str] = []
 
     for role, content in blocks:
-        if role == "Robot":
+        if role == "Roboter":
             css_class = "qd-turn-robot"
-        elif role == "Visitor":
+        elif role == "Besucher":
             css_class = "qd-turn-user"
         else:
             css_class = "qd-turn-context"
@@ -651,23 +641,24 @@ def render_dialog(dialog_text: str) -> None:
 # ============================================================
 
 st.markdown('<a id="page-top" name="page-top"></a>', unsafe_allow_html=True)
-st.title("Observer-rated user behavior in HRI survey (English)")
+st.title("Beobachterrating des Nutzerverhaltens in der MRI-Studie (Deutsch)")
 st.caption(
-    f"Please read each dialog carefully and answer all {len(QUESTIONS)} questions about the human participant."
+    f"Bitte lesen Sie jeden Dialog sorgfältig und beantworten Sie alle {len(QUESTIONS)} Fragen "
+    f"zum Verhalten der menschlichen Gesprächsperson."
 )
 
-en_csv_path = find_latest_dialog_csv()
+de_csv_path = find_latest_dialog_csv()
 
-if en_csv_path is None:
+if de_csv_path is None:
     st.error(
-        "Could not find any dialog CSV in this folder matching "
-        f"`{DIALOG_INPUT_FILENAME_PATTERN}`. "
-        "Run create_test_samples.py first to generate it."
+        "Es wurde keine Dialog-CSV in diesem Ordner gefunden, die dem Muster "
+        f"`{DIALOG_INPUT_FILENAME_PATTERN}` entspricht. "
+        "Bitte führen Sie zunächst create_test_samples.py aus, um diese Datei zu erstellen."
     )
     st.stop()
 
 try:
-    dialogs = load_dialogs(str(en_csv_path))
+    dialogs = load_dialogs(str(de_csv_path))
 except Exception as exc:
     st.error(str(exc))
     st.stop()
@@ -683,48 +674,48 @@ test_pid = get_query_param("TEST_PID")
 if prolific_pid:
     participant_id = prolific_pid
 else:
-    st.sidebar.header("Testing only")
+    st.sidebar.header("Nur für Tests")
     participant_id = st.sidebar.text_input(
-        "Participant ID",
+        "Teilnehmer-ID",
         value=test_pid,
-        placeholder="Enter a test ID",
+        placeholder="Test-ID eingeben",
     ).strip()
 
     st.sidebar.divider()
-    st.sidebar.write(f"Input rows: **{len(dialogs)}**")
-    st.sidebar.write(f"Loaded: `{en_csv_path.name}`")
-    st.sidebar.write(f"Responses file: `{CSV_EXPORT_PATH}`")
+    st.sidebar.write(f"Eingabezeilen: **{len(dialogs)}**")
+    st.sidebar.write(f"Geladen: `{de_csv_path.name}`")
+    st.sidebar.write(f"Antwortdatei: `{CSV_EXPORT_PATH}`")
 
 if not participant_id:
-    st.warning("Please enter a participant ID to start.")
+    st.warning("Bitte geben Sie eine Teilnehmer-ID ein, um zu beginnen.")
     st.stop()
 
 if st.session_state.pop("saved_previous_dialog", False):
-    st.success("Previous dialog saved. Please continue with the next dialog.")
+    st.success("Vorheriger Dialog gespeichert. Bitte fahren Sie mit dem nächsten Dialog fort.")
 
 completed_count = participant_completed_count(participant_id)
 
 if completed_count >= DIALOGS_PER_PARTICIPANT:
-    st.success("All required dialog ratings have been recorded. Thank you.")
+    st.success("Alle erforderlichen Dialogbewertungen wurden aufgezeichnet. Vielen Dank.")
     if PROLIFIC_COMPLETION_URL:
-        st.markdown(f"[Return to Prolific]({PROLIFIC_COMPLETION_URL})")
+        st.markdown(f"[Zurück zu Prolific]({PROLIFIC_COMPLETION_URL})")
     st.stop()
 
 st.progress(completed_count / DIALOGS_PER_PARTICIPANT)
-st.markdown(f"**Progress:** Dialog {completed_count + 1} of {DIALOGS_PER_PARTICIPANT}")
+st.markdown(f"**Fortschritt:** Dialog {completed_count + 1} von {DIALOGS_PER_PARTICIPANT}")
 
 dialog_row = assign_dialog(dialogs, participant_id, requested_dialog_id)
 if dialog_row is None:
-    st.warning("No dialog is currently available for annotation.")
+    st.warning("Derzeit ist kein Dialog zur Bewertung verfügbar.")
     st.stop()
 assert dialog_row is not None
 
 GENERIC_LIKERT_LABELS = {
-    1: "1 — Very low / absent",
-    2: "2 — Low",
-    3: "3 — Moderate",
-    4: "4 — High",
-    5: "5 — Very high",
+    1: "1 — Sehr gering / nicht vorhanden",
+    2: "2 — Gering",
+    3: "3 — Mittel",
+    4: "4 — Hoch",
+    5: "5 — Sehr hoch",
 }
 
 
@@ -733,25 +724,21 @@ def render_question(
     answers: dict[str, Optional[int]],
     question_number: int,
 ) -> None:
-    # Show only the concrete question to annotators.
-    # Keep question["key"] and question["label"] only for internal storage/analysis.
     visible_question = f"{question_number}. {question['help']}"
 
     st.markdown(f"**{visible_question}**")
 
-    with st.expander("Rating guidance", expanded=False):
-        # Avoid showing the internal dimension label here.
-        # Use rating guidance instead of construct names.
-        st.markdown(f"**Rate higher when:** {question['rate_higher']}")
-        st.markdown(f"**Rate lower when:** {question['rate_lower']}")
+    with st.expander("Bewertungshinweise", expanded=False):
+        st.markdown(f"**Höher bewerten, wenn:** {question['rate_higher']}")
+        st.markdown(f"**Niedriger bewerten, wenn:** {question['rate_lower']}")
 
         if question.get("note"):
-            st.markdown(f"**Important:** {question['note']}")
+            st.markdown(f"**Wichtig:** {question['note']}")
 
-        st.markdown("**Scale guidance:**")
-        st.markdown("- **1:** The behavior described in the question is very low or absent.")
-        st.markdown("- **3:** The behavior described in the question is moderate.")
-        st.markdown("- **5:** The behavior described in the question is very high.")
+        st.markdown("**Skalenhinweise:**")
+        st.markdown("- **1:** Das in der Frage beschriebene Verhalten ist sehr gering oder nicht vorhanden.")
+        st.markdown("- **3:** Das in der Frage beschriebene Verhalten ist moderat.")
+        st.markdown("- **5:** Das in der Frage beschriebene Verhalten ist sehr stark ausgeprägt.")
 
     answers[question["key"]] = st.radio(
         label=visible_question,
@@ -775,15 +762,15 @@ with st.form("rating_form", clear_on_submit=False):
     for i, question in enumerate(QUESTIONS_BLOCK_A, start=1):
         render_question(question, answers, i)
 
-    st.markdown("**Optional free comment**")
+    st.markdown("**Optionaler Kommentar**")
     free_comment = st.text_area(
-        "If you have any additional comments about this dialog or the rating task, you can write them here.",
-        placeholder="Optional: write any additional feedback here...",
+        "Wenn Sie weitere Anmerkungen zu diesem Dialog oder zur Bewertungsaufgabe haben, können Sie diese hier eintragen.",
+        placeholder="Optional: Schreiben Sie hier zusätzliche Anmerkungen...",
         key=f"free_comment_{dialog_row['META_dialog_id']}",
     )
 
     submitted = st.form_submit_button(
-        "Submit ratings",
+        "Bewertungen absenden",
         type="primary",
     )
 
@@ -793,7 +780,7 @@ if submitted:
     ]
 
     if missing_questions:
-        st.error(f"Please answer all {len(QUESTIONS)} questions before submitting.")
+        st.error(f"Bitte beantworten Sie alle {len(QUESTIONS)} Fragen, bevor Sie absenden.")
     else:
         inserted = save_response(
             participant_id=participant_id,
@@ -807,22 +794,22 @@ if submitted:
         if inserted:
             new_count = participant_completed_count(participant_id)
             if new_count >= DIALOGS_PER_PARTICIPANT:
-                st.success("All required dialog ratings have been recorded. Thank you.")
+                st.success("Alle erforderlichen Dialogbewertungen wurden aufgezeichnet. Vielen Dank.")
                 if PROLIFIC_COMPLETION_URL:
-                    st.markdown(f"[Return to Prolific]({PROLIFIC_COMPLETION_URL})")
+                    st.markdown(f"[Zurück zu Prolific]({PROLIFIC_COMPLETION_URL})")
             else:
                 continue_url = make_continue_url(participant_id, prolific_pid, study_id, session_id)
-                st.success("Previous dialog saved. Please continue with the next dialog.")
+                st.success("Vorheriger Dialog gespeichert. Bitte fahren Sie mit dem nächsten Dialog fort.")
                 st.markdown(
-                    f'<a class="continue-button" href="{html.escape(continue_url)}" target="_self">Continue to next dialog</a>',
+                    f'<a class="continue-button" href="{html.escape(continue_url)}" target="_self">Weiter zum nächsten Dialog</a>',
                     unsafe_allow_html=True,
                 )
                 st.stop()
         else:
             continue_url = make_continue_url(participant_id, prolific_pid, study_id, session_id)
-            st.info("Your response for this dialog was already saved earlier. Please continue with the next available dialog.")
+            st.info("Ihre Antwort für diesen Dialog wurde bereits früher gespeichert. Bitte fahren Sie mit dem nächsten verfügbaren Dialog fort.")
             st.markdown(
-                f'<a class="continue-button" href="{html.escape(continue_url)}" target="_self">Continue to next dialog</a>',
+                f'<a class="continue-button" href="{html.escape(continue_url)}" target="_self">Weiter zum nächsten Dialog</a>',
                 unsafe_allow_html=True,
             )
             st.stop()
