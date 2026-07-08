@@ -2,27 +2,34 @@
 # -*- coding: utf-8 -*-
 
 """
-create_test_samples.py
+create_train_set.py
 
-Create small Streamlit test-sample CSVs from the annotation-ready dialog
-exports produced by 01_preprocess/preprocess.py:
+Create the Streamlit "training" sample CSVs (6 fixed + 30 random dialogs per
+language) from the annotation-ready dialog exports produced by
+01_preprocess/preprocess.py:
 - data/data_clean/dialogs_for_annotation_en.csv
 - data/data_clean/dialogs_for_annotation_de.csv
 
 Design:
-- Run interactively: the script first prints how many eligible dialogs are
-  available per subject/language/condition. German is then handled fully
-  (prompt, sample, write) before English is handled fully, as two separate
-  steps. The two totals do not have to match.
-- Within each language, dialogs are split evenly across the 3 subjects
-  (Breakfast, Watches, Vacation). Dialogs with an unrecognized/"Unknown" topic
-  are excluded.
-- Within each subject-language cell, Condition A (Willi) and Condition B (WV-34)
-  are always sampled in equal numbers.
+- Per language, the output is always 36 dialogs total:
+    - 6 fixed "training representative" dialogs, hard-coded below
+      (see TRAIN_REPRESENTATIVES_EN / TRAIN_REPRESENTATIVES_DE). These were
+      manually picked, 2 per engagement level (High/Moderate/Low), spread
+      across the 3 subjects, each with a short "why selected" rationale.
+    - 30 randomly sampled dialogs, chosen the same way as
+      create_test_samples.py: split evenly across the 3 subjects
+      (Breakfast, Watches, Vacation; 10 each), and within each subject split
+      evenly across Condition A (Willi) and Condition B (WV-34) (5 each).
+      The 6 fixed dialogs are excluded from this random pool so nothing is
+      picked twice.
+- Runs non-interactively (no terminal prompts): both languages are always
+  generated in one run.
+- After writing both CSVs, prints stats per language: total rows, counts by
+  fixed vs. random, counts by condition, and counts by subject + condition.
 
-Output (always written to this folder, with the chosen total in the name):
-- 05_prolific/streamlit_test_sample_de_<total>.csv
-- 05_prolific/streamlit_test_sample_en_<total>.csv
+Output (always written to this folder):
+- 05_prolific/streamlit_train_sample_de_36.csv
+- 05_prolific/streamlit_train_sample_en_36.csv
 
 Visible participant-facing columns:
 - language
@@ -37,7 +44,6 @@ from __future__ import annotations
 
 import csv
 import random
-import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Dict, List
@@ -54,6 +60,9 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 DATA_CLEAN_DIR = SCRIPT_DIR.parent / "data" / "data_clean"
 INPUT_EN_PATH = DATA_CLEAN_DIR / "dialogs_for_annotation_en.csv"
 INPUT_DE_PATH = DATA_CLEAN_DIR / "dialogs_for_annotation_de.csv"
+
+# Number of randomly-sampled dialogs per language (on top of the 6 fixed ones).
+N_RANDOM_PER_LANGUAGE = 30
 
 # =============================================================================
 
@@ -88,6 +97,116 @@ NEUTRAL_GREETINGS = {
     ),
 }
 
+# -----------------------------------------------------------------------------
+# Fixed "training representative" dialogs (6 per language).
+#
+# Manually picked per language: 2 dialogs per engagement level (High,
+# Moderate, Low), spread across different subjects rather than repeating the
+# same one, so the 6 examples together illustrate the range of engagement
+# levels and the range of subjects. Levels were judged from dialog length,
+# depth, and how reactive/sustained the visitor's participation was:
+#   - High:     long, multi-turn, detailed answers and follow-up questions.
+#   - Moderate: several turns with genuine back-and-forth, but shorter/less
+#               sustained than High.
+#   - Low:      minimal engagement - a topic pick and at most one short
+#               question before disengaging.
+# -----------------------------------------------------------------------------
+
+TRAIN_REPRESENTATIVES_EN: List[Dict[str, Any]] = [
+    {
+        "level": "High",
+        "dialog_id": 1349,
+        "turns": 17,
+        "subject": "Watches",
+        "why_selected": "Long, rich, multi-topic exchange with detailed answers and follow-ups",
+    },
+    {
+        "level": "Moderate",
+        "dialog_id": 614,
+        "turns": 7,
+        "subject": "Vacation",
+        "why_selected": "Gives trip context and asks for recommendations",
+    },
+    {
+        "level": "Low",
+        "dialog_id": 507,
+        "turns": 1,
+        "subject": "Breakfast",
+        "why_selected": "Only selects the topic",
+    },
+    {
+        "level": "High",
+        "dialog_id": 732,
+        "turns": 11,
+        "subject": "Breakfast",
+        "why_selected": "Personal, reactive, and sustained interaction",
+    },
+    {
+        "level": "Moderate",
+        "dialog_id": 926,
+        "turns": 6,
+        "subject": "Watches",
+        "why_selected": "Gives feedback on voice/experience, then exits",
+    },
+    {
+        "level": "Low",
+        "dialog_id": 888,
+        "turns": 2,
+        "subject": "Vacation",
+        "why_selected": "Brief topic request plus one short question",
+    },
+]
+
+TRAIN_REPRESENTATIVES_DE: List[Dict[str, Any]] = [
+    {
+        "level": "High",
+        "dialog_id": 1347,
+        "turns": 23,
+        "subject": "Watches",
+        "why_selected": "Very detailed watch-focused interaction with strong interest",
+    },
+    {
+        "level": "Moderate",
+        "dialog_id": 712,
+        "turns": 6,
+        "subject": "Breakfast",
+        "why_selected": "Coherent breakfast routine with limited back-and-forth",
+    },
+    {
+        "level": "Low",
+        "dialog_id": 1157,
+        "turns": 1,
+        "subject": "Vacation",
+        "why_selected": "Single recommendation question, no continuation",
+    },
+    {
+        "level": "High",
+        "dialog_id": 144,
+        "turns": 26,
+        "subject": "Breakfast",
+        "why_selected": "Rich personal details plus scientific follow-up questions",
+    },
+    {
+        "level": "Moderate",
+        "dialog_id": 1378,
+        "turns": 7,
+        "subject": "Vacation",
+        "why_selected": "Vacation preferences plus a skiing-related follow-up",
+    },
+    {
+        "level": "Low",
+        "dialog_id": 244,
+        "turns": 2,
+        "subject": "Watches",
+        "why_selected": "Topic chosen, then conversation quickly ended",
+    },
+]
+
+TRAIN_REPRESENTATIVES_BY_LANGUAGE = {
+    "English": TRAIN_REPRESENTATIVES_EN,
+    "German": TRAIN_REPRESENTATIVES_DE,
+}
+
 
 def anonymize_intro(dialog_text: str, language: str) -> str:
     """Replace the robot's opening turn with a neutral, condition-blind greeting."""
@@ -106,7 +225,7 @@ def anonymize_intro(dialog_text: str, language: str) -> str:
 def output_path_for(language: str, total: int) -> Path:
     """Output CSV path, always written into this folder, including the total."""
     code = LANGUAGE_CODES[language]
-    return SCRIPT_DIR / f"streamlit_test_sample_{code}_{total}.csv"
+    return SCRIPT_DIR / f"streamlit_train_sample_{code}_{total}.csv"
 
 
 def load_annotation_csv(input_path: Path, language: str) -> List[Dict[str, Any]]:
@@ -149,86 +268,33 @@ def prepare_eligible_dialogs(rows: List[Dict[str, Any]]) -> tuple[List[Dict[str,
     return eligible, exclusion_counts
 
 
-def compute_pool_counts(eligible: List[Dict[str, Any]]) -> Counter:
-    """Count eligible dialogs per (subject, language, condition)."""
-    return Counter(
-        (row["_subject"], row["_language"], row["_condition"]) for row in eligible
-    )
+def pick_fixed_rows(
+    eligible: List[Dict[str, Any]], language: str
+) -> List[Dict[str, Any]]:
+    """Look up the 6 hard-coded training representative dialogs for one language."""
+    by_id = {
+        str(row.get("dialog_id")): row
+        for row in eligible
+        if row["_language"] == language
+    }
 
-
-def print_pool_report(language: str, pool_counts: Counter) -> None:
-    """Print available dialog counts per subject/condition for one language."""
-    print(f"\nAvailable {language} dialog pool (eligible):")
-
-    language_total = sum(
-        pool_counts[(subject, language, condition)]
-        for subject in SUBJECTS
-        for condition in CONDITIONS
-    )
-    print(f"{language} total: {language_total}")
-
-    for subject in SUBJECTS:
-        stratum_total = sum(
-            pool_counts[(subject, language, condition)] for condition in CONDITIONS
-        )
-        print(f"  {subject:9s}: {stratum_total} available")
-        for condition in CONDITIONS:
-            available = pool_counts[(subject, language, condition)]
-            print(f"    {condition:22s}: {available} available")
-
-
-def prompt_total_for_language(language: str, pool_counts: Counter) -> int:
-    """
-    Interactively ask for the number of conversations to generate for one
-    language, re-prompting until the value is valid and available.
-    """
-    while True:
-        raw = input(
-            f"\nHow many {language} conversations do you want to generate? "
-        ).strip()
-
-        try:
-            total = int(raw)
-        except ValueError:
-            print("Please enter a whole number.")
-            continue
-
-        if total <= 0:
-            print("Please enter a positive number.")
-            continue
-
-        if total % len(SUBJECTS) != 0:
-            print(
-                f"Total must be evenly divisible by {len(SUBJECTS)} "
-                f"(one share per subject: {', '.join(SUBJECTS)})."
+    fixed_rows = []
+    for entry in TRAIN_REPRESENTATIVES_BY_LANGUAGE[language]:
+        dialog_id = str(entry["dialog_id"])
+        row = by_id.get(dialog_id)
+        if row is None:
+            raise ValueError(
+                f"Fixed training dialog_id {dialog_id} not found in eligible "
+                f"{language} pool (check {INPUT_PATHS_BY_LANGUAGE[language]})."
             )
-            continue
 
-        per_subject = total // len(SUBJECTS)
-        if per_subject % 2 != 0:
-            print(
-                f"Dialogs per subject ({per_subject}) must be even so "
-                "Condition A and Condition B can be split equally."
-            )
-            continue
+        enriched = dict(row)
+        enriched["_selection"] = "fixed"
+        enriched["_level"] = entry["level"]
+        enriched["_why_selected"] = entry["why_selected"]
+        fixed_rows.append(enriched)
 
-        shortfalls = []
-        for subject in SUBJECTS:
-            available = sum(
-                pool_counts[(subject, language, condition)] for condition in CONDITIONS
-            )
-            if available < per_subject:
-                shortfalls.append(
-                    f"  {subject}: requested {per_subject}, only {available} available"
-                )
-
-        if shortfalls:
-            print(f"Not enough {language} dialogs available for that total:")
-            for line in shortfalls:
-                print(line)
-            continue
-
-        return total
+    return fixed_rows
 
 
 def sample_one_stratum(
@@ -266,8 +332,7 @@ def sample_one_stratum(
         if k < target_per_condition:
             print(
                 f"Warning: only found {k}/{target_per_condition} dialogs for "
-                f"{subject} / {language} / {condition}. Filling from same stratum.",
-                file=sys.stderr,
+                f"{subject} / {language} / {condition}. Filling from same stratum."
             )
 
     selected_ids = {str(d.get("dialog_id")) for d in selected}
@@ -275,7 +340,7 @@ def sample_one_stratum(
 
     if len(selected) < per_stratum:
         need = per_stratum - len(selected)
-        selected.extend(rng.sample(remaining, need))
+        selected.extend(rng.sample(remaining, min(need, len(remaining))))
 
     if len(selected) > per_stratum:
         selected = rng.sample(selected, per_stratum)
@@ -284,31 +349,35 @@ def sample_one_stratum(
     return selected
 
 
-def sample_language_batch(
+def sample_random_rows(
     eligible: List[Dict[str, Any]],
     language: str,
-    n_per_subject_language: int,
+    n_random: int,
     rng: random.Random,
 ) -> List[Dict[str, Any]]:
-    """Sample the full batch for one language."""
+    """Randomly sample n_random dialogs for one language, split evenly across subjects."""
+    per_subject = n_random // len(SUBJECTS)
     selected: List[Dict[str, Any]] = []
 
     for subject in SUBJECTS:
-        selected.extend(
-            sample_one_stratum(
-                eligible=eligible,
-                subject=subject,
-                language=language,
-                per_stratum=n_per_subject_language,
-                rng=rng,
-            )
+        rows = sample_one_stratum(
+            eligible=eligible,
+            subject=subject,
+            language=language,
+            per_stratum=per_subject,
+            rng=rng,
         )
+        for row in rows:
+            row["_selection"] = "random"
+            row["_level"] = ""
+            row["_why_selected"] = ""
+        selected.extend(rows)
 
     rng.shuffle(selected)
     return selected
 
 
-def make_row(row: Dict[str, Any], sample_stratum: str) -> Dict[str, Any]:
+def make_row(row: Dict[str, Any]) -> Dict[str, Any]:
     """Convert one eligible annotation row into one output CSV row."""
     return {
         # Hidden metadata columns for Prolific / Streamlit.
@@ -316,7 +385,9 @@ def make_row(row: Dict[str, Any], sample_stratum: str) -> Dict[str, Any]:
         "META_condition": row.get("condition_hidden", ""),
         "META_feedback": row.get("feedback_existing", ""),
         "META_original_topics": row.get("topics_json", ""),
-        "META_sample_stratum": sample_stratum,
+        "META_selection": row["_selection"],
+        "META_level": row["_level"],
+        "META_why_selected": row["_why_selected"],
         "META_n_user_turns": row.get("n_visitor_turns", ""),
         "META_n_robot_turns": row.get("n_robot_turns", ""),
         "META_n_visible_turns": row.get("n_turns_visible", ""),
@@ -339,7 +410,9 @@ def write_csv(rows: List[Dict[str, Any]], output_path: Path) -> None:
         "META_condition",
         "META_feedback",
         "META_original_topics",
-        "META_sample_stratum",
+        "META_selection",
+        "META_level",
+        "META_why_selected",
         "META_n_user_turns",
         "META_n_robot_turns",
         "META_n_visible_turns",
@@ -364,15 +437,27 @@ def print_language_summary(
     rows: List[Dict[str, Any]],
     output_path: Path,
 ) -> None:
-    """Print a compact summary for the test sample just generated for one language."""
-    print(f"\n--- {language} test sample written ---")
+    """Print a compact summary for the train sample just generated for one language."""
+    print(f"\n--- {language} train sample written ---")
     print(f"Output rows: {len(rows)}")
     print(f"Output file: {output_path}")
 
-    print("Counts by subject:")
-    by_subject = Counter(row["subject"] for row in rows)
-    for subject in SUBJECTS:
-        print(f"  {subject:9s}: {by_subject[subject]}")
+    by_selection = Counter(row["META_selection"] for row in rows)
+    print(f"Counts by selection: fixed={by_selection['fixed']}, random={by_selection['random']}")
+
+    print("Fixed dialogs (level, dialog_id, subject, condition):")
+    for row in rows:
+        if row["META_selection"] != "fixed":
+            continue
+        print(
+            f"  {row['META_level']:8s} {row['META_dialog_id']:>6} "
+            f"{row['subject']:9s} {row['META_condition']}"
+        )
+
+    print("Counts by condition:")
+    by_condition = Counter(row["META_condition"] for row in rows)
+    for condition in CONDITIONS:
+        print(f"  {condition:22s}: {by_condition[condition]}")
 
     print("Counts by subject and condition:")
     by_subject_condition = Counter((row["subject"], row["META_condition"]) for row in rows)
@@ -384,33 +469,34 @@ def print_language_summary(
 def process_language(
     language: str,
     eligible: List[Dict[str, Any]],
-    pool_counts: Counter,
     rng: random.Random,
 ) -> None:
-    """Prompt, sample, and write the test sample CSV for one language, start to finish."""
+    """Pick the 6 fixed + N random dialogs and write the train sample CSV for one language."""
     print(f"\n==============================")
     print(f"{language}")
     print(f"==============================")
 
-    print_pool_report(language, pool_counts)
-    total = prompt_total_for_language(language, pool_counts)
-    n_per_subject_language = total // len(SUBJECTS)
+    fixed_rows = pick_fixed_rows(eligible, language)
+    fixed_ids = {str(row.get("dialog_id")) for row in fixed_rows}
 
-    sampled_dialogs = sample_language_batch(
-        eligible=eligible,
+    remaining_pool = [
+        row for row in eligible
+        if row["_language"] == language and str(row.get("dialog_id")) not in fixed_ids
+    ]
+
+    random_rows = sample_random_rows(
+        eligible=remaining_pool,
         language=language,
-        n_per_subject_language=n_per_subject_language,
+        n_random=N_RANDOM_PER_LANGUAGE,
         rng=rng,
     )
 
-    rows = [
-        make_row(dialog, f"{dialog['_subject']}_{dialog['_language']}")
-        for dialog in sampled_dialogs
-    ]
+    all_rows = [make_row(row) for row in fixed_rows + random_rows]
 
+    total = len(all_rows)
     output_path = output_path_for(language, total)
-    write_csv(rows, output_path)
-    print_language_summary(language, rows, output_path)
+    write_csv(all_rows, output_path)
+    print_language_summary(language, all_rows, output_path)
 
 
 def main() -> None:
@@ -423,7 +509,6 @@ def main() -> None:
         all_rows.extend(load_annotation_csv(path, language))
 
     eligible, exclusion_counts = prepare_eligible_dialogs(all_rows)
-    pool_counts = compute_pool_counts(eligible)
 
     if exclusion_counts:
         print("\nExcluded dialogs:")
@@ -432,9 +517,8 @@ def main() -> None:
 
     rng = random.Random(RANDOM_SEED)
 
-    # German is fully handled (prompt, sample, write) before English starts.
     for language in LANGUAGES:
-        process_language(language, eligible, pool_counts, rng)
+        process_language(language, eligible, rng)
 
     print("\nAll done.")
 

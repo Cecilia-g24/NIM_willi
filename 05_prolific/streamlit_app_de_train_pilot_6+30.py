@@ -16,27 +16,47 @@ import streamlit as st
 # ============================================================
 
 # This file should be located inside: 05_prolific/
-# Dialog input CSV is produced by create_test_samples.py into this same
-# folder, named "streamlit_test_sample_de_<N>.csv". The most recently
-# generated file is used automatically. Only German dialogs are loaded.
+# Dialog input CSV is produced by create_train_set.py into this same folder,
+# named "streamlit_train_sample_de_<N>.csv" (N = 6 fixed + 30 random). The
+# most recently generated file is used automatically. Only German dialogs
+# are loaded by this app.
+#
+# Flow:
+# - Part 1 (training): the 6 dialogs marked META_selection == "fixed" are
+#   shown first, in the fixed order they appear in the CSV, one at a time.
+#   Every participant rates all 6.
+# - Once all 6 training dialogs are rated, a readiness checkbox is shown
+#   ("Fuehlen Sie sich jetzt bereit, mit den echten Annotationen fortzufahren?").
+#   Part 2 only starts once the participant confirms.
+# - Part 2 (real annotations): dialogs marked META_selection == "random"
+#   are assigned the same way create_test_samples.py-based apps do it -
+#   DIALOGS_PER_PARTICIPANT dialogs, balanced by current rating count.
 BASE_DIR = Path(__file__).resolve().parent
 
-DIALOG_INPUT_FILENAME_PATTERN = "streamlit_test_sample_de_*.csv"
+DIALOG_INPUT_FILENAME_PATTERN = "streamlit_train_sample_de_*.csv"
 
 RESPONSES_DIR = BASE_DIR / "responses"
-DB_PATH = RESPONSES_DIR / "survey_responses_de.sqlite"
-CSV_EXPORT_PATH = RESPONSES_DIR / "survey_responses_de.csv"
+DB_PATH = RESPONSES_DIR / "survey_responses_de_train_pilot.sqlite"
+CSV_EXPORT_PATH = RESPONSES_DIR / "survey_responses_de_train_pilot.csv"
 
 # Prolific completion URL for the German study.
 PROLIFIC_COMPLETION_URL = "https://app.prolific.com/submissions/complete?cc=C6JV4KGN"
 
-# Number of dialogs one participant should annotate.
+# Number of real (part 2) dialogs one participant should annotate.
+# All training (part 1) dialogs are mandatory and are not subject to a quota.
 DIALOGS_PER_PARTICIPANT = 3
 
-# Optional quota per dialog. Set to None if you do not want a cap.
+# Optional quota per real dialog. Set to None if you do not want a cap.
 TARGET_RATINGS_PER_DIALOG: Optional[int] = None
 
-REQUIRED_COLUMNS = ["META_dialog_id", "META_condition", "language", "subject", "dialog_text"]
+REQUIRED_COLUMNS = [
+    "META_dialog_id",
+    "META_condition",
+    "META_selection",
+    "language",
+    "subject",
+    "dialog_text",
+]
 
 ANNOTATION_INSTRUCTION_BLOCK_A = (
     "Bitte lesen Sie den gesamten Dialog und bewerten Sie ausschließlich das Verhalten der "
@@ -230,7 +250,7 @@ QUESTIONS = QUESTIONS_BLOCK_A
 # ============================================================
 
 st.set_page_config(
-    page_title="Beobachterrating des Nutzerverhaltens in der MRI-Studie",
+    page_title="Beobachterrating des Nutzerverhaltens in der MRI-Studie - Trainings-Pilot",
     page_icon="📝",
     layout="wide",
 )
@@ -331,7 +351,7 @@ def get_query_param(key: str, default: str = "") -> str:
 
 
 def find_latest_dialog_csv() -> Optional[Path]:
-    """Find the most recently generated create_test_samples.py output for German."""
+    """Find the most recently generated create_train_set.py output for German."""
     matches = sorted(BASE_DIR.glob(DIALOG_INPUT_FILENAME_PATTERN), key=lambda p: p.stat().st_mtime, reverse=True)
     return matches[0] if matches else None
 
@@ -345,6 +365,7 @@ def load_dialogs(csv_path: str) -> pd.DataFrame:
 
     df = df.copy()
     df["META_dialog_id"] = df["META_dialog_id"].astype(str)
+    df["META_selection"] = df["META_selection"].fillna("").astype(str)
     df["dialog_text"] = df["dialog_text"].fillna("").astype(str)
     df["language"] = df["language"].fillna("").astype(str)
     df["subject"] = df["subject"].fillna("").astype(str)
@@ -363,6 +384,7 @@ def init_db() -> None:
                 study_id TEXT,
                 session_id TEXT,
                 dialog_id TEXT NOT NULL,
+                phase TEXT NOT NULL,
                 language TEXT,
                 subject TEXT,
                 condition TEXT,
@@ -370,6 +392,14 @@ def init_db() -> None:
                 free_comment TEXT,
                 {question_columns},
                 PRIMARY KEY (participant_id, dialog_id)
+            )
+            """
+        )
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS training_confirmations (
+                participant_id TEXT PRIMARY KEY,
+                confirmed_at_utc TEXT NOT NULL
             )
             """
         )
@@ -384,8 +414,13 @@ def init_db() -> None:
         if "condition" not in existing_columns:
             conn.execute("ALTER TABLE responses ADD COLUMN condition TEXT")
             existing_columns.add("condition")
+        if "phase" not in existing_columns:
+            conn.execute("ALTER TABLE responses ADD COLUMN phase TEXT NOT NULL DEFAULT 'main'")
+            existing_columns.add("phase")
 
         # Add columns for any newly added or renamed questions.
+        # Existing response databases from earlier survey versions may not contain
+        # the current question keys.
         for question in QUESTIONS:
             question_key = question["key"]
             if question_key not in existing_columns:
@@ -399,14 +434,14 @@ def init_db() -> None:
         # to make those stale columns nullable so inserts work again.
         col_rows = conn.execute("PRAGMA table_info(responses)").fetchall()
         non_question = {
-            "participant_id", "study_id", "session_id", "dialog_id",
+            "participant_id", "study_id", "session_id", "dialog_id", "phase",
             "language", "subject", "condition", "submitted_at_utc", "free_comment",
         }
         current_keys = {q["key"] for q in QUESTIONS}
         stale_notnull = [r for r in col_rows if r[3] and r[1] not in current_keys and r[1] not in non_question]
 
         if stale_notnull:
-            required_notnull = {"participant_id", "dialog_id", "submitted_at_utc"}
+            required_notnull = {"participant_id", "dialog_id", "phase", "submitted_at_utc"}
             col_names = [r[1] for r in col_rows]
             defs = []
             for r in col_rows:
@@ -429,6 +464,7 @@ def export_responses_to_csv() -> None:
         "study_id",
         "session_id",
         "dialog_id",
+        "phase",
         "language",
         "subject",
         "condition",
@@ -445,22 +481,41 @@ def export_responses_to_csv() -> None:
     responses.to_csv(CSV_EXPORT_PATH, index=False, encoding="utf-8-sig")
 
 
-def participant_completed_count(participant_id: str) -> int:
+def participant_completed_count(participant_id: str, phase: str) -> int:
     with sqlite3.connect(DB_PATH) as conn:
         row = conn.execute(
-            "SELECT COUNT(*) FROM responses WHERE participant_id = ?",
-            (participant_id,),
+            "SELECT COUNT(*) FROM responses WHERE participant_id = ? AND phase = ?",
+            (participant_id, phase),
         ).fetchone()
     return int(row[0]) if row else 0
 
 
-def participant_answered_dialog_ids(participant_id: str) -> set[str]:
+def participant_answered_dialog_ids(participant_id: str, phase: str) -> set[str]:
     with sqlite3.connect(DB_PATH) as conn:
         rows = conn.execute(
-            "SELECT dialog_id FROM responses WHERE participant_id = ?",
-            (participant_id,),
+            "SELECT dialog_id FROM responses WHERE participant_id = ? AND phase = ?",
+            (participant_id, phase),
         ).fetchall()
     return {str(row[0]) for row in rows}
+
+
+def is_training_confirmed(participant_id: str) -> bool:
+    with sqlite3.connect(DB_PATH) as conn:
+        row = conn.execute(
+            "SELECT 1 FROM training_confirmations WHERE participant_id = ?",
+            (participant_id,),
+        ).fetchone()
+    return row is not None
+
+
+def confirm_training(participant_id: str) -> None:
+    confirmed_at_utc = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    with sqlite3.connect(DB_PATH, timeout=30) as conn:
+        conn.execute(
+            "INSERT OR IGNORE INTO training_confirmations (participant_id, confirmed_at_utc) VALUES (?, ?)",
+            (participant_id, confirmed_at_utc),
+        )
+        conn.commit()
 
 
 def stable_tie_breaker(participant_id: str, dialog_id: str) -> int:
@@ -468,26 +523,34 @@ def stable_tie_breaker(participant_id: str, dialog_id: str) -> int:
     return int(hashlib.sha256(text.encode("utf-8")).hexdigest()[:12], 16)
 
 
-def assign_dialog(df: pd.DataFrame, participant_id: str, requested_dialog_id: str = "") -> Optional[pd.Series]:
+def next_training_dialog(training_df: pd.DataFrame, answered_ids: set[str]) -> Optional[pd.Series]:
+    """Return the next un-answered training dialog, in fixed CSV order."""
+    remaining = training_df[~training_df["META_dialog_id"].isin(answered_ids)]
+    if remaining.empty:
+        return None
+    return remaining.iloc[0]
+
+
+def assign_main_dialog(main_df: pd.DataFrame, participant_id: str, requested_dialog_id: str = "") -> Optional[pd.Series]:
     """
-    Assign one dialog to the participant.
+    Assign one real (part 2) dialog to the participant.
 
     Priority:
     1. If ?DIALOG_ID=... is present and not already rated by this participant, use that dialog.
     2. Otherwise, choose among dialogs not yet rated by this participant.
        The assignment is balanced by current rating count per dialog.
     """
-    answered_ids = participant_answered_dialog_ids(participant_id)
+    answered_ids = participant_answered_dialog_ids(participant_id, phase="main")
 
     requested_dialog_id = str(requested_dialog_id).strip()
     if requested_dialog_id and requested_dialog_id not in answered_ids:
-        chosen = df[df["META_dialog_id"] == requested_dialog_id]
+        chosen = main_df[main_df["META_dialog_id"] == requested_dialog_id]
         if not chosen.empty:
             return chosen.iloc[0]
 
     with sqlite3.connect(DB_PATH) as conn:
         counts = pd.read_sql_query(
-            "SELECT dialog_id, COUNT(*) AS n_ratings FROM responses GROUP BY dialog_id",
+            "SELECT dialog_id, COUNT(*) AS n_ratings FROM responses WHERE phase = 'main' GROUP BY dialog_id",
             conn,
         )
 
@@ -497,7 +560,7 @@ def assign_dialog(df: pd.DataFrame, participant_id: str, requested_dialog_id: st
         else {}
     )
 
-    candidates = df[~df["META_dialog_id"].isin(answered_ids)].copy()
+    candidates = main_df[~main_df["META_dialog_id"].isin(answered_ids)].copy()
     if candidates.empty:
         return None
 
@@ -521,6 +584,7 @@ def save_response(
     session_id: str,
     dialog_row: pd.Series,
     answers: dict[str, int],
+    phase: str,
     free_comment: str = "",
 ) -> bool:
     submitted_at_utc = datetime.now(timezone.utc).isoformat(timespec="seconds")
@@ -530,6 +594,7 @@ def save_response(
         "study_id",
         "session_id",
         "dialog_id",
+        "phase",
         "language",
         "subject",
         "condition",
@@ -542,6 +607,7 @@ def save_response(
         study_id,
         session_id,
         str(dialog_row["META_dialog_id"]),
+        phase,
         str(dialog_row.get("language", "")),
         str(dialog_row.get("subject", "")),
         str(dialog_row.get("META_condition", "")),
@@ -565,6 +631,11 @@ def save_response(
 
 
 def make_continue_url(participant_id: str, prolific_pid: str, study_id: str, session_id: str) -> str:
+    """Create a browser navigation URL and jump to the top anchor on the next page.
+
+    This avoids the deprecated st.components.v1.html scroll hack and works
+    by changing the URL query string plus adding #page-top.
+    """
     params: dict[str, str] = {}
 
     if prolific_pid:
@@ -574,8 +645,11 @@ def make_continue_url(participant_id: str, prolific_pid: str, study_id: str, ses
         if session_id:
             params["SESSION_ID"] = session_id
     else:
+        # Preserve manually entered test IDs when using the app outside Prolific.
         params["TEST_PID"] = participant_id
 
+    # Cache-buster: makes the browser perform an actual navigation.
+    # The #page-top fragment asks the browser to open the next page at the top.
     params["reload"] = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S%f")
     return "?" + urlencode(params) + "#page-top"
 
@@ -618,7 +692,11 @@ def parse_dialog_to_blocks(dialog_text: str) -> list[tuple[str, str]]:
 
 
 def render_dialog(dialog_text: str) -> None:
-    """Render the dialog as clean Roboter/Besucher cards."""
+    """Render the dialog as clean Roboter/Besucher cards.
+
+    Important: build compact HTML strings without leading indentation.
+    Otherwise Streamlit's Markdown parser may display the HTML as a code block.
+    """
     blocks = parse_dialog_to_blocks(dialog_text)
     html_blocks: list[str] = []
 
@@ -646,15 +724,120 @@ def render_dialog(dialog_text: str) -> None:
     )
 
 
+GENERIC_LIKERT_LABELS = {
+    1: "1 = Sehr gering",
+    2: "2 = Gering",
+    3: "3 = Mittel",
+    4: "4 = Hoch",
+    5: "5 = Sehr hoch",
+}
+
+
+def render_rating_form(
+    dialog_row: pd.Series,
+    phase: str,
+    participant_id: str,
+    study_id: str,
+    session_id: str,
+    prolific_pid: str,
+) -> None:
+    """Render one dialog + all questions, save the response on submit, then
+    show a continue link. Used for both training and real dialogs."""
+    answers: dict[str, Optional[int]] = {}
+
+    def render_question(question: dict, question_number: int) -> None:
+        visible_question = f"{question_number}. {question['help']}"
+
+        st.markdown(f"**{question_number}. {question['headline']}**")
+        st.markdown(f"*{question['help']}*")
+
+        with st.expander("Bewertungshinweise", expanded=False):
+            st.markdown(f"**Höher bewerten, wenn:** {question['rate_higher']}")
+            st.markdown(f"**Niedriger bewerten, wenn:** {question['rate_lower']}")
+
+            if question.get("note"):
+                st.markdown(f"**Wichtig:** {question['note']}")
+
+            st.markdown("**Skalenhinweise:**")
+            st.markdown("- **1:** Das in der Frage beschriebene Verhalten ist sehr gering oder nicht vorhanden.")
+            st.markdown("- **3:** Das in der Frage beschriebene Verhalten ist moderat.")
+            st.markdown("- **5:** Das in der Frage beschriebene Verhalten ist sehr stark ausgeprägt.")
+
+        answers[question["key"]] = st.radio(
+            label=visible_question,
+            options=[1, 2, 3, 4, 5],
+            format_func=lambda value: GENERIC_LIKERT_LABELS[value],
+            index=None,
+            horizontal=True,
+            label_visibility="collapsed",
+            key=f"radio_{phase}_{question['key']}_{dialog_row['META_dialog_id']}",
+        )
+        st.write("")
+
+    with st.form(f"rating_form_{phase}_{dialog_row['META_dialog_id']}", clear_on_submit=False):
+        st.markdown(ANNOTATION_INSTRUCTION_BLOCK_A)
+
+        render_dialog(str(dialog_row["dialog_text"]))
+
+        for i, question in enumerate(QUESTIONS_BLOCK_A, start=1):
+            render_question(question, i)
+
+        st.markdown("**Optionaler Kommentar**")
+        free_comment = st.text_area(
+            "Wenn Sie weitere Anmerkungen zu diesem Dialog oder zur Bewertungsaufgabe haben, können Sie diese hier eintragen.",
+            placeholder="Optional: Schreiben Sie hier zusätzliche Anmerkungen...",
+            key=f"free_comment_{phase}_{dialog_row['META_dialog_id']}",
+        )
+
+        submitted = st.form_submit_button(
+            "Bewertungen absenden",
+            type="primary",
+        )
+
+    if not submitted:
+        return
+
+    missing_questions = [
+        question["label"] for question in QUESTIONS if answers.get(question["key"]) is None
+    ]
+
+    if missing_questions:
+        st.error(f"Bitte beantworten Sie alle {len(QUESTIONS)} Fragen, bevor Sie absenden.")
+        return
+
+    inserted = save_response(
+        participant_id=participant_id,
+        study_id=study_id,
+        session_id=session_id,
+        dialog_row=dialog_row,
+        answers={key: int(value) for key, value in answers.items() if value is not None},
+        phase=phase,
+        free_comment=free_comment,
+    )
+
+    continue_url = make_continue_url(participant_id, prolific_pid, study_id, session_id)
+
+    if inserted:
+        st.success("Antwort gespeichert. Bitte fahren Sie fort.")
+    else:
+        st.info("Ihre Antwort für diesen Dialog wurde bereits früher gespeichert. Bitte fahren Sie mit dem nächsten verfügbaren Dialog fort.")
+
+    st.markdown(
+        f'<a class="continue-button" href="{html.escape(continue_url)}" target="_self">Weiter</a>',
+        unsafe_allow_html=True,
+    )
+    st.stop()
+
+
 # ============================================================
 # Main app
 # ============================================================
 
 st.markdown('<a id="page-top" name="page-top"></a>', unsafe_allow_html=True)
-st.title("Beobachterrating des Nutzerverhaltens in der MRI-Studie (Deutsch)")
+st.title("Beobachterrating des Nutzerverhaltens in der MRI-Studie (Deutsch) - Trainings-Pilot")
 st.caption(
-    f"Bitte lesen Sie jeden Dialog sorgfältig und beantworten Sie alle {len(QUESTIONS)} Fragen "
-    f"zum Verhalten der menschlichen Gesprächsperson."
+    "Teil 1: einige Trainingsdialoge, um Sie mit der Bewertungsaufgabe vertraut zu machen. "
+    f"Teil 2: {DIALOGS_PER_PARTICIPANT} echte Dialoge zur Bewertung."
 )
 
 de_csv_path = find_latest_dialog_csv()
@@ -663,7 +846,7 @@ if de_csv_path is None:
     st.error(
         "Es wurde keine Dialog-CSV in diesem Ordner gefunden, die dem Muster "
         f"`{DIALOG_INPUT_FILENAME_PATTERN}` entspricht. "
-        "Bitte führen Sie zunächst create_test_samples.py aus, um diese Datei zu erstellen."
+        "Bitte führen Sie zunächst create_train_set.py aus, um diese Datei zu erstellen."
     )
     st.stop()
 
@@ -672,6 +855,9 @@ try:
 except Exception as exc:
     st.error(str(exc))
     st.stop()
+
+training_df = dialogs[dialogs["META_selection"] == "fixed"].reset_index(drop=True)
+main_df = dialogs[dialogs["META_selection"] != "fixed"].reset_index(drop=True)
 
 init_db()
 
@@ -692,7 +878,8 @@ else:
     ).strip()
 
     st.sidebar.divider()
-    st.sidebar.write(f"Eingabezeilen: **{len(dialogs)}**")
+    st.sidebar.write(f"Trainingszeilen: **{len(training_df)}**")
+    st.sidebar.write(f"Echte Dialogzeilen: **{len(main_df)}**")
     st.sidebar.write(f"Geladen: `{de_csv_path.name}`")
     st.sidebar.write(f"Antwortdatei: `{CSV_EXPORT_PATH}`")
 
@@ -700,127 +887,73 @@ if not participant_id:
     st.warning("Bitte geben Sie eine Teilnehmer-ID ein, um zu beginnen.")
     st.stop()
 
-if st.session_state.pop("saved_previous_dialog", False):
-    st.success("Vorheriger Dialog gespeichert. Bitte fahren Sie mit dem nächsten Dialog fort.")
+training_answered_ids = participant_answered_dialog_ids(participant_id, phase="training")
+training_total = len(training_df)
+training_completed_count = int(training_df["META_dialog_id"].isin(training_answered_ids).sum())
+training_done = training_total == 0 or training_completed_count >= training_total
 
-completed_count = participant_completed_count(participant_id)
-
-if completed_count >= DIALOGS_PER_PARTICIPANT:
-    st.success("Alle erforderlichen Dialogbewertungen wurden aufgezeichnet. Vielen Dank.")
-    if PROLIFIC_COMPLETION_URL:
-        st.markdown(f"[Zurück zu Prolific]({PROLIFIC_COMPLETION_URL})")
-    st.stop()
-
-st.progress(completed_count / DIALOGS_PER_PARTICIPANT)
-st.markdown(f"**Fortschritt:** Dialog {completed_count + 1} von {DIALOGS_PER_PARTICIPANT}")
-
-dialog_row = assign_dialog(dialogs, participant_id, requested_dialog_id)
-if dialog_row is None:
-    st.warning("Derzeit ist kein Dialog zur Bewertung verfügbar.")
-    st.stop()
-assert dialog_row is not None
-
-GENERIC_LIKERT_LABELS = {
-    1: "1 = Sehr gering",
-    2: "2 = Gering",
-    3: "3 = Mittel",
-    4: "4 = Hoch",
-    5: "5 = Sehr hoch",
-}
-
-
-def render_question(
-    question: dict,
-    answers: dict[str, Optional[int]],
-    question_number: int,
-) -> None:
-    visible_question = f"{question_number}. {question['help']}"
-
-    st.markdown(f"**{question_number}. {question['headline']}**")
-    st.markdown(f"*{question['help']}*")
-
-    with st.expander("Bewertungshinweise", expanded=False):
-        st.markdown(f"**Höher bewerten, wenn:** {question['rate_higher']}")
-        st.markdown(f"**Niedriger bewerten, wenn:** {question['rate_lower']}")
-
-        if question.get("note"):
-            st.markdown(f"**Wichtig:** {question['note']}")
-
-        st.markdown("**Skalenhinweise:**")
-        st.markdown("- **1:** Das in der Frage beschriebene Verhalten ist sehr gering oder nicht vorhanden.")
-        st.markdown("- **3:** Das in der Frage beschriebene Verhalten ist moderat.")
-        st.markdown("- **5:** Das in der Frage beschriebene Verhalten ist sehr stark ausgeprägt.")
-
-    answers[question["key"]] = st.radio(
-        label=visible_question,
-        options=[1, 2, 3, 4, 5],
-        format_func=lambda value: GENERIC_LIKERT_LABELS[value],
-        index=None,
-        horizontal=True,
-        label_visibility="collapsed",
-        key=f"radio_{question['key']}_{dialog_row['META_dialog_id']}",
+if not training_done:
+    st.info(
+        "**Teil 1 von 2: Trainingsdialoge**\n\n"
+        "Diese Übungsdialoge helfen Ihnen, sich mit der Bewertungsaufgabe vertraut zu machen, "
+        "bevor Sie mit den echten Annotationen beginnen. Jede teilnehmende Person bewertet alle "
+        f"{training_total} Trainingsdialoge."
     )
-    st.write("")
+    st.progress(training_completed_count / training_total)
+    st.markdown(f"**Trainingsfortschritt:** Dialog {training_completed_count + 1} von {training_total}")
 
+    dialog_row = next_training_dialog(training_df, training_answered_ids)
+    if dialog_row is None:
+        st.warning("Derzeit ist kein Trainingsdialog verfügbar.")
+        st.stop()
 
-with st.form("rating_form", clear_on_submit=False):
-    answers: dict[str, Optional[int]] = {}
-
-    st.markdown(ANNOTATION_INSTRUCTION_BLOCK_A)
-
-    render_dialog(str(dialog_row["dialog_text"]))
-
-    for i, question in enumerate(QUESTIONS_BLOCK_A, start=1):
-        render_question(question, answers, i)
-
-    st.markdown("**Optionaler Kommentar**")
-    free_comment = st.text_area(
-        "Wenn Sie weitere Anmerkungen zu diesem Dialog oder zur Bewertungsaufgabe haben, können Sie diese hier eintragen.",
-        placeholder="Optional: Schreiben Sie hier zusätzliche Anmerkungen...",
-        key=f"free_comment_{dialog_row['META_dialog_id']}",
+    render_rating_form(
+        dialog_row=dialog_row,
+        phase="training",
+        participant_id=participant_id,
+        study_id=study_id,
+        session_id=session_id,
+        prolific_pid=prolific_pid,
     )
 
-    submitted = st.form_submit_button(
-        "Bewertungen absenden",
-        type="primary",
-    )
+elif not is_training_confirmed(participant_id):
+    st.success(f"Sie haben alle {training_total} Trainingsdialoge abgeschlossen.")
+    st.markdown("### Bereit fortzufahren?")
 
-if submitted:
-    missing_questions = [
-        question["label"] for question in QUESTIONS if answers.get(question["key"]) is None
-    ]
+    ready = st.checkbox("Fühlen Sie sich jetzt bereit, mit den echten Annotationen fortzufahren?")
 
-    if missing_questions:
-        st.error(f"Bitte beantworten Sie alle {len(QUESTIONS)} Fragen, bevor Sie absenden.")
-    else:
-        inserted = save_response(
-            participant_id=participant_id,
-            study_id=study_id,
-            session_id=session_id,
-            dialog_row=dialog_row,
-            answers={key: int(value) for key, value in answers.items() if value is not None},
-            free_comment=free_comment,
+    if st.button("Weiter zu den echten Annotationen", type="primary", disabled=not ready):
+        confirm_training(participant_id)
+        continue_url = make_continue_url(participant_id, prolific_pid, study_id, session_id)
+        st.markdown(
+            f'<a class="continue-button" href="{html.escape(continue_url)}" target="_self">Weiter</a>',
+            unsafe_allow_html=True,
         )
+        st.stop()
 
-        if inserted:
-            new_count = participant_completed_count(participant_id)
-            if new_count >= DIALOGS_PER_PARTICIPANT:
-                st.success("Alle erforderlichen Dialogbewertungen wurden aufgezeichnet. Vielen Dank.")
-                if PROLIFIC_COMPLETION_URL:
-                    st.markdown(f"[Zurück zu Prolific]({PROLIFIC_COMPLETION_URL})")
-            else:
-                continue_url = make_continue_url(participant_id, prolific_pid, study_id, session_id)
-                st.success("Vorheriger Dialog gespeichert. Bitte fahren Sie mit dem nächsten Dialog fort.")
-                st.markdown(
-                    f'<a class="continue-button" href="{html.escape(continue_url)}" target="_self">Weiter zum nächsten Dialog</a>',
-                    unsafe_allow_html=True,
-                )
-                st.stop()
-        else:
-            continue_url = make_continue_url(participant_id, prolific_pid, study_id, session_id)
-            st.info("Ihre Antwort für diesen Dialog wurde bereits früher gespeichert. Bitte fahren Sie mit dem nächsten verfügbaren Dialog fort.")
-            st.markdown(
-                f'<a class="continue-button" href="{html.escape(continue_url)}" target="_self">Weiter zum nächsten Dialog</a>',
-                unsafe_allow_html=True,
-            )
-            st.stop()
+else:
+    main_completed_count = participant_completed_count(participant_id, phase="main")
+
+    if main_completed_count >= DIALOGS_PER_PARTICIPANT:
+        st.success("Alle erforderlichen Dialogbewertungen wurden aufgezeichnet. Vielen Dank.")
+        if PROLIFIC_COMPLETION_URL:
+            st.markdown(f"[Zurück zu Prolific]({PROLIFIC_COMPLETION_URL})")
+        st.stop()
+
+    st.info("**Teil 2 von 2: echte Annotationen**")
+    st.progress(main_completed_count / DIALOGS_PER_PARTICIPANT)
+    st.markdown(f"**Fortschritt:** Dialog {main_completed_count + 1} von {DIALOGS_PER_PARTICIPANT}")
+
+    dialog_row = assign_main_dialog(main_df, participant_id, requested_dialog_id)
+    if dialog_row is None:
+        st.warning("Derzeit ist kein Dialog zur Bewertung verfügbar.")
+        st.stop()
+
+    render_rating_form(
+        dialog_row=dialog_row,
+        phase="main",
+        participant_id=participant_id,
+        study_id=study_id,
+        session_id=session_id,
+        prolific_pid=prolific_pid,
+    )

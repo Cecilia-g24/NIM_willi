@@ -1,4 +1,0 @@
-﻿participant_id,study_id,session_id,dialog_id,language,subject,condition,submitted_at_utc,free_comment,user_engagement_enjoyment,user_self_disclosure,user_topical_alignment,user_elaboration_informativeness,user_initiative_active_contribution,user_politeness,user_frustration_dissatisfaction
-999,,,874,English,Vacation,Condition A (Willi),2026-07-01T20:30:14+00:00,21,5,4,3,3,3,3,5
-999,,,999,English,Vacation,Condition B (WV-34),2026-07-01T20:30:35+00:00,sadas,3,5,5,4,4,3,4
-999,,,819,English,Watches,Condition A (Willi),2026-07-01T20:30:49+00:00,sad,4,3,3,3,1,2,5
