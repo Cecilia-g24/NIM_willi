@@ -44,7 +44,7 @@ PROLIFIC_COMPLETION_URL = "https://app.prolific.com/submissions/complete?cc=C6JV
 
 # Number of real (part 2) dialogs one participant should annotate.
 # All training (part 1) dialogs are mandatory and are not subject to a quota.
-DIALOGS_PER_PARTICIPANT = 3
+DIALOGS_PER_PARTICIPANT = 30
 
 # Optional quota per real dialog. Set to None if you do not want a cap.
 TARGET_RATINGS_PER_DIALOG: Optional[int] = None
