@@ -3,8 +3,7 @@
 .env.*
 !.env.example
 
-# responses
-05_prolific/responses/
+
 
 
 # Byte-compiled / optimized / DLL files
