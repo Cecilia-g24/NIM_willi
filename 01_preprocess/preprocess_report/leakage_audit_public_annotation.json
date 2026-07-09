@@ -1,0 +1,19 @@
+{
+  "description": "Leakage audit over public annotation CSV fields only. A pass means no Willi/Willy/WV-34/WV34/WV 34/WV_34/W-34/W34-like robot-name tokens were found in public-facing fields.",
+  "status": "PASS",
+  "public_rows_checked": 1115,
+  "public_fields_checked": [
+    "dialog_id",
+    "language",
+    "topic_main",
+    "topics_json",
+    "feedback_existing",
+    "n_turns_visible",
+    "n_robot_turns",
+    "n_visitor_turns",
+    "n_system_turns_removed",
+    "dialogue_for_annotation"
+  ],
+  "n_leaks_found": 0,
+  "leaks": []
+}

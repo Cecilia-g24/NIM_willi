@@ -234,6 +234,35 @@ QUESTIONS_BLOCK_A = [
             5: "Very high: the user clearly appears frustrated, annoyed, dissatisfied, or unwilling to continue.",
         },
     },
+    {
+        "key": "overall_conversational_interaction_quality",
+        "label": "8. Overall conversational interaction quality",
+        "headline": "Overall conversational interaction quality",
+        "help": "Overall, based only on the user's visible behavior in the transcript, how high is the quality of the user's contribution to the conversation with the robot?",
+        "definition": (
+            "Overall conversational interaction quality refers to the general quality of the user's visible "
+            "contribution to the human-robot conversation. It captures the overall impression of whether the user "
+            "helps create a coherent, smooth, meaningful, and socially appropriate exchange with the robot. "
+            "This is a holistic judgment based on the whole dialog, not a simple average of the previous ratings."
+        ),
+        "rate_higher": (
+            "The user contributes to a coherent, smooth, meaningful, and socially positive conversation. "
+            "They respond in ways that make the exchange feel successful, cooperative, and interactionally rich."
+        ),
+        "rate_lower": (
+            "The user's contribution makes the conversation feel weak, minimal, disconnected, one-sided, awkward, "
+            "or unsuccessful, even if some individual answers are understandable."
+        ),
+        "note": (
+            "Do not judge the robot's technical quality, the attractiveness of the topic, or whether you personally "
+            "like the robot. Focus on the observable quality of the user's contribution to the interaction."
+        ),
+        "anchors": {
+            1: "Very low: the user's contribution makes the conversation feel largely unsuccessful, disconnected, or minimal.",
+            3: "Moderate: the user's contribution supports the conversation to some extent, but the interaction remains partly limited, uneven, or weak.",
+            5: "Very high: the user's contribution makes the conversation feel coherent, smooth, meaningful, and socially successful.",
+        },
+    },
 ]
 
 
@@ -737,7 +766,8 @@ def render_rating_form(
     prolific_pid: str,
 ) -> None:
     """Render one dialog + all questions, save the response on submit, then
-    show a continue link. Used for both training and real dialogs."""
+    show a continue link below it on the same page. Used for both training
+    and real dialogs."""
     answers: dict[str, Optional[int]] = {}
 
     def render_question(question: dict, question_number: int) -> None:

@@ -80,22 +80,10 @@ LANGUAGE_CODES = {
     "English": "en",
 }
 
-# The robot's opening turn always introduces itself by name ("I'm Willi" /
-# "I'm WV-34"), which leaks the hidden condition to whoever reads dialog_text.
-# Replace that first turn with one neutral, condition-blind greeting so both
-# conditions look identical at the start.
-NEUTRAL_GREETINGS = {
-    "English": (
-        "Robot: Welcome to JOSEPHS! What would you like to talk about? "
-        "Choose a topic: Watches, Breakfast, or Vacation. By the way, "
-        "say stop at any time to end this conversation."
-    ),
-    "German": (
-        "Roboter: Willkommen im JOSEPHS! Worüber möchten Sie sprechen? "
-        "Wählen Sie ein Thema: Uhren, Frühstück oder Urlaub. Sie können "
-        "jederzeit \"stop\" sagen, um das Gespräch zu beenden."
-    ),
-}
+# Robot identity anonymization (neutral greeting + scrubbing of "Willi" /
+# "WV-34" mentions in all turns) happens upstream in
+# 01_preprocess/preprocess.py, so dialogue_for_annotation is already
+# condition-blind when it arrives here.
 
 # -----------------------------------------------------------------------------
 # Fixed "training representative" dialogs (6 per language).
@@ -206,20 +194,6 @@ TRAIN_REPRESENTATIVES_BY_LANGUAGE = {
     "English": TRAIN_REPRESENTATIVES_EN,
     "German": TRAIN_REPRESENTATIVES_DE,
 }
-
-
-def anonymize_intro(dialog_text: str, language: str) -> str:
-    """Replace the robot's opening turn with a neutral, condition-blind greeting."""
-    turns = dialog_text.split("\n\n")
-    if not turns:
-        return dialog_text
-
-    greeting = NEUTRAL_GREETINGS.get(language)
-    if greeting is None:
-        return dialog_text
-
-    turns[0] = greeting
-    return "\n\n".join(turns)
 
 
 def output_path_for(language: str, total: int) -> Path:
@@ -395,9 +369,8 @@ def make_row(row: Dict[str, Any]) -> Dict[str, Any]:
         # Visible annotation columns.
         "language": row["_language"],
         "subject": row["_subject"],
-        "dialog_text": anonymize_intro(
-            row.get("dialogue_for_annotation", ""), row["_language"]
-        ),
+        # Already anonymized (condition-blind) by preprocess.py.
+        "dialog_text": row.get("dialogue_for_annotation", ""),
     }
 
 
