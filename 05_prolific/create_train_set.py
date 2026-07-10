@@ -16,20 +16,23 @@ Design:
       (see TRAIN_REPRESENTATIVES_EN / TRAIN_REPRESENTATIVES_DE). These were
       manually picked, 2 per engagement level (High/Moderate/Low), spread
       across the 3 subjects, each with a short "why selected" rationale.
-    - 30 randomly sampled dialogs, chosen the same way as
-      create_test_samples.py: split evenly across the 3 subjects
-      (Breakfast, Watches, Vacation; 10 each), and within each subject split
-      evenly across Condition A (Willi) and Condition B (WV-34) (5 each).
-      The 6 fixed dialogs are excluded from this random pool so nothing is
-      picked twice.
-- Runs non-interactively (no terminal prompts): both languages are always
-  generated in one run.
+    - 30 randomly sampled dialogs, drawn uniformly from all eligible dialogs
+      of that language. There is no stratification by subject or condition:
+      any dialog that has not yet been rated can be chosen. The 6 fixed
+      dialogs are excluded from this random pool so nothing is picked twice.
+      Per language, further ids can be excluded from the random pool via
+      EXCLUDED_RANDOM_IDS_BY_LANGUAGE (used to keep the second pilot's
+      English sample disjoint from the first pilot's 36 dialogs).
+- Runs non-interactively (no terminal prompts). The languages generated in one
+  run are set via GENERATE_LANGUAGES (currently English only: the German fixed
+  dialog 1347 is missing from the anonymized DE export).
+- The condition is no longer present in the anonymized annotation CSVs; it is
+  joined back in from data/data_clean/metadata_only_for_later_analysis.csv.
 - After writing both CSVs, prints stats per language: total rows, counts by
   fixed vs. random, counts by condition, and counts by subject + condition.
 
-Output (always written to this folder):
-- 05_prolific/streamlit_train_sample_de_36.csv
-- 05_prolific/streamlit_train_sample_en_36.csv
+Output (always written to this folder, with the optional OUTPUT_TAG suffix):
+- 05_prolific/streamlit_train_sample_en_36_pilot2.csv
 
 Visible participant-facing columns:
 - language
@@ -44,7 +47,8 @@ from __future__ import annotations
 
 import csv
 import random
-from collections import Counter, defaultdict
+import warnings
+from collections import Counter
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -61,12 +65,25 @@ DATA_CLEAN_DIR = SCRIPT_DIR.parent / "data" / "data_clean"
 INPUT_EN_PATH = DATA_CLEAN_DIR / "dialogs_for_annotation_en.csv"
 INPUT_DE_PATH = DATA_CLEAN_DIR / "dialogs_for_annotation_de.csv"
 
+# The public annotation CSVs are fully anonymized and no longer carry the
+# condition. It is joined back in from this private metadata file (needed for
+# condition-balanced sampling and the hidden META_condition output column).
+METADATA_PATH = DATA_CLEAN_DIR / "metadata_only_for_later_analysis.csv"
+
+# Languages to generate in this run. The second pilot is English-only; the
+# German fixed dialog 1347 is currently missing from the anonymized DE export,
+# so German cannot be generated until its fixed representatives are re-checked.
+GENERATE_LANGUAGES = ["English"]
+
 # Number of randomly-sampled dialogs per language (on top of the 6 fixed ones).
 N_RANDOM_PER_LANGUAGE = 30
 
+# Optional tag appended to the output filename, e.g. "pilot2" gives
+# streamlit_train_sample_en_36_pilot2.csv. Set to "" for no tag.
+OUTPUT_TAG = "pilot2"
+
 # =============================================================================
 
-SUBJECTS = ["Breakfast", "Watches", "Vacation"]
 LANGUAGES = ["German", "English"]
 CONDITIONS = ["Condition A (Willi)", "Condition B (WV-34)"]
 
@@ -195,11 +212,52 @@ TRAIN_REPRESENTATIVES_BY_LANGUAGE = {
     "German": TRAIN_REPRESENTATIVES_DE,
 }
 
+# -----------------------------------------------------------------------------
+# Record of the 36 English dialogs used in the first pilot test (2026-07-09,
+# 3 raters). Extracted from responses/survey_responses_en_train_pilot.csv.
+# The first 6 are the fixed training dialogs (in presentation order); the
+# remaining 30 are the randomly sampled "main" dialogs (sorted by id).
+# Note: the requested name "0709_1st_pilot_dialogs" is not a valid Python
+# identifier (cannot start with a digit), hence this spelling.
+# -----------------------------------------------------------------------------
+
+PILOT_0709_1ST_DIALOGS: List[int] = [
+    # Fixed training dialogs (presentation order):
+    1349, 614, 507, 732, 926, 888,
+    # Random "main" dialogs:
+    392, 434, 460, 498, 518, 519, 532, 537, 605, 666,
+    731, 751, 819, 833, 864, 913, 934, 935, 999, 1000,
+    1030, 1102, 1107, 1124, 1197, 1255, 1267, 1289, 1325, 1382,
+]
+
+# Dialogs to keep out of the random pool per language. For the second pilot,
+# the English random sample must avoid everything already used in the first
+# pilot (the 6 fixed dialogs are excluded from the random pool anyway, but the
+# 30 first-pilot random dialogs must not be drawn again). The 6 fixed training
+# dialogs themselves stay the same in every pilot.
+EXCLUDED_RANDOM_IDS_BY_LANGUAGE: Dict[str, set] = {
+    "English": {str(dialog_id) for dialog_id in PILOT_0709_1ST_DIALOGS},
+    "German": set(),
+}
+
+# -----------------------------------------------------------------------------
+# Record of the 30 randomly-sampled dialogs chosen for the second pilot.
+# Populated automatically by process_language() when this script runs (keyed
+# by language), so it always reflects the dialogs actually written to the
+# most recent output CSV. main() prints a copy-pasteable block for this at
+# the end of the run; once the pilot is finalized, copy that block here (or
+# into EXCLUDED_RANDOM_IDS_BY_LANGUAGE for the next pilot), mirroring how
+# PILOT_0709_1ST_DIALOGS was recorded for the first pilot.
+# -----------------------------------------------------------------------------
+
+pilot_2nd_dialogs: Dict[str, List[int]] = {}
+
 
 def output_path_for(language: str, total: int) -> Path:
     """Output CSV path, always written into this folder, including the total."""
     code = LANGUAGE_CODES[language]
-    return SCRIPT_DIR / f"streamlit_train_sample_{code}_{total}.csv"
+    tag = f"_{OUTPUT_TAG}" if OUTPUT_TAG else ""
+    return SCRIPT_DIR / f"streamlit_train_sample_{code}_{total}{tag}.csv"
 
 
 def load_annotation_csv(input_path: Path, language: str) -> List[Dict[str, Any]]:
@@ -213,18 +271,45 @@ def load_annotation_csv(input_path: Path, language: str) -> List[Dict[str, Any]]
     return rows
 
 
-def prepare_eligible_dialogs(rows: List[Dict[str, Any]]) -> tuple[List[Dict[str, Any]], Counter]:
-    """Keep only dialogs with a recognized subject, recognized condition, and text."""
+def load_condition_map(metadata_path: Path) -> Dict[tuple[str, str], str]:
+    """
+    Load the private metadata CSV and return a map
+    (language_code, dialog_id) -> condition_hidden.
+
+    The metadata file uses language codes ("en"/"de"), matching LANGUAGE_CODES.
+    """
+    with metadata_path.open("r", encoding="utf-8-sig", newline="") as f:
+        rows = list(csv.DictReader(f))
+
+    return {
+        (
+            (row.get("language") or "").strip(),
+            str(row.get("dialog_id") or "").strip(),
+        ): (row.get("condition_hidden") or "").strip()
+        for row in rows
+    }
+
+
+def prepare_eligible_dialogs(
+    rows: List[Dict[str, Any]],
+    condition_map: Dict[tuple[str, str], str],
+) -> tuple[List[Dict[str, Any]], Counter]:
+    """Keep only dialogs with a recognized condition and non-empty text.
+
+    There is no restriction on the subject/topic: the dialog's topic_main is
+    passed through as-is into the visible "subject" column.
+    """
     eligible = []
     exclusion_counts: Counter = Counter()
 
     for row in rows:
         subject = (row.get("topic_main") or "").strip()
-        if subject not in SUBJECTS:
-            exclusion_counts["excluded_unrecognized_or_unknown_subject"] += 1
-            continue
 
-        condition = (row.get("condition_hidden") or "").strip()
+        # The anonymized annotation CSVs carry no condition column; look the
+        # condition up in the private metadata file instead.
+        language_code = LANGUAGE_CODES[row["_language"]]
+        dialog_id = str(row.get("dialog_id") or "").strip()
+        condition = condition_map.get((language_code, dialog_id), "")
         if condition not in CONDITIONS:
             exclusion_counts["excluded_unrecognized_condition"] += 1
             continue
@@ -271,81 +356,32 @@ def pick_fixed_rows(
     return fixed_rows
 
 
-def sample_one_stratum(
-    eligible: List[Dict[str, Any]],
-    subject: str,
-    language: str,
-    per_stratum: int,
-    rng: random.Random,
-) -> List[Dict[str, Any]]:
-    """
-    Sample one subject-language stratum.
-
-    Always tries to select an equal number of Condition A and Condition B
-    dialogs. If exact condition balance is not possible, it fills from the
-    same subject-language stratum and prints a warning.
-    """
-    pool = [
-        d for d in eligible
-        if d.get("_subject") == subject and d.get("_language") == language
-    ]
-
-    target_per_condition = per_stratum // 2
-    by_condition: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
-
-    for dialog in pool:
-        by_condition[dialog["_condition"]].append(dialog)
-
-    selected: List[Dict[str, Any]] = []
-
-    for condition in CONDITIONS:
-        candidates = by_condition.get(condition, [])
-        k = min(target_per_condition, len(candidates))
-        selected.extend(rng.sample(candidates, k))
-
-        if k < target_per_condition:
-            print(
-                f"Warning: only found {k}/{target_per_condition} dialogs for "
-                f"{subject} / {language} / {condition}. Filling from same stratum."
-            )
-
-    selected_ids = {str(d.get("dialog_id")) for d in selected}
-    remaining = [d for d in pool if str(d.get("dialog_id")) not in selected_ids]
-
-    if len(selected) < per_stratum:
-        need = per_stratum - len(selected)
-        selected.extend(rng.sample(remaining, min(need, len(remaining))))
-
-    if len(selected) > per_stratum:
-        selected = rng.sample(selected, per_stratum)
-
-    rng.shuffle(selected)
-    return selected
-
-
 def sample_random_rows(
     eligible: List[Dict[str, Any]],
     language: str,
     n_random: int,
     rng: random.Random,
 ) -> List[Dict[str, Any]]:
-    """Randomly sample n_random dialogs for one language, split evenly across subjects."""
-    per_subject = n_random // len(SUBJECTS)
-    selected: List[Dict[str, Any]] = []
+    """
+    Randomly sample n_random dialogs for one language.
 
-    for subject in SUBJECTS:
-        rows = sample_one_stratum(
-            eligible=eligible,
-            subject=subject,
-            language=language,
-            per_stratum=per_subject,
-            rng=rng,
+    No stratification: any eligible dialog in the pool (i.e. not fixed and not
+    already rated in an earlier pilot, see process_language) can be chosen,
+    regardless of subject or condition.
+    """
+    pool = [d for d in eligible if d.get("_language") == language]
+
+    if len(pool) < n_random:
+        raise ValueError(
+            f"Only {len(pool)} eligible {language} dialogs available, "
+            f"but {n_random} random dialogs were requested."
         )
-        for row in rows:
-            row["_selection"] = "random"
-            row["_level"] = ""
-            row["_why_selected"] = ""
-        selected.extend(rows)
+
+    selected = rng.sample(pool, n_random)
+    for row in selected:
+        row["_selection"] = "random"
+        row["_level"] = ""
+        row["_why_selected"] = ""
 
     rng.shuffle(selected)
     return selected
@@ -356,7 +392,9 @@ def make_row(row: Dict[str, Any]) -> Dict[str, Any]:
     return {
         # Hidden metadata columns for Prolific / Streamlit.
         "META_dialog_id": row.get("dialog_id", ""),
-        "META_condition": row.get("condition_hidden", ""),
+        # Condition joined from the private metadata file (see
+        # prepare_eligible_dialogs); the annotation CSV itself is condition-blind.
+        "META_condition": row["_condition"],
         "META_feedback": row.get("feedback_existing", ""),
         "META_original_topics": row.get("topics_json", ""),
         "META_selection": row["_selection"],
@@ -434,9 +472,8 @@ def print_language_summary(
 
     print("Counts by subject and condition:")
     by_subject_condition = Counter((row["subject"], row["META_condition"]) for row in rows)
-    for subject in SUBJECTS:
-        for condition in CONDITIONS:
-            print(f"  {subject:9s} / {condition:22s}: {by_subject_condition[(subject, condition)]}")
+    for (subject, condition), count in sorted(by_subject_condition.items()):
+        print(f"  {subject:9s} / {condition:22s}: {count}")
 
 
 def process_language(
@@ -451,11 +488,13 @@ def process_language(
 
     fixed_rows = pick_fixed_rows(eligible, language)
     fixed_ids = {str(row.get("dialog_id")) for row in fixed_rows}
+    excluded_ids = fixed_ids | EXCLUDED_RANDOM_IDS_BY_LANGUAGE.get(language, set())
 
     remaining_pool = [
         row for row in eligible
-        if row["_language"] == language and str(row.get("dialog_id")) not in fixed_ids
+        if row["_language"] == language and str(row.get("dialog_id")) not in excluded_ids
     ]
+    pool_size_before_sampling = len(remaining_pool)
 
     random_rows = sample_random_rows(
         eligible=remaining_pool,
@@ -463,6 +502,24 @@ def process_language(
         n_random=N_RANDOM_PER_LANGUAGE,
         rng=rng,
     )
+
+    # Record the dialogs actually chosen this run, so they can be copied into
+    # a permanent record (see PILOT_0709_1ST_DIALOGS) and excluded from future
+    # pilots' random pools.
+    pilot_2nd_dialogs[language] = sorted(int(row["dialog_id"]) for row in random_rows)
+
+    dialogs_left = pool_size_before_sampling - len(random_rows)
+    print(
+        f"\n{language}: {dialogs_left} eligible dialogs left and available "
+        f"for future pilots (after this pilot's {len(random_rows)} picks)."
+    )
+    if dialogs_left < N_RANDOM_PER_LANGUAGE:
+        warnings.warn(
+            f"Only {dialogs_left} eligible {language} dialogs remain after this "
+            f"pilot's picks - fewer than the {N_RANDOM_PER_LANGUAGE} needed for "
+            "another pilot of the same size.",
+            stacklevel=2,
+        )
 
     all_rows = [make_row(row) for row in fixed_rows + random_rows]
 
@@ -473,15 +530,21 @@ def process_language(
 
 
 def main() -> None:
-    for language, path in INPUT_PATHS_BY_LANGUAGE.items():
+    if not METADATA_PATH.exists():
+        raise FileNotFoundError(f"Metadata file not found: {METADATA_PATH}")
+
+    for language in GENERATE_LANGUAGES:
+        path = INPUT_PATHS_BY_LANGUAGE[language]
         if not path.exists():
             raise FileNotFoundError(f"Input file not found for {language}: {path}")
 
-    all_rows: List[Dict[str, Any]] = []
-    for language, path in INPUT_PATHS_BY_LANGUAGE.items():
-        all_rows.extend(load_annotation_csv(path, language))
+    condition_map = load_condition_map(METADATA_PATH)
 
-    eligible, exclusion_counts = prepare_eligible_dialogs(all_rows)
+    all_rows: List[Dict[str, Any]] = []
+    for language in GENERATE_LANGUAGES:
+        all_rows.extend(load_annotation_csv(INPUT_PATHS_BY_LANGUAGE[language], language))
+
+    eligible, exclusion_counts = prepare_eligible_dialogs(all_rows, condition_map)
 
     if exclusion_counts:
         print("\nExcluded dialogs:")
@@ -490,8 +553,13 @@ def main() -> None:
 
     rng = random.Random(RANDOM_SEED)
 
-    for language in LANGUAGES:
+    for language in GENERATE_LANGUAGES:
         process_language(language, eligible, rng)
+
+    print("\npilot_2nd_dialogs (copy into a permanent record, e.g. next to "
+          "PILOT_0709_1ST_DIALOGS):")
+    for language, dialog_ids in pilot_2nd_dialogs.items():
+        print(f"  {language}: {dialog_ids}")
 
     print("\nAll done.")
 

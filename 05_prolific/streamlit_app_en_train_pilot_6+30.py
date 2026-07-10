@@ -283,7 +283,7 @@ st.markdown(
     """
     <style>
     .main .block-container {
-        max-width: 1050px;
+        max-width: 1500px;
         padding-top: 2rem;
         padding-bottom: 3rem;
     }
@@ -292,8 +292,6 @@ st.markdown(
         border-radius: 14px;
         padding: 1rem 1.1rem;
         background: #ffffff;
-        max-height: 560px;
-        overflow-y: auto;
         margin-bottom: 1.5rem;
         color: #111827 !important;
     }
@@ -757,6 +755,18 @@ GENERIC_LIKERT_LABELS = {
 }
 
 
+def show_pending_continue(pending: dict) -> None:
+    """Show the saved-confirmation message and the Continue link."""
+    if pending["kind"] == "success":
+        st.success(pending["message"])
+    else:
+        st.info(pending["message"])
+    st.markdown(
+        f'<a class="continue-button" href="{html.escape(pending["url"])}" target="_self">Continue</a>',
+        unsafe_allow_html=True,
+    )
+
+
 def render_rating_form(
     dialog_row: pd.Series,
     phase: str,
@@ -769,6 +779,16 @@ def render_rating_form(
     show a continue link below it on the same page. Used for both training
     and real dialogs."""
     answers: dict[str, Optional[int]] = {}
+
+    # True when this dialog was just submitted and we are waiting for the
+    # participant to click Continue. The form is re-rendered read-only with
+    # the Continue link below the submit button.
+    pending = st.session_state.get("pending_continue")
+    pending_here = bool(
+        pending
+        and pending.get("dialog_id") == str(dialog_row["META_dialog_id"])
+        and pending.get("phase") == phase
+    )
 
     def render_question(question: dict, question_number: int) -> None:
         # Show only the concrete question to annotators.
@@ -799,6 +819,7 @@ def render_rating_form(
             index=None,
             horizontal=True,
             label_visibility="collapsed",
+            disabled=pending_here,
             key=f"radio_{phase}_{question['key']}_{dialog_row['META_dialog_id']}",
         )
         st.write("")
@@ -806,22 +827,34 @@ def render_rating_form(
     with st.form(f"rating_form_{phase}_{dialog_row['META_dialog_id']}", clear_on_submit=False):
         st.markdown(ANNOTATION_INSTRUCTION_BLOCK_A)
 
-        render_dialog(str(dialog_row["dialog_text"]))
+        dialog_col, questions_col = st.columns([1, 1], gap="large")
 
-        for i, question in enumerate(QUESTIONS_BLOCK_A, start=1):
-            render_question(question, i)
+        with dialog_col:
+            render_dialog(str(dialog_row["dialog_text"]))
 
-        st.markdown("**Optional free comment**")
-        free_comment = st.text_area(
-            "If you have any additional comments about this dialog or the rating task, you can write them here.",
-            placeholder="Optional: write any additional feedback here...",
-            key=f"free_comment_{phase}_{dialog_row['META_dialog_id']}",
-        )
+        with questions_col:
+            for i, question in enumerate(QUESTIONS_BLOCK_A, start=1):
+                render_question(question, i)
 
-        submitted = st.form_submit_button(
-            "Submit ratings",
-            type="primary",
-        )
+            st.markdown("**Optional free comment**")
+            free_comment = st.text_area(
+                "If you have any additional comments about this dialog or the rating task, you can write them here.",
+                placeholder="Optional: write any additional feedback here...",
+                disabled=pending_here,
+                key=f"free_comment_{phase}_{dialog_row['META_dialog_id']}",
+            )
+
+            submitted = st.form_submit_button(
+                "Submit ratings",
+                type="primary",
+                disabled=pending_here,
+            )
+
+            if pending_here:
+                show_pending_continue(pending)
+
+    if pending_here:
+        st.stop()
 
     if not submitted:
         return
@@ -847,15 +880,28 @@ def render_rating_form(
     continue_url = make_continue_url(participant_id, prolific_pid, study_id, session_id)
 
     if inserted:
-        st.success("Response saved. Please continue.")
+        message, kind = "Response saved. Please continue.", "success"
     else:
-        st.info("Your response for this dialog was already saved earlier. Please continue with the next available dialog.")
+        message, kind = (
+            "Your response for this dialog was already saved earlier. Please continue with the next available dialog.",
+            "info",
+        )
 
-    st.markdown(
-        f'<a class="continue-button" href="{html.escape(continue_url)}" target="_self">Continue</a>',
-        unsafe_allow_html=True,
-    )
-    st.stop()
+    # Remember that we are waiting for the participant to click Continue.
+    # Without this flag, any further rerun (e.g. a double click on the submit
+    # button) would immediately render the next dialog, because dialog
+    # selection is derived from the database on every rerun. The Continue
+    # link performs a real browser navigation, which starts a fresh session
+    # and thereby clears this flag. The rerun re-renders this same dialog
+    # (read-only) with the Continue link below the submit button.
+    st.session_state["pending_continue"] = {
+        "message": message,
+        "kind": kind,
+        "url": continue_url,
+        "dialog_id": str(dialog_row["META_dialog_id"]),
+        "phase": phase,
+    }
+    st.rerun()
 
 
 # ============================================================
@@ -916,6 +962,30 @@ if not participant_id:
     st.warning("Please enter a participant ID to start.")
     st.stop()
 
+# If a response was just saved, keep showing that same dialog page (with the
+# Continue link below the submit button) until the participant actually clicks
+# Continue, which navigates and starts a fresh session. This prevents double
+# clicks or stray reruns from skipping ahead.
+pending_continue = st.session_state.get("pending_continue")
+if pending_continue:
+    pending_dialog_id = pending_continue.get("dialog_id")
+    if pending_dialog_id:
+        pending_rows = dialogs[dialogs["META_dialog_id"] == pending_dialog_id]
+        if not pending_rows.empty:
+            # render_rating_form shows the Continue link and stops the script.
+            render_rating_form(
+                dialog_row=pending_rows.iloc[0],
+                phase=pending_continue["phase"],
+                participant_id=participant_id,
+                study_id=study_id,
+                session_id=session_id,
+                prolific_pid=prolific_pid,
+            )
+    # Fallback (e.g. training confirmation, or dialog no longer in the CSV):
+    # show the confirmation message and Continue link on their own.
+    show_pending_continue(pending_continue)
+    st.stop()
+
 training_answered_ids = participant_answered_dialog_ids(participant_id, phase="training")
 training_total = len(training_df)
 training_completed_count = int(training_df["META_dialog_id"].isin(training_answered_ids).sum())
@@ -954,11 +1024,12 @@ elif not is_training_confirmed(participant_id):
     if st.button("Continue to real annotations", type="primary", disabled=not ready):
         confirm_training(participant_id)
         continue_url = make_continue_url(participant_id, prolific_pid, study_id, session_id)
-        st.markdown(
-            f'<a class="continue-button" href="{html.escape(continue_url)}" target="_self">Continue</a>',
-            unsafe_allow_html=True,
-        )
-        st.stop()
+        st.session_state["pending_continue"] = {
+            "message": "Training confirmed. Please continue with the real annotations.",
+            "kind": "success",
+            "url": continue_url,
+        }
+        st.rerun()
 
 else:
     main_completed_count = participant_completed_count(participant_id, phase="main")
