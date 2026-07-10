@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import base64
 import hashlib
 import html
 import sqlite3
@@ -32,8 +33,11 @@ import streamlit as st
 #   are assigned the same way create_test_samples.py-based apps do it -
 #   DIALOGS_PER_PARTICIPANT dialogs, balanced by current rating count.
 BASE_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = BASE_DIR.parent
 
 DIALOG_INPUT_FILENAME_PATTERN = "streamlit_train_sample_en_*.csv"
+
+RATING_MANUAL_PDF_PATH = PROJECT_ROOT / "data" / "assets" / "rating_manual.pdf"
 
 RESPONSES_DIR = BASE_DIR / "responses"
 DB_PATH = RESPONSES_DIR / "survey_responses_en_train_pilot.sqlite"
@@ -346,6 +350,16 @@ st.markdown(
     }
     div[role="radiogroup"] {
         gap: 0.6rem 2.2rem;
+    }
+    .st-key-rating_manual_button_container {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: fit-content !important;
+        z-index: 999999;
+    }
+    .st-key-rating_manual_button_container button {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
     }
     </style>
     """,
@@ -676,6 +690,27 @@ def make_continue_url(participant_id: str, prolific_pid: str, study_id: str, ses
     return "?" + urlencode(params) + "#page-top"
 
 
+@st.dialog("Rating manual", width="large")
+def show_rating_manual_dialog() -> None:
+    if not RATING_MANUAL_PDF_PATH.exists():
+        st.error(f"Rating manual not found at `{RATING_MANUAL_PDF_PATH}`.")
+        return
+
+    pdf_bytes = RATING_MANUAL_PDF_PATH.read_bytes()
+    base64_pdf = base64.b64encode(pdf_bytes).decode("utf-8")
+    st.markdown(
+        f'<iframe src="data:application/pdf;base64,{base64_pdf}" '
+        f'width="100%" height="750" style="border: none;"></iframe>',
+        unsafe_allow_html=True,
+    )
+    st.download_button(
+        "Download rating manual (PDF)",
+        data=pdf_bytes,
+        file_name=RATING_MANUAL_PDF_PATH.name,
+        mime="application/pdf",
+    )
+
+
 def parse_dialog_to_blocks(dialog_text: str) -> list[tuple[str, str]]:
     blocks: list[tuple[str, str]] = []
     current_role = "Context"
@@ -909,6 +944,11 @@ def render_rating_form(
 # ============================================================
 
 st.markdown('<a id="page-top" name="page-top"></a>', unsafe_allow_html=True)
+
+with st.container(key="rating_manual_button_container"):
+    if st.button("📖 Rating manual"):
+        show_rating_manual_dialog()
+
 st.title("Observer-rated user behavior in HRI survey (English) - Training Pilot")
 st.caption(
     "Part 1: a few training dialogs to help you get familiar with the rating task. "
