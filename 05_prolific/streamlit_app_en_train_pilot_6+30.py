@@ -71,200 +71,199 @@ ANNOTATION_INSTRUCTION_BLOCK_A = (
 QUESTIONS_BLOCK_A = [
     {
         "key": "user_engagement_enjoyment",
-        "label": "1. User engagement / enjoyment",
-        "headline": "User engagement / enjoyment",
+        "label": "1. User engagement",
+        "headline": "User engagement",
         "help": "To what extent does the user appear engaged, interested, and motivated to keep the conversation going?",
         "definition": (
-            "User engagement / enjoyment refers to how involved, interested, and motivated the human "
-            "participant appears to be to keep the conversation going. Judge this only from visible cues in the transcript, "
-            "such as active participation, reactions, questions, cooperation, enthusiasm, reluctance, "
-            "or attempts to end the exchange."
+            "User engagement refers to the user's visible involvement in the interaction, shown through "
+            "willingness to answer, positive or curious tone, continued participation, and motivation to keep "
+            "the conversation going. Do not infer engagement from dialog length alone."
         ),
-        "rate_higher": (
-            "The user participates actively, gives meaningful answers, reacts to the robot, asks questions, "
-            "shows interest in the topic, or appears motivated to keep the conversation going."
-        ),
-        "rate_lower": (
-            "The user gives minimal answers, appears passive or bored, ignores the robot's questions, resists "
-            "the topic, shows little interest, or tries to end the conversation."
-        ),
+        "example_prompt": 'Assume the robot asks: "Would you like to tell me what you usually eat for breakfast?"',
         "anchors": {
-            1: "Very low/absent: the user barely participates, gives minimal or resistant answers, or clearly wants to stop.",
-            3: "Moderate: the user answers the robot, but with limited detail, mixed interest, or occasional disengagement.",
-            5: "Very high: the user actively participates, reacts to the robot, and appears motivated to keep the conversation going.",
+            1: ("Clearly disengaged", "I don't want to talk about breakfast."),
+            2: ("Low engagement", "Breakfast is okay."),
+            3: ("Neutral / basic engagement", "I usually eat breakfast in the morning."),
+            4: ("Engaged", "I usually eat breakfast in the morning, and I like having some time for it."),
+            5: (
+                "Highly engaged",
+                "I actually enjoy talking about breakfast routines. Mine changes a bit during the week, "
+                "and I like thinking about what makes a good start to the day.",
+            ),
         },
     },
     {
         "key": "user_self_disclosure",
         "label": "2. User self-disclosure",
         "headline": "User self-disclosure",
-        "help": "To what extent does the user reveal personal information, experiences, preferences, opinions, or emotions?",
+        "help": "To what extent does the user reveal personal information, preferences, experiences, feelings, routines, or reasons?",
         "definition": (
-            "User self-disclosure refers to how much the user reveals about themselves, including personal "
-            "experiences, preferences, feelings, evaluations, memories, opinions, or everyday habits. "
-            "This is about personal openness, not simply the number of words."
+            "User self-disclosure refers to how much personal content the user shares. Minimal preferences "
+            "count as low self-disclosure; specific routines, experiences, reasons, or personally meaningful "
+            "details indicate higher self-disclosure."
         ),
-        "rate_higher": (
-            "The user shares personal experiences, preferences, feelings, opinions, memories, or details about "
-            "their own life, rather than only giving generic or factual answers."
-        ),
-        "rate_lower": (
-            "The user gives impersonal, generic, factual, or very short answers and reveals little or nothing "
-            "about themselves."
+        "example_prompt": (
+            'Assume the robot asks: "What do you usually eat for breakfast, and what is your usual '
+            'breakfast routine?"'
         ),
         "anchors": {
-            1: "Very low/absent: the user reveals almost nothing personal.",
-            3: "Moderate: the user reveals some personal preferences, opinions, or experiences, but only briefly or occasionally.",
-            5: "Very high: the user openly shares personal experiences, preferences, emotions, or opinions in meaningful detail.",
+            1: ("No personal disclosure", "People eat different things for breakfast."),
+            2: ("Minimal personal fact / preference", "I eat bread for breakfast."),
+            3: ("Basic personal routine / experience", "I usually eat bread with cheese in the morning."),
+            4: (
+                "Specific personal context",
+                "I usually eat bread with cheese before work because mornings are rushed for me.",
+            ),
+            5: (
+                "Rich personal disclosure",
+                "Breakfast is usually stressful for me during the week because I am in a hurry, but on "
+                "weekends I like eating slowly with my family.",
+            ),
         },
     },
     {
         "key": "user_topical_alignment",
         "label": "3. User topical alignment",
         "headline": "User topical alignment",
-        "help": "To what extent does the user stay aligned with the topic introduced or developed by the robot?",
+        "help": "To what extent are the user's contributions relevant to the current topic, question, or conversational task?",
         "definition": (
-            "User topical alignment refers to whether the user stays connected to the robot-proposed topic "
-            "or develops it in a relevant way. It captures cooperation with the ongoing topic, rather than "
-            "whether the topic itself is interesting."
+            "User topical alignment refers to how well the user stays connected to the selected topic and the "
+            "robot's current prompt. Reasonable clarification or topic-related redirection can still be aligned; "
+            "unrelated, disruptive, or incomprehensible turns should be rated lower."
         ),
-        "rate_higher": (
-            "The user answers in a way that is relevant to the robot's question or topic, follows the current "
-            "topic, and develops the same conversational thread."
-        ),
-        "rate_lower": (
-            "The user gives off-topic, unrelated, evasive, or mismatched answers, redirects the conversation "
-            "without clear connection, or does not cooperate with the current topic."
-        ),
+        "example_prompt": 'Assume the robot asks: "What do you usually eat for breakfast?"',
         "anchors": {
-            1: "Very low/absent: the user is mostly off-topic, evasive, or disconnected from the robot's topic.",
-            3: "Moderate: the user is partly aligned, but sometimes gives weakly related, unclear, or redirected answers.",
-            5: "Very high: the user consistently stays relevant to the robot's topic and develops the same thread.",
+            1: ("Unrelated / incomprehensible", "Who is the best AI?"),
+            2: ("Weakly aligned", "Breakfast is fine, but can we talk about AI instead?"),
+            3: ("Mixed / basic alignment", "Maybe bread or something. Anyway, I also like watches."),
+            4: ("Mostly aligned", "I usually eat bread with cheese for breakfast."),
+            5: (
+                "Fully aligned and responsive",
+                "On weekdays I usually eat bread with cheese and coffee, and on weekends I sometimes have "
+                "something sweet like Nutella.",
+            ),
         },
     },
     {
         "key": "user_elaboration_informativeness",
-        "label": "4. User elaboration / informativeness",
-        "headline": "User elaboration / informativeness",
-        "help": "To what extent does the user provide meaningful detail beyond short or minimal answers?",
+        "label": "4. User elaboration",
+        "headline": "User elaboration",
+        "help": "To what extent does the user provide informative, specific, and sufficiently elaborated answers?",
         "definition": (
-            "User elaboration / informativeness refers to how much meaningful content the user provides. "
-            "It captures whether the user's answers add useful detail, explanation, examples, or context, "
-            "rather than only minimal responses."
+            "User elaboration refers to the amount and usefulness of information provided by the user, "
+            "including details, explanations, examples, reasons, or concrete descriptions. This rewards "
+            "specificity and useful detail, but it does not require emotional or personally meaningful disclosure."
         ),
-        "rate_higher": (
-            "The user gives informative answers with details, reasons, examples, explanations, or context that "
-            "make their contribution meaningful."
-        ),
-        "rate_lower": (
-            "The user gives short, vague, repetitive, or minimal answers, such as yes/no responses or brief fragments, "
-            "with little meaningful detail."
-        ),
+        "example_prompt": 'Assume the robot asks: "What do you usually eat for breakfast?"',
         "anchors": {
-            1: "Very low/absent: the user provides almost no meaningful detail beyond minimal answers.",
-            3: "Moderate: the user provides some useful detail, but many answers remain brief or only partly informative.",
-            5: "Very high: the user provides rich, meaningful, and informative detail across the conversation.",
+            1: ("Non-informative", "Yes."),
+            2: ("Minimal detail", "Bread."),
+            3: ("Basic information", "I eat bread with cheese for breakfast."),
+            4: ("Specific and informative", "I eat bread with cheese and drink coffee, usually before work."),
+            5: (
+                "Rich, detailed, multi-faceted",
+                "On weekdays I usually have bread with cheese and coffee; on weekends I sometimes add eggs "
+                "or something sweet, depending on how much time I have.",
+            ),
         },
     },
     {
         "key": "user_initiative_active_contribution",
-        "label": "5. User initiative / active contribution",
-        "headline": "User initiative / active contribution",
-        "help": "To what extent does the user actively contribute to developing the conversation, for example by asking questions, adding topics, giving opinions, or steering the exchange?",
+        "label": "5. User initiative",
+        "headline": "User initiative",
+        "help": "To what extent does the user actively shape, advance, or repair the conversation beyond simply answering questions?",
         "definition": (
-            "User initiative / active contribution refers to whether the user does more than simply answer "
-            "the robot's prompts. It captures active participation in shaping the exchange, such as asking "
-            "questions, introducing related ideas, giving opinions, or steering the direction of the conversation."
+            "User initiative refers to the user's active role in the interaction, such as asking follow-up "
+            "questions, requesting clarification, proposing a direction, correcting misunderstandings, or "
+            "making the conversation more interactive."
         ),
-        "rate_higher": (
-            "The user asks questions, introduces or develops topics, gives opinions, reacts proactively, "
-            "pushes the conversation forward, or otherwise helps shape the exchange."
-        ),
-        "rate_lower": (
-            "The user only responds when prompted, gives passive or minimal answers, rarely adds anything new, "
-            "and does not help develop the conversation."
-        ),
+        "example_prompt": 'Assume the robot asks: "What do you usually eat for breakfast?"',
         "anchors": {
-            1: "Very low/absent: the user is almost entirely passive and only gives minimal prompted answers.",
-            3: "Moderate: the user occasionally adds something new or gives an opinion, but mostly follows the robot's lead.",
-            5: "Very high: the user actively shapes the exchange by asking questions, adding topics, or steering the conversation.",
+            1: ("Passive/no initiative", "Okay."),
+            2: ("Mostly reactive", "I eat bread."),
+            3: ("Occasional mild initiative", "I eat bread. Maybe we can also talk about weekend breakfast."),
+            4: (
+                "Actively contributes",
+                "I eat bread during the week, but weekends are different. Should I describe both?",
+            ),
+            5: (
+                "Strongly proactive",
+                "I can compare my weekday and weekend breakfasts, and I'd also like to ask what kinds of "
+                "breakfasts other people usually mention.",
+            ),
         },
     },
     {
         "key": "user_politeness",
         "label": "6. User politeness",
         "headline": "User politeness",
-        "help": "To what extent does the user address the robot in a polite, respectful, or socially affiliative way?",
+        "help": "To what extent is the user's wording respectful, socially appropriate, and considerate?",
         "definition": (
-            "User politeness refers to whether the user treats the robot as a socially addressable interaction "
-            "partner. This can include polite wording, respectful responses, greetings, thanks, friendly comments, "
-            "or other affiliative language."
+            "User politeness refers to the user's observable interpersonal tone, including polite markers, "
+            "respectful phrasing, patience, and absence of insults or hostility. Neutral direct answers should "
+            "receive a neutral score, not automatically a high score."
         ),
-        "rate_higher": (
-            "The user uses polite, respectful, friendly, appreciative, or socially affiliative language toward the robot, "
-            "such as greetings, thanks, softening phrases, or cooperative wording."
-        ),
-        "rate_lower": (
-            "The user is blunt, dismissive, rude, disrespectful, socially cold, or gives no signs of treating the robot "
-            "as a social interaction partner."
-        ),
+        "example_prompt": 'Assume the robot asks politely: "Could you tell me what you usually eat for breakfast?"',
         "anchors": {
-            1: "Very low/absent: the user is rude, dismissive, or shows no polite or affiliative behavior.",
-            3: "Moderate: the user is generally neutral or minimally polite, with limited social warmth.",
-            5: "Very high: the user is clearly polite, respectful, friendly, or socially affiliative toward the robot.",
+            1: ("Rude / hostile", "This is stupid. Stop asking me about breakfast."),
+            2: ("Abrupt / mildly rude", "Just ask the next question."),
+            3: ("Neutral / task-focused", "I eat bread with cheese."),
+            4: ("Polite / respectful", "I usually eat bread with cheese, thank you for asking."),
+            5: (
+                "Very polite / appreciative",
+                "Yes, of course. I usually eat bread with cheese, and thank you, this is a nice question.",
+            ),
         },
     },
     {
         "key": "user_frustration_dissatisfaction",
         "label": "7. User frustration / dissatisfaction",
         "headline": "User frustration / dissatisfaction",
-        "help": "To what extent does the user appear frustrated, annoyed, impatient, confused, disappointed, or unwilling to continue the conversation?",
+        "help": "To what extent does the user visibly express frustration, dissatisfaction, annoyance, impatience, or unwillingness to continue the interaction?",
         "definition": (
-            "User frustration / dissatisfaction refers to visible negative reactions from the user during the dialog. "
-            "This includes annoyance, impatience, confusion, disappointment, irritation, resistance, or signals that "
-            "the user does not want to continue."
+            "User frustration / dissatisfaction refers to observable negative reactions toward the conversation, "
+            "the robot's behavior, repeated questions, misunderstandings, or the interaction process. This "
+            "includes complaints, irritated wording, impatience, negative evaluations, or refusal to continue. "
+            "Simple clarification or uncertainty should not be rated as frustration unless it is expressed with "
+            "visible annoyance, dissatisfaction, or complaint."
         ),
-        "rate_higher": (
-            "The user appears annoyed, impatient, confused, disappointed, irritated, resistant, dissatisfied, or unwilling "
-            "to continue the conversation."
-        ),
-        "rate_lower": (
-            "The user shows little or no visible frustration, impatience, confusion, dissatisfaction, resistance, or desire "
-            "to stop the conversation."
+        "example_prompt": (
+            'Assume the robot repeats: "What do you usually eat for breakfast?" after the user has already '
+            "responded."
         ),
         "anchors": {
-            1: "Very low/absent: the user shows little or no frustration, dissatisfaction, or unwillingness to continue.",
-            3: "Moderate: the user shows some confusion, impatience, dissatisfaction, or reluctance, but not consistently.",
-            5: "Very high: the user clearly appears frustrated, annoyed, dissatisfied, or unwilling to continue.",
+            1: ("No visible frustration", "I usually eat bread with cheese for breakfast."),
+            2: (
+                "Slight confusion / dissatisfaction",
+                "This question is a little unclear, but I usually eat bread with cheese.",
+            ),
+            3: (
+                "Mixed / moderate frustration",
+                "I already answered this, but okay. I usually eat bread with cheese.",
+            ),
+            4: ("Clear frustration", "This is frustrating because I already answered the breakfast question."),
+            5: (
+                "Strong frustration / refusal",
+                "This is really annoying. Stop asking me about breakfast. I don't want to continue.",
+            ),
         },
     },
     {
         "key": "overall_conversational_interaction_quality",
-        "label": "8. Overall conversational interaction quality",
-        "headline": "Overall conversational interaction quality",
-        "help": "Overall, based only on the user's visible behavior in the transcript, how high is the quality of the user's contribution to the conversation with the robot?",
+        "label": "8. Overall user-side interaction quality",
+        "headline": "Overall user-side interaction quality",
+        "help": "Overall, how successful is the user's conversational participation in this dialog?",
         "definition": (
-            "Overall conversational interaction quality refers to the general quality of the user's visible "
-            "contribution to the human-robot conversation. It captures the overall impression of whether the user "
-            "helps create a coherent, smooth, meaningful, and socially appropriate exchange with the robot. "
-            "This is a holistic judgment based on the whole dialog, not a simple average of the previous ratings."
-        ),
-        "rate_higher": (
-            "The user contributes to a coherent, smooth, meaningful, and socially positive conversation. "
-            "They respond in ways that make the exchange feel successful, cooperative, and interactionally rich."
-        ),
-        "rate_lower": (
-            "The user's contribution makes the conversation feel weak, minimal, disconnected, one-sided, awkward, "
-            "or unsuccessful, even if some individual answers are understandable."
-        ),
-        "note": (
-            "Do not judge the robot's technical quality, the attractiveness of the topic, or whether you personally "
-            "like the robot. Focus on the observable quality of the user's contribution to the interaction."
+            "Overall user-side interaction quality is a holistic judgment of the user's observable contribution, "
+            "integrating engagement, relevance, informativeness, initiative, social tone, intelligibility, and "
+            "lack of disruptive frustration. Do not directly rate the robot; only consider how the user participates."
         ),
         "anchors": {
-            1: "Very low: the user's contribution makes the conversation feel largely unsuccessful, disconnected, or minimal.",
-            3: "Moderate: the user's contribution supports the conversation to some extent, but the interaction remains partly limited, uneven, or weak.",
-            5: "Very high: the user's contribution makes the conversation feel coherent, smooth, meaningful, and socially successful.",
+            1: ("Poor", "The user's participation is mostly unusable, unrelated, hostile, incomprehensible, or refuses the interaction."),
+            2: ("Low", "The user contributes very little; responses are mostly minimal, unclear, weakly relevant, or socially abrupt."),
+            3: ("Adequate / mixed", "The dialog functions, but user participation is basic, uneven, or only partly informative."),
+            4: ("Good", "The user contributes clearly, relevantly, and appropriately across most of the dialog, with minor issues only."),
+            5: ("Excellent", "The user's participation is consistently clear, relevant, informative, engaged, and helps the dialog flow smoothly."),
         },
     },
 ]
@@ -781,15 +780,6 @@ def render_dialog(dialog_text: str) -> None:
     )
 
 
-GENERIC_LIKERT_LABELS = {
-    1: "1 = Very low",
-    2: "2 = Low",
-    3: "3 = Moderate",
-    4: "4 = High",
-    5: "5 = Very high",
-}
-
-
 def show_pending_continue(pending: dict) -> None:
     """Show the saved-confirmation message and the Continue link."""
     if pending["kind"] == "success":
@@ -833,24 +823,23 @@ def render_rating_form(
         st.markdown(f"**{question_number}. {question['headline']}**")
         st.markdown(f"*{question['help']}*")
 
+        anchors = question["anchors"]
+
         with st.expander("Rating guidance", expanded=False):
-            # Avoid showing the internal dimension label here.
-            # Use rating guidance instead of construct names.
-            st.markdown(f"**Rate higher when:** {question['rate_higher']}")
-            st.markdown(f"**Rate lower when:** {question['rate_lower']}")
+            st.markdown(f"**Definition:** {question['definition']}")
 
-            if question.get("note"):
-                st.markdown(f"**Important:** {question['note']}")
+            if question.get("example_prompt"):
+                st.markdown(f"*{question['example_prompt']}*")
 
-            st.markdown("**Scale guidance:**")
-            st.markdown("- **1:** The behavior described in the question is very low or absent.")
-            st.markdown("- **3:** The behavior described in the question is moderate.")
-            st.markdown("- **5:** The behavior described in the question is very high.")
+            st.markdown("**Rating scale & anchor examples:**")
+            for value in (1, 2, 3, 4, 5):
+                anchor_label, anchor_example = anchors[value]
+                st.markdown(f"- **{value} = {anchor_label}:** “{anchor_example}”")
 
         answers[question["key"]] = st.radio(
             label=visible_question,
             options=[1, 2, 3, 4, 5],
-            format_func=lambda value: GENERIC_LIKERT_LABELS[value],
+            format_func=lambda value: f"{value} = {anchors[value][0]}",
             index=None,
             horizontal=True,
             label_visibility="collapsed",
