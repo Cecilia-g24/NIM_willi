@@ -54,7 +54,7 @@ This file is the default input for every downstream script in `02_visitor_fracti
 
 ### CSV exports (human/annotation-friendly views)
 
-`data/data_clean/` contains four CSVs, split by language (en/de) and by purpose. These are
+`data/data_clean/` contains five CSVs, split by language (en/de) and by purpose. These are
 generated *from* the cleaned JSON each time `preprocess.py` runs — they are not an
 independent dataset, just a flattened, pre-formatted view of the same dialogs:
 
@@ -69,6 +69,9 @@ independent dataset, just a flattened, pre-formatted view of the same dialogs:
   (`condition_hidden`) to keep annotation blind, and the dialogue is split into separate
   `robot_only_text` / `visitor_only_text` columns in addition to the combined
   `dialogue_for_annotation` text.
+- `metadata_only_for_later_analysis.csv` — internal-only, condition/topic metadata with no
+  dialogue text, kept separate from the anonymized annotation CSVs so the condition can be
+  joined back in later for analysis without exposing it to annotators.
 
 These annotation CSVs feed both the LIWC analysis (06) and the Prolific sampling step (05).
 
@@ -109,120 +112,65 @@ turn-level annotations into per-dialog metrics and runs condition comparisons.
 
 ## 05_prolific — human annotation study
 
-`create_test_samples.py` samples a balanced set of dialogs (by topic, language, and
-condition) from `dialogs_for_annotation_en.csv` / `dialogs_for_annotation_de.csv` and writes
-`streamlit_test_sample_en_<N>.csv` / `streamlit_test_sample_de_<N>.csv`.
+`create_train_set.py` builds the per-language dialog sample fed into the Streamlit app.
+For English (currently the only language generated — German is blocked until its fixed
+dialog 1347 is re-checked against the anonymized DE export), it reads
+`dialogs_for_annotation_en.csv`, joins the condition back in from
+`metadata_only_for_later_analysis.csv` (dropped from the anonymized annotation CSVs), and
+writes 36 dialogs total to `streamlit_train_sample_en_36_pilot2.csv`:
 
-`streamlit_app_en.py` is the Streamlit survey app used by Prolific participants: it loads
-the most recent `streamlit_test_sample_en_*.csv`, shows each participant 3 dialogs, and
-collects 5-point Likert ratings in two blocks, **Part A first, then Part B**:
+- **6 fixed "training representative" dialogs**, hand-picked (2 per engagement level —
+  High/Moderate/Low — spread across the 3 subjects).
+- **30 randomly sampled dialogs** drawn uniformly from the remaining eligible pool (seeded,
+  non-interactive). The 6 fixed dialogs are always excluded from this pool; further dialog
+  IDs can be excluded per language (e.g. to keep one pilot round's sample disjoint from an
+  earlier one).
 
-- **Part A — rate the dialogue itself** (6 questions):
-  - **A1.** User engagement / enjoyment — "How engaged and willing to continue did the
-    human participant appear during the conversation?"
-  - **A2.** Conversation flow / coherence — "How smoothly and coherently did the
-    conversation progress across turns?"
-  - **A3.** Interaction clarity / habitability — "How clear was it what the human
-    participant could say or do next?"
-  - **A4.** Repair / recovery quality — "When misunderstandings or interaction problems
-    occurred, how well did the robot recover?"
-  - **A5.** Response appropriateness — "How appropriate were the robot's responses to
-    the human participant's previous turns?"
-  - **A6.** Social interaction quality — "How socially appropriate was the robot as a
-    conversational partner?"
-- **Part B — rate the robot as an embodied agent**, shown via a condition-specific image
-  (currently placeholder images `block_b_image_condition_a_willi.png` / `_b_wv34.png`)
-  (4 questions):
-  - **B1.** Robot anthropomorphism / human-likeness — "How human-like did the robot
-    appear?"
-  - **B2.** Robot animacy / lifelikeness — "How lifelike or animated did the robot
-    appear?"
-  - **B3.** Robot likeability / pleasantness — "How likeable or pleasant did the robot
-    appear?"
-  - **B4.** Robot perceived intelligence / competence — "How intelligent or competent
-    did the robot appear?"
+`streamlit_app_en_train_pilot_6+30.py` is the Streamlit survey app: it loads the most
+recent `streamlit_train_sample_en_*.csv` and runs each participant through two phases:
 
-Responses are stored in `responses/survey_responses_en.sqlite` and exported to
-`responses/survey_responses_en.csv`.
+- **Training (Part 1)** — the 6 fixed dialogs, shown in a fixed order; every participant
+  rates all 6. A readiness checkbox ("Do you feel ready now to continue with the actual
+  annotations?") gates entry into Part 2.
+- **Main (Part 2)** — 30 dialogs assigned per participant from the random pool, balanced by
+  current rating counts across participants (with an optional per-dialog rating cap,
+  `TARGET_RATINGS_PER_DIALOG`).
 
-### Why these rating dimensions
+Participant identity comes from Prolific's `PROLIFIC_PID` / `STUDY_ID` / `SESSION_ID` URL
+query parameters; if those are absent (manual/local testing), a sidebar lets you type in a
+test participant ID instead. On completion, participants are redirected to the configured
+`PROLIFIC_COMPLETION_URL`.
 
-The annotation scheme is a two-block design. **Part A** measures observer-rated
-conversational HRI quality directly from dialogue transcripts — no single standardized
-instrument exists for rating *transcripts* (rather than self-report) of human-robot
-conversation, so its six dimensions are adapted from recent conversational-HRI and
-dialogue-evaluation literature. **Part B** measures robot perception using
-Godspeed-inspired dimensions, since the robot is shown as an embodied agent via an image
-rather than judged from the transcript.
+Each of the 36 dialogs is rated on **8 dimensions**, each defined in
+`data/assets/rating_manual.pdf` — the in-app "Rating guidance" expander shows that manual's
+exact definition, example robot prompt, and all 5 scale-point anchor examples per
+dimension, and the radio-button labels use the manual's own anchor wording (e.g. "Clearly
+disengaged" … "Highly engaged") rather than a generic Low–High scale:
 
-**Part A — dialogue quality, per dimension:**
+1. User engagement
+2. User self-disclosure
+3. User topical alignment
+4. User elaboration
+5. User initiative
+6. User politeness
+7. User frustration / dissatisfaction
+8. Overall user-side interaction quality
 
-- **A1. User engagement/enjoyment** — chosen because participant engagement is the most
-  direct observable signal of whether the conversation "worked" for the human side.
-  Sourced from **HRI CUES** (Irfan, Miniota, Thunberg, Lagerstedt, Kuoppamäki, Skantze &
-  Pereira — *IEEE Trans. Affective Computing*), which introduces a 5-point,
-  externally-annotated enjoyment scale built specifically for third-party transcript
-  rating rather than self-report; supported by Pereira et al. (ICMI 2024) and Janssens,
-  Pereira, Skantze, Irfan & Belpaeme (ACM/IEEE HRI 2025) on annotating/modeling enjoyment
-  from dialogue. *(1 of 6 Part A dimensions cite HRI CUES.)*
-- **A2. Conversation flow/coherence** — chosen because a coherent topic progression
-  across turns is a prerequisite for the conversation being understandable at all.
-  Sourced from Reimann, Kunneman, Oertel & Hindriks's dialogue-management survey
-  (*ACM Trans. HRI*, 2024), which frames flow as central to smooth, informative, engaging
-  spoken HRI. *(This survey is cited for 3 of 6 Part A dimensions: A2, A4, A5.)*
-- **A3. Interaction clarity/habitability** — chosen because the participant needs to know
-  what they can say or do for the dialogue to proceed naturally, independent of how
-  fluent the topic itself is. Sourced from Reimann, Hindriks, Kunneman, Oertel, Skantze &
-  Leite (ACM/IEEE HRI 2025), which shows that proactively communicating what a robot can
-  understand/do leads to more natural conversations — directly matching this question
-  ("how clear was it what the participant could say or do next?"); also supported by
-  Hone & Graham's **SASSI** (*Natural Language Engineering*, 2000), not HRI-specific but
-  relevant since the robot is a stationary speech/chat interface. *(SASSI is cited for
-  3 of 6 Part A dimensions: A3, A4, A5.)*
-- **A4. Repair/recovery quality** — chosen because how a system handles misunderstandings
-  is a known differentiator of conversational quality that flow/clarity alone don't
-  capture. Sourced from the same Reimann et al. 2024 dialogue-management survey and
-  supported by SASSI (see above).
-- **A5. Response appropriateness** — chosen as the most direct turn-level measure of
-  whether the robot is actually responding to what the participant said, rather than
-  scripted or generic. Sourced from the same Reimann et al. 2024 survey and supported by
-  SASSI (see above).
-- **A6. Social interaction quality** — chosen because politeness/tone/social
-  appropriateness is conceptually distinct from task-level flow or appropriateness, and
-  matters separately for a museum-guide robot interacting with the public. Sourced from
-  Heerink, Kröse, Evers & Wielinga's Almere model (*Int. J. Social Robotics*, 2010), whose
-  sociability/social-presence constructs are adapted into observer-rated wording for
-  whether the robot behaves as a socially appropriate conversational partner. *(Almere is
-  cited for 1 of 6 Part A dimensions.)*
+Responses are stored in `responses/survey_responses_en_train_pilot.sqlite` and exported to
+`responses/survey_responses_en_train_pilot.csv`.
 
-**Part B — robot perception, per dimension:**
+### Pilot runs
 
-All four Part B dimensions are drawn from the **Godspeed Questionnaire Series**
-(Bartneck, Kulić, Croft & Zoghbi, 2009, *Int. J. Social Robotics*), the standard,
-widely-cited instrument for measuring how humans perceive robots. *(Godspeed is cited for
-all 4 of 4 Part B dimensions: B1–B4 — the strongest single source in the whole scheme.)*
-Four of its five subscales are used; *perceived safety*, the fifth, is dropped as not
-applicable to a stationary museum-guide robot.
+Two pilot rounds of the 6-training + 30-main dialog set have been run so far; per-round
+exports are archived under `data/results/pilot_runs/`:
 
-- **B1. Robot anthropomorphism/human-likeness** — chosen to capture whether the robot is
-  perceived as a social agent at all, the most basic dimension of robot perception.
-- **B2. Robot animacy/lifelikeness** — chosen as conceptually distinct from
-  human-likeness: a robot can appear lively/animated without appearing human.
-- **B3. Robot likeability/pleasantness** — chosen because affective response to the robot
-  (rather than its appearance) is a separate driver of acceptance.
-- **B4. Robot perceived intelligence/competence** — chosen because perceived competence
-  drives trust and willingness to engage, independent of likeability or human-likeness.
-
-**Summary — how many dimensions each source supports:**
-
-| Source | Dimensions supported | Count |
-| --- | --- | --- |
-| Godspeed (Bartneck et al., 2009) | B1, B2, B3, B4 | 4 |
-| Reimann et al. dialogue-management survey (2024) | A2, A4, A5 | 3 |
-| SASSI (Hone & Graham, 2000) | A3, A4, A5 | 3 |
-| HRI CUES (Irfan et al.) | A1 | 1 |
-| Reimann et al. habitability paper (HRI 2025) | A3 | 1 |
-| Almere model (Heerink et al., 2010) | A6 | 1 |
+- `pilot_1st_0709_6+30.csv` — first pilot (2026-07-09), raters `ceci`/`334`/`4321`, app run
+  locally.
+- `pilot_2nd_0716_6+30.csv` — second pilot (2026-07-16), raters `021`/`022`/`023`. The app
+  was still run locally, but exposed to the remote raters via a temporary Cloudflare Tunnel
+  instead of a hosted deployment (see the quick-tunnel command in **Running**, step 5).
+  Cloudflare was only used for network access — responses are still stored in the same
+  local SQLite/CSV files as any other run.
 
 ## 06_liwc_features — psycholinguistic features
 
@@ -246,5 +194,12 @@ project root:
    `rule_based_analysis_by_condition_and_topic.py`
 4. `python 04_analysis_llm_based/llm_based_analysis_by_condition.py` (requires a `.env` with
    an Anthropic API key) then `llm_based_analysis_by_condition_and_topic.py`
-5. `python 05_prolific/create_test_samples.py`, then `streamlit run 05_prolific/streamlit_app_en.py`
+5. `python 05_prolific/create_train_set.py`, then
+   `streamlit run "05_prolific/streamlit_app_en_train_pilot_6+30.py"` (default: serves on
+   `http://localhost:8501`). To let a remote tester access a locally-running instance
+   without a hosted deployment (e.g. for a pilot round before the real Prolific launch),
+   expose it with a Cloudflare quick tunnel in a second terminal:
+   `cloudflared tunnel --url http://localhost:8501 --protocol http2` (prints a public
+   `https://*.trycloudflare.com` link; a fresh, unpredictable link is generated each time
+   it's (re)started, and it stays reachable only while both commands keep running).
 6. LIWC step (06) is run manually in the LIWC-22 desktop tool, not from this repo.
